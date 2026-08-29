@@ -1,21 +1,39 @@
 /* Default css file for jemdoc. */
 
+:root {
+	--page-surface: #ffffff;
+	--text: #263746;
+	--muted: #5d6b78;
+	--heading: #1f506d;
+	--link: #175ea8;
+	--link-active: #123f69;
+	--link-hover: #a61b1b;
+	--rule: #c8d5df;
+	--rule-strong: #7f9caf;
+	--menu-surface: #eef4f7;
+	--menu-border: #d2dfe7;
+	--code-surface: #f3f6f8;
+	--note-surface: #fff8e9;
+	--warm-accent: #8a4b20;
+}
+
 table#tlayout {
     border: none;
     border-collapse: separate;
-    background: white;
+    background: var(--page-surface);
 }
 
 body {
-	background: white;
+	background: var(--page-surface);
+	color: var(--text);
 	font-family: Georgia, serif;
 	padding-bottom: 8px;
 	margin: 0;
 }
 
 #layout-menu {
-	background: #f6f6f6;
-	border: 1px solid #dddddd;
+	background: var(--menu-surface);
+	border: 1px solid var(--menu-border);
 	padding-top: 0.5em;
 	padding-left: 8px;
 	padding-right: 8px;
@@ -27,7 +45,7 @@ body {
 }
 
 #layout-menu td {
-	background: #f4f4f4;
+	background: var(--menu-surface);
     vertical-align: top;
 }
 
@@ -36,7 +54,7 @@ body {
 	padding-left: 1.0em;
 	padding-right: 1.0em;
     border: none;
-    background: white;
+    background: var(--page-surface);
     text-align: left;
     vertical-align: top;
 }
@@ -47,7 +65,8 @@ body {
 }
 
 tt {
-    background: #ffffdd;
+	color: #704719;
+	background: #fff7e6;
 }
 
 pre, tt {
@@ -56,20 +75,20 @@ pre, tt {
 }
 
 a, a > tt {
-	color: #224b8d;
+	color: var(--link);
 	text-decoration: none;
 }
 
 a:hover {
-	border-bottom: 1px gray dotted;
+	border-bottom: 1px var(--link-hover) dotted;
 }
 
 #layout-menu a.current:link, #layout-menu a.current:visited {
-	color: #022b6d;
-	border-bottom: 1px gray solid;
+	color: var(--link-active);
+	border-bottom: 1px var(--link-active) solid;
 }
 #layout-menu a:link, #layout-menu a:visited, #layout-menu a:hover {
-	color: #527bbd;
+	color: var(--heading);
 	text-decoration: none;
 }
 #layout-menu a:hover {
@@ -77,7 +96,8 @@ a:hover {
 }
 
 div.menu-category {
-	border-bottom: 1px solid gray;
+	color: var(--heading);
+	border-bottom: 1px solid var(--rule-strong);
 	margin-top: 0.8em;
 	padding-top: 0.2em;
 	padding-bottom: 0.1em;
@@ -92,7 +112,7 @@ div.menu-item {
 div#toptitle {
 	padding-bottom: 0.2em;
 	margin-bottom: 1.5em;
-	border-bottom: 3px double gray;
+	border-bottom: 3px double var(--rule-strong);
 }
 
 /* Reduce space if we begin the page with a title. */
@@ -117,13 +137,13 @@ strong {
 
 
 h1, h2, h3 {
-	color: #527bbd;
+	color: var(--heading);
 	margin-top: 0.7em;
 	margin-bottom: 0.3em;
 	padding-bottom: 0.2em;
 	line-height: 1.0;
 	padding-top: 0.5em;
-	border-bottom: 1px solid #aaaaaa;
+	border-bottom: 1px solid var(--rule);
 }
 
 h1 {
@@ -152,7 +172,45 @@ p {
 }
 
 span.publication-title {
-	color: #9a4d16;
+	color: var(--warm-accent);
+}
+
+span.publication-level {
+	display: inline-block;
+	margin-left: 0.25em;
+	padding: 0.08em 0.35em;
+	border: 1px solid currentColor;
+	border-radius: 2px;
+	font-size: 82%;
+	font-weight: bold;
+	line-height: 1.25;
+	vertical-align: baseline;
+	white-space: nowrap;
+}
+
+span.publication-level.ccf-a {
+	color: #a61b1b;
+	background: #fff1f0;
+}
+
+span.publication-level.ccf-b {
+	color: #175ea8;
+	background: #eef6ff;
+}
+
+span.publication-level.ccf-c {
+	color: #177245;
+	background: #edf8f0;
+}
+
+span.publication-level.ccf-other {
+	color: #5f6b78;
+	background: #f4f6f8;
+}
+
+span.publication-level.best-paper {
+	color: #8a5200;
+	background: #fff7e6;
 }
 
 pre {
@@ -162,14 +220,14 @@ pre {
 
 div#footer {
 	font-size: small;
-	border-top: 1px solid #c0c0c0;
+	border-top: 1px solid var(--rule);
 	padding-top: 0.1em;
 	margin-top: 4.0em;
-	color: #c0c0c0;
+	color: var(--muted);
 }
 
 div#footer a {
-	color: #80a0b0;
+	color: var(--heading);
 }
 
 div#footer-text {
@@ -193,7 +251,7 @@ dl {
 }
 
 dd {
-	color: #222222;
+	color: var(--text);
 }
 
 dd > *:first-child {
@@ -203,6 +261,10 @@ dd > *:first-child {
 ul {
 	list-style-position: outside;
 	list-style-type: square;
+}
+
+li::marker {
+	color: #6c8798;
 }
 
 p + ul, p + ol {
@@ -243,18 +305,18 @@ div.codeblock, div.infoblock {
 
 div.blocktitle {
 	font-weight: bold;
-	color: #cd7b62;
+	color: var(--warm-accent);
 	margin-top: 1.2em;
 	margin-bottom: 0.1em;
 }
 
 div.blockcontent {
-	border: 1px solid silver;
+	border: 1px solid var(--rule);
 	padding: 0.3em 0.5em;
 }
 
 div.infoblock > div.blockcontent {
-	background: #ffffee;
+	background: var(--note-surface);
 }
 
 div.blockcontent p + ul, div.blockcontent p + ol {
@@ -274,30 +336,30 @@ div.infoblock p + p {
 }
 
 div.codeblock > div.blockcontent {
-	background: #f6f6f6;
+	background: var(--code-surface);
 }
 
 span.pycommand {
-	color: #000070;
+	color: #174a72;
 }
 
 span.statement {
-	color: #008800;
+	color: #177245;
 }
 span.builtin {
-	color: #000088;
+	color: #315c8a;
 }
 span.special {
-	color: #990000;
+	color: #9b2c2c;
 }
 span.operator {
-	color: #880000;
+	color: #8a4b20;
 }
 span.error {
-	color: #aa0000;
+	color: #a61b1b;
 }
 span.comment, span.comment > *, span.string, span.string > * {
-	color: #606060;
+	color: var(--muted);
 }
 
 @media print {
@@ -340,7 +402,7 @@ img.eqwl {
 }
 
 table {
-    border: 2px solid black;
+    border: 2px solid var(--heading);
     border-collapse: collapse;
 }
 
@@ -349,7 +411,7 @@ td {
     padding-left: 0.5em;
     padding-right: 0.5em;
     text-align: center;
-    border: 1px solid gray;
+    border: 1px solid var(--rule);
 }
 
 table + table {
@@ -358,7 +420,8 @@ table + table {
 
 tr.heading {
     font-weight: bold;
-    border-bottom: 2px solid black;
+    color: var(--heading);
+    border-bottom: 2px solid var(--heading);
 }
 
 img {
