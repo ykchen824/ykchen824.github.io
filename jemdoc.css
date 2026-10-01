@@ -1,0 +1,587 @@
+/* Default css file for jemdoc. */
+
+:root {
+	--page-surface: #ffffff;
+	--text: #263746;
+	--muted: #5d6b78;
+	--heading: #1f506d;
+	--link: #175ea8;
+	--link-active: #123f69;
+	--link-hover: #a61b1b;
+	--rule: #c8d5df;
+	--rule-strong: #7f9caf;
+	--menu-surface: #eef4f7;
+	--menu-border: #d2dfe7;
+	--code-surface: #f3f6f8;
+	--note-surface: #fff8e9;
+	--warm-accent: #8a4b20;
+	--profile-surface: #f1f7f7;
+	--profile-border: #cfe0df;
+	--profile-accent: #c65d3c;
+	--link-border: #a8c6d0;
+}
+
+table#tlayout {
+    border: none;
+    border-collapse: separate;
+    background: var(--page-surface);
+}
+
+body {
+	background: var(--page-surface);
+	color: var(--text);
+	font-family: Georgia, serif;
+	padding-bottom: 8px;
+	margin: 0;
+}
+
+#layout-menu {
+	background: var(--menu-surface);
+	border: 1px solid var(--menu-border);
+	padding-top: 0.5em;
+	padding-left: 8px;
+	padding-right: 8px;
+	font-size: 1.0em;
+	width: auto;
+	white-space: nowrap;
+    text-align: left;
+    vertical-align: top;
+}
+
+#layout-menu td {
+	background: var(--menu-surface);
+    vertical-align: top;
+}
+
+#layout-content {
+	padding-top: 0.0em;
+	padding-left: 1.0em;
+	padding-right: 1.0em;
+	padding-bottom: 2.5em;
+	width: 100%;
+	max-width: 980px;
+	border: none;
+    background: var(--page-surface);
+    text-align: left;
+    vertical-align: top;
+}
+
+#layout-menu a {
+	line-height: 1.5em;
+	margin-left: 0.5em;
+}
+
+tt {
+	color: #704719;
+	background: #fff7e6;
+}
+
+pre, tt {
+	font-size: 90%;
+	font-family: monaco, monospace;
+}
+
+a, a > tt {
+	color: var(--link);
+	text-decoration: none;
+}
+
+a:hover {
+	border-bottom: 1px var(--link-hover) dotted;
+}
+
+#layout-menu a.current:link, #layout-menu a.current:visited {
+	color: var(--link-active);
+	border-bottom: 1px var(--link-active) solid;
+}
+#layout-menu a:link, #layout-menu a:visited, #layout-menu a:hover {
+	color: var(--heading);
+	text-decoration: none;
+}
+#layout-menu a:hover {
+	text-decoration: none;
+}
+
+div.menu-category {
+	color: var(--heading);
+	border-bottom: 1px solid var(--rule-strong);
+	margin-top: 0.8em;
+	padding-top: 0.2em;
+	padding-bottom: 0.1em;
+	font-weight: bold;
+}
+
+div.menu-item {
+	padding-left: 16px;
+	text-indent: -16px;
+}
+
+div#toptitle {
+	padding-bottom: 0.2em;
+	margin-bottom: 1.5em;
+	border-bottom: 3px double var(--rule-strong);
+}
+
+/* Reduce space if we begin the page with a title. */
+div#toptitle + h2, div#toptitle + h3 {
+	margin-top: -0.7em;
+}
+
+div#subtitle {
+	margin-top: 0.0em;
+	margin-bottom: 0.0em;
+	padding-top: 0em;
+	padding-bottom: 0.1em;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+
+h1, h2, h3 {
+	color: var(--heading);
+	margin-top: 0.7em;
+	margin-bottom: 0.3em;
+	padding-bottom: 0.2em;
+	line-height: 1.0;
+	padding-top: 0.5em;
+	border-bottom: 1px solid var(--rule);
+}
+
+h1 {
+	font-size: 165%;
+}
+
+h2 {
+	padding-top: 0.8em;
+	font-size: 125%;
+}
+
+h2 + h3 {
+    padding-top: 0.2em;
+}
+
+h3 {
+	font-size: 110%;
+	border-bottom: none;
+}
+
+p {
+	margin-top: 0.0em;
+	margin-bottom: 0.8em;
+	padding: 0;
+	line-height: 1.3;
+}
+
+.profile-intro {
+	align-items: center;
+	background: linear-gradient(120deg, #f3f8f8 0%, #edf5f7 100%);
+	border: 1px solid var(--profile-border);
+	border-left: 5px solid var(--profile-accent);
+	border-radius: 10px;
+	box-sizing: border-box;
+	display: flex;
+	gap: 2.1em;
+	margin: 0 0 2em;
+	padding: 1.35em 1.5em;
+	box-shadow: 0 8px 24px rgba(31, 80, 109, 0.08);
+}
+
+.profile-photo-wrap {
+	flex: 0 0 auto;
+	padding: 4px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(31, 80, 109, 0.15);
+}
+
+.profile-photo {
+	background: var(--page-surface);
+	border: none;
+	border-radius: 5px;
+	box-shadow: none;
+	box-sizing: content-box;
+	display: block;
+	flex: 0 0 auto;
+	height: 190px;
+	object-fit: cover;
+	width: 136px;
+}
+
+.profile-details {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.profile-name {
+	color: var(--heading);
+	font-size: 1.65em;
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 0 0 0.35em;
+	padding: 0;
+	border: none;
+}
+
+.profile-name-cn {
+	color: var(--muted);
+	font-size: 0.72em;
+	font-weight: normal;
+	white-space: nowrap;
+}
+
+.profile-affiliation {
+	color: var(--muted);
+	font-size: 1.1em;
+	line-height: 1.4;
+	margin-bottom: 1.25em;
+}
+
+.profile-affiliation a {
+	font-weight: bold;
+}
+
+.profile-contact {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em 0.65em;
+	margin-bottom: 0;
+}
+
+.profile-contact-label {
+	color: var(--muted);
+	font-size: 0.92em;
+	font-weight: bold;
+	margin-right: 0.1em;
+}
+
+.profile-link {
+	background: var(--page-surface);
+	border: 1px solid var(--link-border);
+	border-radius: 5px;
+	display: inline-block;
+	padding: 0.32em 0.7em;
+	transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.profile-link:hover {
+	background: var(--link);
+	border-bottom: 1px solid var(--link);
+	color: var(--page-surface);
+	transform: translateY(-1px);
+}
+
+.profile-link:focus-visible {
+	outline: 2px solid var(--profile-accent);
+	outline-offset: 2px;
+}
+
+span.publication-title {
+	color: var(--warm-accent);
+}
+
+span.publication-level {
+	display: inline-block;
+	margin-left: 0.25em;
+	padding: 0.08em 0.35em;
+	border: 1px solid currentColor;
+	border-radius: 2px;
+	font-size: 82%;
+	font-weight: bold;
+	line-height: 1.25;
+	vertical-align: baseline;
+	white-space: nowrap;
+}
+
+span.publication-level.ccf-a {
+	color: #a61b1b;
+	background: #fff1f0;
+}
+
+span.publication-level.ccf-b {
+	color: #175ea8;
+	background: #eef6ff;
+}
+
+span.publication-level.ccf-c {
+	color: #177245;
+	background: #edf8f0;
+}
+
+span.publication-level.ccf-other {
+	color: #5f6b78;
+	background: #f4f6f8;
+}
+
+span.publication-level.best-paper {
+	color: #8a5200;
+	background: #fff7e6;
+}
+
+pre {
+	padding: 0;
+	margin: 0;
+}
+
+div#footer {
+	font-size: small;
+	border-top: 1px solid var(--rule);
+	padding-top: 0.1em;
+	margin-top: 4.0em;
+	color: var(--muted);
+}
+
+div#footer a {
+	color: var(--heading);
+}
+
+div#footer-text {
+	float: left;
+	padding-bottom: 8px;
+}
+
+ul, ol, dl {
+	margin-top: 0.2em;
+	padding-top: 0;
+	margin-bottom: 0.8em;
+}
+
+dt {
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+
+dl {
+	margin-left: 20px;
+}
+
+dd {
+	color: var(--text);
+}
+
+dd > *:first-child {
+	margin-top: 0;
+}
+
+ul {
+	list-style-position: outside;
+	list-style-type: square;
+}
+
+li::marker {
+	color: #6c8798;
+}
+
+p + ul, p + ol {
+	margin-top: -0.5em;
+}
+
+li ul, li ol {
+	margin-top: -0.3em;
+}
+
+ol {
+	list-style-position: outside;
+	list-style-type: decimal;
+}
+
+li p, dd p {
+	margin-bottom: 0.3em;
+}
+
+
+ol ol {
+	list-style-type: lower-alpha;
+}
+
+ol ol ol {
+	list-style-type: lower-roman;
+}
+
+p + div.codeblock {
+	margin-top: -0.6em;
+}
+
+div.codeblock, div.infoblock {
+	margin-right: 0%;
+	margin-top: 1.2em;
+	margin-bottom: 1.3em;
+}
+
+div.blocktitle {
+	font-weight: bold;
+	color: var(--warm-accent);
+	margin-top: 1.2em;
+	margin-bottom: 0.1em;
+}
+
+div.blockcontent {
+	border: 1px solid var(--rule);
+	padding: 0.3em 0.5em;
+}
+
+div.infoblock > div.blockcontent {
+	background: var(--note-surface);
+}
+
+div.blockcontent p + ul, div.blockcontent p + ol {
+	margin-top: 0.4em;
+}
+
+div.infoblock p {
+	margin-bottom: 0em;
+}
+
+div.infoblock li p, div.infoblock dd p {
+	margin-bottom: 0.5em;
+}
+
+div.infoblock p + p {
+	margin-top: 0.8em;
+}
+
+div.codeblock > div.blockcontent {
+	background: var(--code-surface);
+}
+
+span.pycommand {
+	color: #174a72;
+}
+
+span.statement {
+	color: #177245;
+}
+span.builtin {
+	color: #315c8a;
+}
+span.special {
+	color: #9b2c2c;
+}
+span.operator {
+	color: #8a4b20;
+}
+span.error {
+	color: #a61b1b;
+}
+span.comment, span.comment > *, span.string, span.string > * {
+	color: var(--muted);
+}
+
+@media print {
+	#layout-menu { display: none; }
+}
+
+#fwtitle {
+	margin: 2px;
+}
+
+#fwtitle #toptitle {
+	padding-left: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+#layout-content h1:first-child, #layout-content h2:first-child, #layout-content h3:first-child {
+	margin-top: -0.7em;
+}
+
+div#toptitle h1, #layout-content div#toptitle h1 {
+	margin-bottom: 0.0em;
+	padding-bottom: 0.1em;
+	padding-top: 0;
+	margin-top: 0.5em;
+	border-bottom: none;
+}
+
+img.eq {
+	padding: 0;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+	margin: 0;
+}
+
+img.eqwl {
+	padding-left: 2em;
+	padding-top: 0.6em;
+	padding-bottom: 0.2em;
+	margin: 0;
+}
+
+table {
+    border: 2px solid var(--heading);
+    border-collapse: collapse;
+}
+
+td {
+    padding: 2px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    text-align: center;
+    border: 1px solid var(--rule);
+}
+
+table + table {
+    margin-top: 1em;
+}
+
+tr.heading {
+    font-weight: bold;
+    color: var(--heading);
+    border-bottom: 2px solid var(--heading);
+}
+
+img {
+    border: none;
+}
+
+table.imgtable, table.imgtable td {
+    border: none;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+	#layout-content {
+		padding-left: 0.75em;
+		padding-right: 0.75em;
+	}
+
+	.profile-intro {
+		align-items: center;
+		gap: 1em;
+		padding: 1em;
+	}
+
+	.profile-photo {
+		height: 150px;
+		width: 107px;
+	}
+
+	.profile-name {
+		font-size: 1.2em;
+	}
+
+	.profile-affiliation {
+		font-size: 1em;
+		margin-bottom: 1em;
+	}
+
+	.profile-contact-label {
+		flex-basis: 100%;
+	}
+}
+
+@media (max-width: 420px) {
+	.profile-intro {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.profile-photo-wrap {
+		align-self: center;
+	}
+}
