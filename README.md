@@ -1,2 +1,2 @@
-# My jemdoc website source files
+# My website source files
 A personal webpage.
