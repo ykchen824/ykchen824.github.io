@@ -391,7 +391,7 @@ p {
 }
 
 .needle::after {
-  content: "Today";
+  content: "";
   position: absolute;
   top: -1.75rem;
   left: 50%;
