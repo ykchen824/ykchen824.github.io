@@ -7,6 +7,7 @@
 <title>Yongkang Chen 陈永康</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="preload" href="fonts/barlow-condensed-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -23,7 +24,7 @@
       <li><a href="https://github.com/ykchen824">GitHub</a></li>
     </ul>
   </div>
-  <img class="portrait" src="Avatar.jpeg" alt="Portrait of Yongkang Chen" width="121" height="170" />
+  <img class="portrait" src="Avatar.jpeg" alt="Portrait of Yongkang Chen" width="140" height="196" />
 </header>
 
 <section class="section" aria-labelledby="experience">
@@ -46,11 +47,19 @@
         <span class="scale-year" style="--i:12">2027</span>
       </div>
     </li>
-    <li class="span is-ongoing" style="--s:2026.5; --order:4">
+    <li class="span is-ongoing" style="--s:2026.5; --order:5">
       <div>
         <p class="span-org">National Institute of Metrology, China</p>
         <p class="span-role">Research Assistant</p>
         <p class="span-date">Jul. 2026 – now</p>
+      </div>
+      <div class="span-track" aria-hidden="true"><span class="span-bar"></span></div>
+    </li>
+    <li class="span" style="--s:2026.417; --e:2026.5; --order:4">
+      <div>
+        <p class="span-org">China Industrial Internet Research Institute</p>
+        <p class="span-role">Research Intern, Agent Safety</p>
+        <p class="span-date">Jun. 2026</p>
       </div>
       <div class="span-track" aria-hidden="true"><span class="span-bar"></span></div>
     </li>
@@ -218,7 +227,6 @@
 
 </main>
 <script>
-  // Move the "now" needle (and the ongoing position's bar) to today's date.
   (function () {
     var d = new Date();
     var now = d.getFullYear() + (d.getMonth() + d.getDate() / 31) / 12;
