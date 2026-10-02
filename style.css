@@ -125,7 +125,6 @@ a {
   color: var(--accent-primary);
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
 }
 
 a:hover {
@@ -406,27 +405,6 @@ p {
   text-transform: uppercase;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .span-bar {
-    animation: draw 0.6s ease-out both;
-    animation-delay: calc(0.15s + var(--order) * 0.1s);
-  }
-
-  .needle {
-    animation: settle 0.4s ease-out both;
-    animation-delay: 0.9s;
-  }
-}
-
-@keyframes draw {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-
-@keyframes settle {
-  from { opacity: 0; clip-path: inset(-10px -10px 100% -10px); }
-  to { opacity: 1; clip-path: inset(-10px); }
-}
 
 /* === Publications === */
 .by-year {
