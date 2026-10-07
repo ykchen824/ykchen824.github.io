@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Short essays and notes by Yongkang Chen." />
+<title>Writing — Yongkang Chen</title>
+<link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
+<link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="{{ '/' | relative_url }}">Yongkang Chen</a>
+    <nav aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}">About</a>
+      <a href="{{ '/writing/' | relative_url }}" aria-current="page">Writing</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </div>
+</header>
+
+<main id="main" class="writing-main">
+  <section class="section block writing" aria-label="Writing">
+    <div class="writing-list" aria-live="polite">
+      {% assign years = site.writing | group_by: "year" | sort: "name" | reverse %}
+      {% if years.size == 0 %}
+      <p class="writing-empty">Short essays and notes will appear here.</p>
+      {% else %}
+        {% for year in years %}
+        <section class="writing-year" aria-labelledby="writing-year-{{ year.name }}">
+          <h1 class="writing-year-heading" id="writing-year-{{ year.name }}">{{ year.name }} <sup class="writing-year-count" aria-label="{{ year.items.size }} essays">{{ year.items.size }}</sup></h1>
+          {% assign posts = year.items | sort: "date" | reverse %}
+          {% for post in posts %}
+          <article class="writing-entry">
+            <div class="writing-month">{{ post.month }} <sup class="writing-year-count" aria-label="1 essay">1</sup></div>
+            <div>
+              <a class="writing-entry-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              <p class="writing-meta">Date: {{ post.date_display }} | Estimated Reading Time: {{ post.reading_time }} | Author: {{ post.author }}</p>
+            </div>
+          </article>
+          {% endfor %}
+        </section>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="bar">
+    <span>© 2026 Yongkang Chen</span>
+    <div class="foot-links"><a href="mailto:ykchen824@foxmail.com">Email</a><a href="#main">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    const root = document.documentElement;
+    const toggle = document.querySelector('.theme-toggle');
+    const stored = localStorage.getItem('theme');
+    if (stored) root.dataset.theme = stored;
+    toggle?.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="{{ page.title }}，{{ page.author }}。" />
+<title>{{ page.title }} — Yongkang Chen</title>
+<link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
+<link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+</head>
+<body class="post-page">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="{{ '/' | relative_url }}">Yongkang Chen</a>
+    <nav aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}">About</a>
+      <a href="{{ '/writing/' | relative_url }}" aria-current="page">Writing</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </div>
+</header>
+
+<main id="main" class="post-main">
+  <article class="post-layout">
+    <header class="post-head">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <p class="post-meta">Date: {{ page.date_display }} | Estimated Reading Time: {{ page.reading_time }} | Author: {{ page.author }}</p>
+    </header>
+
+    <nav class="post-toc" aria-label="Table of contents">
+      <details>
+        <summary>Table of Contents</summary>
+        <ol id="post-toc-list"></ol>
+      </details>
+    </nav>
+
+    <div class="post-body" id="post-body">
+      {{ content }}
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="bar">
+    <span>© 2026 Yongkang Chen</span>
+    <div class="foot-links"><a href="mailto:ykchen824@foxmail.com">Email</a><a href="#main">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    const root = document.documentElement;
+    const toggle = document.querySelector('.theme-toggle');
+    const stored = localStorage.getItem('theme');
+    if (stored) root.dataset.theme = stored;
+    toggle?.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+
+    const toc = document.querySelector('#post-toc-list');
+    const headings = [...document.querySelectorAll('#post-body h2, #post-body h3')];
+    headings.forEach((heading, index) => {
+      if (!heading.id) heading.id = `section-${index + 1}`;
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = `#${heading.id}`;
+      link.textContent = heading.textContent;
+      item.append(link);
+      toc?.append(item);
+    });
+    if (!headings.length) document.querySelector('.post-toc')?.remove();
+  })();
+</script>
+</body>
+</html>
