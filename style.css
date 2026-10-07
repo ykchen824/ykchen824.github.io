@@ -2,8 +2,8 @@
 
 :root {
   --sans: "Schibsted Grotesk", "Segoe UI", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-  /* Readable line length: roughly 68–72 characters per line. */
-  --measure: 72ch;
+  /* Readable line length: roughly 76–80 characters per line. */
+  --measure: 80ch;
   --pad: 1.25rem;
   --about-label-width: 10.5rem;
   --about-column-gap: 1.25rem;
