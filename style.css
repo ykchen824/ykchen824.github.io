@@ -172,6 +172,7 @@ a:hover { text-decoration-color:currentColor; }
   .site-header nav { order:3; width:100%; }
   .page-head { margin-bottom:1.5rem; }
   .dek { font-size:1.125rem; }
+  .intro .dek { text-align:justify; text-align-last:left; text-justify:inter-word; text-wrap:wrap; -webkit-hyphens:auto; hyphens:auto; }
   .intro { grid-template-columns:1fr; gap:1.5rem; }
   .profile-picture { width:96px; }
   .event-body,.service-row { grid-template-columns:1fr; gap:.2rem; }
