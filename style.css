@@ -51,11 +51,12 @@ a:hover { text-decoration-color:currentColor; }
 .theme-toggle:hover { color:var(--fg); background:var(--soft); }
 
 /* Intro */
-.intro { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:2.5rem; align-items:start; }
-.page-head { margin-bottom:2.75rem; }
-.dek { max-width:40rem; margin:0; color:var(--fg-2); font-size:1.1875rem; line-height:1.45; text-wrap:pretty; }
+.intro { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:3rem; align-items:start; }
+.page-head { margin-bottom:2.25rem; }
+.dek { max-width:40rem; margin:0; color:var(--fg-2); font-size:1.125rem; line-height:1.55; text-align:justify; text-align-last:left; text-justify:inter-word; text-wrap:pretty; }
+.dek + .dek { margin-top:1.1rem; }
 .contact { display:flex; flex-wrap:wrap; gap:.85rem 1.25rem; margin:1.5rem 0 0; padding:0; list-style:none; font-size:.9375rem; }
-.profile-picture { width:clamp(96px,10vw,120px); }
+.profile-picture { width:clamp(96px,9vw,112px); }
 .profile-photo { display:block; width:100%; height:auto; aspect-ratio:295 / 413; object-fit:cover; border:1px solid var(--rule); }
 .profile-photo-dark { display:none; }
 @media (prefers-color-scheme: dark) {
