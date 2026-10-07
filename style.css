@@ -158,9 +158,9 @@ a:hover { text-decoration-color:currentColor; }
 
 /* Footer */
 .site-footer { margin-top:6rem; }
-.site-footer .bar { position:relative; display:flex; justify-content:space-between; gap:1rem; padding-top:1.25rem; padding-bottom:3rem; color:var(--muted); font-size:.8125rem; }
-.site-footer .bar::before { content:""; position:absolute; top:0; left:var(--pad); right:var(--pad); border-top:1px solid var(--rule); }
-.foot-links { display:flex; gap:1rem; }
+.site-footer .bar { position:relative; display:flex; width:100%; max-width:calc(var(--measure) + var(--pad) + var(--pad)); align-items:center; justify-content:space-between; gap:1rem; padding-top:1.25rem; padding-bottom:3rem; color:var(--muted); font-size:.8125rem; }
+.site-footer .bar::before { content:""; position:absolute; top:0; left:0; right:0; border-top:1px solid var(--rule); }
+.foot-links { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.5rem 1.25rem; }
 .site-footer a { color:var(--muted); text-decoration:none; }
 .site-footer a:hover { color:var(--fg); }
 
