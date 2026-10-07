@@ -70,7 +70,6 @@ a:hover { text-decoration-color:currentColor; }
 .writing-year { margin:3.5rem 0 0; }
 .writing-year:first-child { margin-top:0; }
 .writing-year-heading { display:flex; align-items:baseline; gap:.45rem; margin:0 0 1.35rem; color:var(--fg); font-size:1.75rem; font-weight:600; line-height:1.1; letter-spacing:-.02em; }
-.writing-year-count { color:var(--muted); font-size:.875rem; font-weight:400; vertical-align:super; }
 .writing-entry { display:grid; grid-template-columns:10rem minmax(0,1fr); gap:1.25rem; padding:1.25rem 0 1.45rem; border-top:1px solid var(--rule); }
 .writing-entry:last-child { border-bottom:1px solid var(--rule); }
 .writing-month { color:var(--fg); font-size:1.15rem; font-weight:600; line-height:1.35; }

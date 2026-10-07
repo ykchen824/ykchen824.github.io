@@ -33,11 +33,11 @@
       {% else %}
         {% for year in years %}
         <section class="writing-year" aria-labelledby="writing-year-{{ year.name }}">
-          <h1 class="writing-year-heading" id="writing-year-{{ year.name }}">{{ year.name }} <sup class="writing-year-count" aria-label="{{ year.items.size }} essays">{{ year.items.size }}</sup></h1>
+          <h1 class="writing-year-heading" id="writing-year-{{ year.name }}">{{ year.name }}</h1>
           {% assign posts = year.items | sort: "date" | reverse %}
           {% for post in posts %}
           <article class="writing-entry">
-            <div class="writing-month">{{ post.date | date: "%B" }} <sup class="writing-year-count" aria-label="1 essay">1</sup></div>
+            <div class="writing-month">{{ post.date | date: "%B" }}</div>
             <div>
               <a class="writing-entry-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
               <p class="writing-meta">Date: {{ post.date | date: "%B %-d, %Y" }}</p>
