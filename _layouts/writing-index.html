@@ -27,7 +27,7 @@
 <main id="main" class="writing-main">
   <section class="section block writing" aria-label="Writing">
     <div class="writing-list" aria-live="polite">
-      {% assign years = site.writing | group_by_exp: "year", "item.date | date: '%Y'" | sort: "name" | reverse %}
+      {% assign years = site.writing | group_by_exp: "year", "item.date.year" | sort: "name" | reverse %}
       {% if years.size == 0 %}
       <p class="writing-empty">Short essays and notes will appear here.</p>
       {% else %}
