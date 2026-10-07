@@ -13,20 +13,15 @@ Use this front matter at the top of each file:
 ```markdown
 ---
 title: A short essay title
-year: 2026
-month: October
 date: 2026-10-07
-date_display: October 7, 2026
-reading_time: 5 min
-author: Yongkang Chen
 ---
 
 Write the essay here in Markdown.
 ```
 
-The `year`, `month`, `date`, `date_display`, `reading_time`, and `author`
-fields drive the Writing list. Entries are grouped by year and sorted from
-newest to oldest by `date`.
+Only `title` and `date` are needed. The `date` field automatically supplies the
+year, month, display date, grouping, and newest-first sorting in the Writing
+list.
 
 In the repository settings, set GitHub Pages to deploy from the branch and
 folder containing this site (usually `main` / `/ (root)`). Jekyll reads

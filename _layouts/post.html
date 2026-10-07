@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="{{ page.title }}，{{ page.author }}。" />
+<meta name="description" content="{{ page.title }}。" />
 <title>{{ page.title }} — Yongkang Chen</title>
 <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
 <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
@@ -28,7 +28,7 @@
   <article class="post-layout">
     <header class="post-head">
       <h1 class="post-title">{{ page.title }}</h1>
-      <p class="post-meta">Date: {{ page.date_display }} | Estimated Reading Time: {{ page.reading_time }} | Author: {{ page.author }}</p>
+      <p class="post-meta">Date: {{ page.date | date: "%B %-d, %Y" }}</p>
     </header>
 
     <nav class="post-toc" aria-label="Table of contents">

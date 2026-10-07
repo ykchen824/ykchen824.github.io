@@ -27,7 +27,7 @@
 <main id="main" class="writing-main">
   <section class="section block writing" aria-label="Writing">
     <div class="writing-list" aria-live="polite">
-      {% assign years = site.writing | group_by: "year" | sort: "name" | reverse %}
+      {% assign years = site.writing | group_by_exp: "year", "item.date | date: '%Y'" | sort: "name" | reverse %}
       {% if years.size == 0 %}
       <p class="writing-empty">Short essays and notes will appear here.</p>
       {% else %}
@@ -37,10 +37,10 @@
           {% assign posts = year.items | sort: "date" | reverse %}
           {% for post in posts %}
           <article class="writing-entry">
-            <div class="writing-month">{{ post.month }} <sup class="writing-year-count" aria-label="1 essay">1</sup></div>
+            <div class="writing-month">{{ post.date | date: "%B" }} <sup class="writing-year-count" aria-label="1 essay">1</sup></div>
             <div>
               <a class="writing-entry-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              <p class="writing-meta">Date: {{ post.date_display }} | Estimated Reading Time: {{ post.reading_time }} | Author: {{ post.author }}</p>
+              <p class="writing-meta">Date: {{ post.date | date: "%B %-d, %Y" }}</p>
             </div>
           </article>
           {% endfor %}

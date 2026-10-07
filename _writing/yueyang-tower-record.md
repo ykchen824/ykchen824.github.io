@@ -1,11 +1,6 @@
 ---
 title: 岳阳楼记
-year: 1046
-month: September
-date: 1046-09-15
-date_display: September 15, 1046
-reading_time: 6 min
-author: 范仲淹
+date: 2026-09-15
 ---
 
 ## 重修岳阳楼
