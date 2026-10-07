@@ -4,6 +4,8 @@
   --sans: "Schibsted Grotesk", "Segoe UI", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
   --measure: 40rem;
   --pad: 1.25rem;
+  --about-label-width: 10.5rem;
+  --about-column-gap: 1.25rem;
   --bg: #fff;
   --fg: #000;
   --fg-2: #2b2b2b;
@@ -94,9 +96,10 @@ a:hover { text-decoration-color:currentColor; }
 .post-body blockquote { margin:1.5em 0; padding-left:1rem; border-left:2px solid var(--fg); color:var(--muted); font-style:italic; }
 
 /* Education / experience */
+.event-body,.year-group,.service-row { grid-template-columns:var(--about-label-width) minmax(0,1fr); column-gap:var(--about-column-gap); }
 .timeline { margin:0; padding:0; list-style:none; border-top:1px solid var(--fg); font-family:var(--sans); }
 .event { padding:.9rem 0; border-bottom:1px solid var(--rule); }
-.event-body { display:grid; grid-template-columns:8.5rem minmax(0,1fr); gap:.2rem 1.25rem; min-width:0; }
+.event-body { display:grid; row-gap:.2rem; min-width:0; align-items:start; }
 .event-year { color:var(--muted); font-size:.875rem; line-height:1.5; font-variant-numeric:tabular-nums; }
 .event-year { grid-row:1 / span 3; }
 .event-org { margin:0; color:var(--fg); font-size:1rem; font-weight:600; line-height:1.4; }
@@ -105,7 +108,7 @@ a:hover { text-decoration-color:currentColor; }
 
 /* Publications */
 .by-year { margin:0; padding:0; list-style:none; }
-.year-group { display:grid; grid-template-columns:3.75rem 1fr; gap:1rem; padding:1rem 0; border-top:1px solid var(--rule); }
+.year-group { display:grid; padding:1rem 0; border-top:1px solid var(--rule); align-items:start; }
 .year-group:first-child { border-top-color:var(--fg); }
 .year-group + .year-group { margin-top:0; }
 .year { margin:0; color:var(--muted); font-size:.875rem; font-weight:400; line-height:1.5; font-variant-numeric:tabular-nums; }
@@ -114,6 +117,8 @@ a:hover { text-decoration-color:currentColor; }
 .pub + .pub { margin-top:1rem; padding-top:1rem; border-top:1px solid var(--rule); }
 .pub:last-child { padding-bottom:0; }
 .pub-title { margin:0; color:var(--fg); font-size:1rem; font-weight:600; line-height:1.4; text-wrap:pretty; }
+.pub-title a { color:inherit; text-decoration:none; }
+.pub-title a:hover { text-decoration:underline; text-underline-offset:.15em; }
 .pub-authors { max-width:38rem; margin:.3rem 0 0; color:var(--fg-2); font-size:.9375rem; line-height:1.5; text-wrap:pretty; }
 .pub-authors b { color:var(--fg); font-weight:600; }
 .pub-authors sup { line-height:0; }
@@ -124,8 +129,8 @@ a:hover { text-decoration-color:currentColor; }
 
 /* Service / honors */
 .service { margin:0; padding:0; border-top:1px solid var(--fg); }
-.service-row { display:grid; grid-template-columns:8.5rem 1fr; gap:1.25rem; padding:.9rem 0; border-bottom:1px solid var(--rule); }
-.service dt { color:var(--fg); font-size:1rem; font-weight:600; line-height:1.4; }
+.service-row { display:grid; padding:.9rem 0; border-bottom:1px solid var(--rule); align-items:start; }
+.service dt { color:var(--fg); font-size:1rem; font-weight:600; line-height:1.4; white-space:nowrap; }
 .service dd { margin:0; color:var(--fg-2); font-size:.9375rem; line-height:1.5; }
 .honor { padding:.9rem 0; border-bottom:1px solid var(--rule); color:var(--fg-2); font-size:.9375rem; line-height:1.5; }
 .honor:last-child { border-bottom:0; }

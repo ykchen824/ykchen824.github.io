@@ -3,6 +3,12 @@ description: Short essays and notes by Yongkang Chen.
 url: https://ykchen824.github.io
 baseurl: ""
 
+# These legacy source assets are not loaded by the current static site.
+exclude:
+  - fonts/
+  - jemdoc.py
+  - MENU
+
 markdown: kramdown
 highlighter: rouge
 
