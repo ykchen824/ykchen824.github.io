@@ -76,6 +76,7 @@ a:hover { text-decoration-color:currentColor; }
 .writing-entry-title { margin:0; color:var(--fg); font-size:1.25rem; font-weight:400; line-height:1.35; text-decoration:none; }
 .writing-entry-title:hover { text-decoration:underline; text-underline-offset:.18em; }
 .writing-meta { margin:.35rem 0 0; color:var(--muted); font-size:.9375rem; line-height:1.5; }
+.writing-summary { margin:.2rem 0 0; color:var(--fg-2); font-size:.9375rem; line-height:1.5; }
 
 /* Writing detail pages */
 .post-main > .post-layout { width:100%; max-width:calc(var(--measure) + var(--pad) + var(--pad)); margin-inline:auto; padding-inline:var(--pad); }

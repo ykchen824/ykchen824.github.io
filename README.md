@@ -14,14 +14,15 @@ Use this front matter at the top of each file:
 ---
 title: A short essay title
 date: 2026-10-07
+summary: A one-sentence summary of the essay.
 ---
 
 Write the essay here in Markdown.
 ```
 
-Only `title` and `date` are needed. The `date` field automatically supplies the
-year, month, display date, grouping, and newest-first sorting in the Writing
-list.
+Only `title` and `date` are required. Add `summary` for the one-sentence
+description shown below the date in the Writing list. The `date` field
+automatically supplies the year, month, grouping, and newest-first sorting.
 
 For references at the end of an essay, use a normal Markdown section and
 ordered list:

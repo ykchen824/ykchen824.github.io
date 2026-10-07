@@ -46,7 +46,8 @@
           {% endif %}
             <article class="writing-entry">
               <a class="writing-entry-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              <p class="writing-meta">Date: {{ post.date | date: "%B %-d, %Y" }}</p>
+              <p class="writing-meta">{{ post.date | date: "%B %-d" }}</p>
+              {% if post.summary %}<p class="writing-summary">{{ post.summary }}</p>{% endif %}
             </article>
         {% endfor %}
           </div>
