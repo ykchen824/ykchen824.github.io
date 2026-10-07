@@ -35,15 +35,14 @@
         <section class="writing-year" aria-labelledby="writing-year-{{ year.name }}">
           <h1 class="writing-year-heading" id="writing-year-{{ year.name }}">{{ year.name }}</h1>
           {% assign posts = year.items | sort: "date" | reverse %}
-          {% for post in posts %}
-          <article class="writing-entry">
-            <div class="writing-month">{{ post.date | date: "%B" }}</div>
-            <div>
+          <div class="writing-year-entries">
+            {% for post in posts %}
+            <article class="writing-entry">
               <a class="writing-entry-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
               <p class="writing-meta">Date: {{ post.date | date: "%B %-d, %Y" }}</p>
-            </div>
-          </article>
-          {% endfor %}
+            </article>
+            {% endfor %}
+          </div>
         </section>
         {% endfor %}
       {% endif %}

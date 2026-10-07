@@ -67,12 +67,12 @@ a:hover { text-decoration-color:currentColor; }
 .writing-main > .writing { max-width:62rem; }
 .writing-list { width:100%; }
 .writing-empty { margin:0; padding:1.25rem 0; border-top:1px solid var(--fg); color:var(--muted); font-size:.9375rem; line-height:1.5; }
-.writing-year { margin:3.5rem 0 0; }
+.writing-year { display:grid; grid-template-columns:10.5rem minmax(0,1fr); column-gap:1.25rem; align-items:start; margin:3.5rem 0 0; }
 .writing-year:first-child { margin-top:0; }
-.writing-year-heading { display:flex; align-items:baseline; gap:.45rem; margin:0 0 1.35rem; color:var(--fg); font-size:1.75rem; font-weight:600; line-height:1.1; letter-spacing:-.02em; }
-.writing-entry { display:grid; grid-template-columns:10rem minmax(0,1fr); gap:1.25rem; padding:1.25rem 0 1.45rem; border-top:1px solid var(--rule); }
+.writing-year-heading { margin:1.25rem 0 0; color:var(--fg); font-size:1.75rem; font-weight:600; line-height:1.1; letter-spacing:-.02em; }
+.writing-year-entries { min-width:0; }
+.writing-entry { padding:1.25rem 0 1.45rem; border-top:1px solid var(--rule); }
 .writing-entry:last-child { border-bottom:1px solid var(--rule); }
-.writing-month { color:var(--muted); font-size:.9375rem; font-weight:400; line-height:1.5; }
 .writing-entry-title { margin:0; color:var(--fg); font-size:1.25rem; font-weight:400; line-height:1.35; text-decoration:none; }
 .writing-entry-title:hover { text-decoration:underline; text-underline-offset:.18em; }
 .writing-meta { margin:.35rem 0 0; color:var(--muted); font-size:.9375rem; line-height:1.5; }
@@ -98,6 +98,7 @@ a:hover { text-decoration-color:currentColor; }
 .post-body .footnotes ol { margin-bottom:0; }
 .post-body .footnote,.post-body .reversefootnote { text-decoration:none; }
 .post-body .reversefootnote { margin-left:.35rem; color:var(--muted); }
+.post-body hr { margin:3rem 0 2rem; border:0; border-top:1px solid var(--rule); }
 .post-body blockquote { margin:1.5em 0; padding-left:1rem; border-left:2px solid var(--fg); color:var(--muted); font-style:italic; }
 
 /* Education / experience */
@@ -157,7 +158,8 @@ a:hover { text-decoration-color:currentColor; }
   .event-body,.service-row { grid-template-columns:1fr; gap:.2rem; }
   .event-year { grid-row:auto; }
   .year-group { grid-template-columns:1fr; gap:.3rem; }
-  .writing-entry { grid-template-columns:1fr; gap:.25rem; }
+  .writing-year { grid-template-columns:1fr; row-gap:.75rem; }
+  .writing-year-heading { margin-top:0; }
   .writing-year-heading { font-size:1.6rem; }
   .writing-entry-title { font-size:1.15rem; }
   .post-layout { margin-top:2.5rem; }

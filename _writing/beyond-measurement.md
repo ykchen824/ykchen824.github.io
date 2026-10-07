@@ -21,6 +21,8 @@ date: 2026-10-07
 
 答案未必立刻出现，但愿意继续提问，本身就是理解的一部分。
 
+---
+
 ## References
 
 [^measurement]: National Institute of Standards and Technology. [Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/itl/ai-risk-management-framework), 2023.

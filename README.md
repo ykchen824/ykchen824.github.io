@@ -27,6 +27,8 @@ For references at the end of an essay, use a normal Markdown section and
 ordered list:
 
 ```markdown
+---
+
 ## References
 
 1. Author. [Paper title](https://example.com/paper). *Journal*, 2026.
