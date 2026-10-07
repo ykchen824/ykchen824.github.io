@@ -153,8 +153,10 @@ a:hover { text-decoration-color:currentColor; }
 .service-row { display:grid; padding:.9rem 0; border-bottom:1px solid var(--rule); align-items:start; }
 .service dt { color:var(--fg); font-size:1rem; font-weight:600; line-height:1.4; white-space:nowrap; }
 .service dd { margin:0; color:var(--fg-2); font-size:.9375rem; line-height:1.5; }
+.honors .year-group { align-items:baseline; }
 .honor { padding:.9rem 0; border-bottom:1px solid var(--rule); color:var(--fg-2); font-size:.9375rem; line-height:1.5; }
-.honor:last-child { border-bottom:0; }
+.honor:first-child { padding-top:0; }
+.honor:last-child { padding-bottom:0; border-bottom:0; }
 .honor + .honor { margin-top:0; }
 
 /* Footer */
