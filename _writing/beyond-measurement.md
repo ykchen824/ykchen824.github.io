@@ -5,7 +5,7 @@ date: 2026-10-07
 
 ## 一把尺子
 
-我们习惯用数字确认事物：速度、准确率、误差，以及一次实验是否重复成功。数字让复杂的世界变得清楚，也让比较成为可能。类似的风险管理框架也将测量视为持续评估过程的一部分。[^measurement]
+我们习惯用数字确认事物：速度、准确率、误差，以及一次实验是否重复成功。数字让复杂的世界变得清楚，也让比较成为可能。类似的[风险管理框架](#ref-ai-rmf)也将测量视为持续评估过程的一部分。
 
 但一把尺子只能回答它被设计来回答的问题。它可以告诉我们某件事有多长，却不能告诉我们这段距离是否值得走完。
 
@@ -25,4 +25,6 @@ date: 2026-10-07
 
 ## References
 
-[^measurement]: National Institute of Standards and Technology. [Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/itl/ai-risk-management-framework), 2023.
+<ol class="references">
+  <li id="ref-ai-rmf">National Institute of Standards and Technology. <a href="https://www.nist.gov/itl/ai-risk-management-framework">Artificial Intelligence Risk Management Framework (AI RMF 1.0)</a>, 2023.</li>
+</ol>

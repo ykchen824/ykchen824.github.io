@@ -35,15 +35,22 @@ ordered list:
 2. Author. [Another paper](https://example.com/another-paper).
 ```
 
-Use named footnotes when an essay needs clickable inline citations. Clicking
-`[^paper]` jumps to the matching reference at the end of the article, and the
-backlink there returns to the citation:
+For a highlighted keyword citation, link the keyword to a reference ID at the
+end of the article:
 
 ```markdown
-这是一句带有引用的文字。[^paper]
+这是一句带有[引用关键词](#ref-paper)的文字。
 
-[^paper]: 作者。[论文标题](https://example.com/paper)。*Journal*，2026。
+---
+
+## References
+
+<ol class="references">
+  <li id="ref-paper">作者。<a href="https://example.com/paper">论文标题</a>。*Journal*，2026。</li>
+</ol>
 ```
+
+点击正文中的关键词会跳转到文末对应文献，引用关键词会以浅色背景突出显示。
 
 In the repository settings, set GitHub Pages to deploy from the branch and
 folder containing this site (usually `main` / `/ (root)`). Jekyll reads
