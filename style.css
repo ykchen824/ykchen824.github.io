@@ -47,6 +47,8 @@ a:hover { text-decoration-color:currentColor; }
 .site-header nav { display:flex; gap:1.25rem; }
 .site-header nav a { padding-block:.25rem; color:var(--muted); font-size:.9375rem; line-height:1; text-decoration:none; border-bottom:1px solid transparent; }
 .site-header nav a:hover,.site-header nav a[aria-current] { color:var(--fg); border-bottom-color:var(--fg); }
+/* Divider: in-page sections on the left, separate pages on the right. */
+.nav-sep { align-self:center; width:1px; height:.875rem; background:var(--rule-strong); }
 .theme-toggle { display:grid; place-items:center; width:1.75rem; height:1.75rem; margin:-.25rem -.375rem -.25rem 0; padding:0; border:0; border-radius:50%; background:transparent; color:var(--muted); font-size:1.05rem; cursor:pointer; }
 .theme-toggle:hover { color:var(--fg); background:var(--soft); }
 
