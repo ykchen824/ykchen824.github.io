@@ -3,10 +3,17 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="{{ page.title }}。" />
+<meta name="description" content="{{ page.summary | default: page.title | escape }}" />
+<link rel="canonical" href="{{ page.url | absolute_url }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ page.title | escape }}" />
+<meta property="og:description" content="{{ page.summary | default: page.title | escape }}" />
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
 <title>{{ page.title }} — Yongkang Chen</title>
 <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
 <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
 </head>
 <body class="post-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -28,7 +35,7 @@
   <article class="post-layout">
     <header class="post-head">
       <h1 class="post-title">{{ page.title }}</h1>
-      <p class="post-meta">Date: {{ page.date | date: "%B %-d, %Y" }}</p>
+      <p class="post-meta"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
     </header>
 
     <nav class="post-toc" aria-label="Table of contents">
@@ -55,12 +62,17 @@
   (() => {
     const root = document.documentElement;
     const toggle = document.querySelector('.theme-toggle');
-    const stored = localStorage.getItem('theme');
-    if (stored) root.dataset.theme = stored;
+    const media = matchMedia('(prefers-color-scheme: dark)');
+    // Without a stored choice the page follows the system theme.
+    const current = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
+    const sync = () => toggle?.setAttribute('aria-pressed', String(current() === 'dark'));
+    sync();
+    media.addEventListener('change', sync);
     toggle?.addEventListener('click', () => {
-      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      const next = current() === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
-      localStorage.setItem('theme', next);
+      try { localStorage.setItem('theme', next); } catch {}
+      sync();
     });
 
     const toc = document.querySelector('#post-toc-list');

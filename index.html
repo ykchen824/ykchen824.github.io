@@ -3,10 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Yongkang Chen studies reliable AI systems, post-training, evaluation, and research infrastructure." />
+<meta name="description" content="Yongkang Chen researches LLM safety and reliability: post-training, evaluation, red teaming, and safety monitoring." />
+<link rel="canonical" href="https://ykchen824.github.io/" />
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Yongkang Chen" />
+<meta property="og:description" content="Research on LLM safety and reliability: post-training, evaluation, red teaming, and safety monitoring." />
+<meta property="og:url" content="https://ykchen824.github.io/" />
+<meta property="og:image" content="https://ykchen824.github.io/profile-w.jpg" />
+<meta name="twitter:card" content="summary" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Yongkang Chen","url":"https://ykchen824.github.io/","image":"https://ykchen824.github.io/profile-w.jpg","email":"mailto:ykchen824@foxmail.com","jobTitle":"Research Assistant","worksFor":{"@type":"Organization","name":"National Institute of Metrology, China"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Academy of Military Sciences"},{"@type":"CollegeOrUniversity","name":"Nanjing University of Aeronautics and Astronautics"}],"knowsAbout":["Large language models","AI safety","Red teaming","LLM evaluation","Adversarial machine learning"],"sameAs":["https://scholar.google.com/citations?user=JLikgYwAAAAJ","https://github.com/ykchen824","https://orcid.org/0000-0002-8070-9858"]}
+</script>
 <title>Yongkang Chen</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" href="style.css" />
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -16,6 +27,7 @@
     <a class="brand" href="index.html">Yongkang Chen</a>
     <nav aria-label="Primary navigation">
       <a href="index.html" aria-current="page">About</a>
+      <a href="#research">Publications</a>
       <a href="writing/">Writing</a>
     </nav>
     <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
@@ -27,8 +39,10 @@
 <main id="main">
 <section class="intro" id="about" aria-label="About Yongkang Chen">
   <div class="page-head">
-    <p class="dek">I received my Ph.D. in Computer Science from the Academy of Military Sciences, where I was affiliated with the National Key Laboratory of Science and Technology on Information System Security.</p>
-    <p class="dek">My research goal is to make LLM reliable in open-ended settings, where they must reason, use tools, and work with people. More broadly, I study how stronger post-training methods, better evaluations, and continuous safety monitoring can make LLM risks observable, assessable, and controllable.</p>
+    <h1 class="name">Yongkang Chen</h1>
+    <p class="role">LLM safety, evaluation, and post-training</p>
+    <p class="dek">I am a Research Assistant in AI Metrology at the National Institute of Metrology, China. I received my Ph.D. in Computer Science from the Academy of Military Sciences, where I was affiliated with the National Key Laboratory of Science and Technology on Information System Security.</p>
+    <p class="dek">My research goal is to make large language models (LLMs) reliable in open-ended settings, where they must reason, use tools, and work with people. More broadly, I study how stronger post-training methods, better evaluations, and continuous safety monitoring can make LLM risks observable, assessable, and controllable.</p>
     <ul class="contact" aria-label="Contact links">
       <li><a href="mailto:ykchen824@foxmail.com">Email</a></li>
       <li><a href="https://scholar.google.com/citations?user=JLikgYwAAAAJ">Google Scholar</a></li>
@@ -98,7 +112,7 @@
 
 <section class="section block" id="research" aria-labelledby="publications">
   <h2 class="section-title label" id="publications">Selected publications</h2>
-  <p class="section-note"><sup>*</sup> Corresponding author</p>
+  <p class="section-note"><sup>*</sup> Corresponding author · CCF-A/B/C: China Computer Federation venue ranking · Full list on <a href="https://scholar.google.com/citations?user=JLikgYwAAAAJ">Google Scholar</a></p>
   <ol class="by-year" reversed>
     <li class="year-group">
       <h3 class="year">2026</h3>
@@ -239,12 +253,17 @@
   (() => {
     const root = document.documentElement;
     const toggle = document.querySelector('.theme-toggle');
-    const stored = localStorage.getItem('theme');
-    if (stored) root.dataset.theme = stored;
+    const media = matchMedia('(prefers-color-scheme: dark)');
+    // Without a stored choice the page follows the system theme.
+    const current = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
+    const sync = () => toggle?.setAttribute('aria-pressed', String(current() === 'dark'));
+    sync();
+    media.addEventListener('change', sync);
     toggle?.addEventListener('click', () => {
-      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      const next = current() === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
-      localStorage.setItem('theme', next);
+      try { localStorage.setItem('theme', next); } catch {}
+      sync();
     });
   })();
 </script>

@@ -7,6 +7,7 @@
 <title>Writing — Yongkang Chen</title>
 <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
 <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -68,12 +69,17 @@
   (() => {
     const root = document.documentElement;
     const toggle = document.querySelector('.theme-toggle');
-    const stored = localStorage.getItem('theme');
-    if (stored) root.dataset.theme = stored;
+    const media = matchMedia('(prefers-color-scheme: dark)');
+    // Without a stored choice the page follows the system theme.
+    const current = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
+    const sync = () => toggle?.setAttribute('aria-pressed', String(current() === 'dark'));
+    sync();
+    media.addEventListener('change', sync);
     toggle?.addEventListener('click', () => {
-      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      const next = current() === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
-      localStorage.setItem('theme', next);
+      try { localStorage.setItem('theme', next); } catch {}
+      sync();
     });
   })();
 </script>
