@@ -53,13 +53,14 @@ a:hover { text-decoration-color:currentColor; }
 .theme-toggle:hover { color:var(--fg); background:var(--soft); }
 
 /* Intro */
-.intro { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:3rem; align-items:start; }
-.page-head { margin-bottom:2.25rem; }
-.dek { max-width:40rem; margin:0; color:var(--fg-2); font-size:1.125rem; line-height:1.55; text-align:justify; text-align-last:left; text-justify:inter-word; text-wrap:pretty; }
-.dek + .dek { margin-top:1.1rem; }
-.contact { display:flex; flex-wrap:wrap; gap:.85rem 1.25rem; margin:1.5rem 0 0; padding:0; list-style:none; font-size:.9375rem; }
-.profile-picture { width:clamp(96px,9vw,112px); }
-.profile-photo { display:block; width:100%; height:auto; aspect-ratio:295 / 413; object-fit:cover; border:1px solid var(--rule); }
+.intro-overview { display:grid; grid-template-columns:minmax(0,1fr) 9.5rem; gap:2.5rem; align-items:start; }
+.intro-copy { min-width:0; max-width:42rem; padding-top:.25rem; }
+.dek { margin:0; color:var(--fg-2); font-size:1.125rem; line-height:1.7; text-align:left; text-wrap:pretty; }
+.intro-copy .dek + .dek { margin-top:1.25rem; }
+.contact { display:flex; flex-wrap:wrap; gap:.5rem 1.25rem; margin:1.25rem 0 0; padding:0; list-style:none; font-size:.9375rem; line-height:1.6; }
+.contact a { display:inline-block; padding-block:.25rem; }
+.profile-picture { width:100%; margin-top:.15rem; }
+.profile-photo { display:block; width:100%; height:auto; aspect-ratio:295 / 413; object-fit:cover; border:1px solid var(--rule); border-radius:6px; }
 .profile-photo-dark { display:none; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .profile-photo-light { display:none; }
@@ -173,11 +174,9 @@ a:hover { text-decoration-color:currentColor; }
 @media (max-width:40rem) {
   .site-header .bar { flex-wrap:wrap; row-gap:.75rem; padding-top:1.5rem; padding-bottom:2.5rem; }
   .site-header nav { order:3; width:100%; }
-  .page-head { margin-bottom:1.5rem; }
-  .dek { font-size:1.125rem; }
-  .intro .dek { text-align:justify; text-align-last:left; text-justify:inter-word; text-wrap:wrap; -webkit-hyphens:auto; hyphens:auto; }
-  .intro { grid-template-columns:1fr; gap:1.5rem; }
-  .profile-picture { width:96px; }
+  .intro-overview { grid-template-columns:minmax(0,1fr); gap:1.1rem; }
+  .intro .dek { font-size:1.0625rem; }
+  .profile-picture { grid-row:1; width:6.25rem; margin-top:0; justify-self:start; }
   .event-body,.service-row { grid-template-columns:1fr; gap:.2rem; }
   .event-year { grid-row:auto; }
   .year-group { grid-template-columns:1fr; gap:.3rem; }
