@@ -1,5 +1,5 @@
 # Homepage news. Order does not matter: entries are sorted newest first.
-# The newest entry appears in the top banner; the newest 5 are listed in the
+# The newest entry appears in the top banner; the newest 3 are listed in the
 # News section and the rest are folded under "Earlier news".
 # Only the month and year are displayed, so the day only affects ordering.
 # `text` may contain inline HTML, e.g. <a href="...">paper</a>.
