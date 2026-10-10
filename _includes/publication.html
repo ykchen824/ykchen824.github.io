@@ -1,0 +1,14 @@
+{%- comment -%}
+  One publication entry. Usage: {% include publication.html pub=pub %}
+  "Yongkang Chen" is bolded and a trailing "*" marks the corresponding author.
+{%- endcomment -%}
+{%- assign pub = include.pub -%}
+<li class="pub"{% if pub.lang %} lang="{{ pub.lang }}"{% endif %}>
+  <p class="pub-title">{% if pub.url %}<a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{{ pub.title | escape }}</a>{% else %}{{ pub.title | escape }}{% endif %}
+    {%- for tag in pub.tags %}
+    {%- case tag %}{% when "CCF-A" %}{% assign cls = "tag-a" %}{% when "CCF-B" %}{% assign cls = "tag-b" %}{% when "CCF-C" %}{% assign cls = "tag-c" %}{% else %}{% assign cls = "tag-award" %}{% endcase %}
+    <span class="tag {{ cls }}"{% if pub.lang %} lang="en"{% endif %}>{{ tag }}</span>
+    {%- endfor %}</p>
+  <p class="pub-authors">{{ pub.authors | escape | replace: "Yongkang Chen", "<b>Yongkang Chen</b>" | replace: "*", "<sup>*</sup>" }}</p>
+  <p class="pub-venue">{{ pub.venue | escape }}</p>
+</li>

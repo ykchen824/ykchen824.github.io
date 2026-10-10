@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site-preview",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["-e", "require('http').createServer((q,r)=>{const fs=require('fs'),p=require('path');let f=p.join('C:/Users/dat/AppData/Local/Temp/lq/out',decodeURIComponent(q.url.split('?')[0]));if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=p.join(f,'index.html');fs.readFile(f,(e,d)=>{if(e){r.writeHead(404);return r.end('404')}const t={'.html':'text/html; charset=utf-8','.css':'text/css','.jpg':'image/jpeg','.ico':'image/x-icon'}[p.extname(f)]||'application/octet-stream';r.writeHead(200,{'Content-Type':t});r.end(d)})}).listen(4173)"],
+      "port": 4173
+    }
+  ]
+}

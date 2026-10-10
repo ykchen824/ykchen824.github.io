@@ -1,0 +1,9 @@
+# Copy an entry into _data/publications.yml, keeping the file newest first.
+# Quote values that contain ": " (common in titles and venues).
+- year: 2026
+  title: "Paper Title: With a Subtitle."
+  url: https://example.com/paper            # Optional. The title links here.
+  authors: Coauthor One, Yongkang Chen, Coauthor Two*.   # "*" = corresponding author
+  venue: Conference or Journal, 2026.
+  tags: [CCF-A, Best Paper]                 # Optional. CCF-A/B/C or an award label.
+  # lang: zh-CN                             # Optional, for non-English entries.

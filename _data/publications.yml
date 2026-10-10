@@ -1,0 +1,83 @@
+# Selected publications, newest first. Entries are grouped by `year` in file
+# order, so keep the file sorted. See _templates/publication.yml for fields.
+- year: 2026
+  title: "As Seasons Change: Temporal Feature Powers Malware Classification."
+  authors: Jianwen Tian, Debin Gao, Yongkang Chen, Wei Kong, David Lo, Haoyu Ma, Zhi Wang.
+  venue: Proceedings of the 2026 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2026.
+  tags: [CCF-A]
+
+- year: 2026
+  title: "DataFactory: Collaborative Multi-Agent Framework for Advanced Table Question Answering."
+  url: https://www.sciencedirect.com/science/article/abs/pii/S0306457326001147
+  authors: Tong Wang, Chi Jin, Yongkang Chen, Huan Deng, Xiaohui Kuang, Gang Zhao*.
+  venue: Information Processing & Management, 63 (6), 104723, 2026.
+  tags: [CCF-B]
+
+- year: 2025
+  title: Better Red Teaming via Searching with Large Language Model.
+  url: https://aclanthology.org/2025.findings-acl.257/
+  authors: Yongkang Chen, Chongyang Zhao, Jianwen Tian, Guiling Cao, Hu Li, Xiaohui Kuang*.
+  venue: "Findings of the Association for Computational Linguistics: ACL 2025, 4968–4984, 2025."
+  tags: [CCF-A]
+
+- year: 2025
+  title: "FlowJD: Your Imagination Can Help You Jailbreak in Visual Language Models."
+  url: https://ieeexplore.ieee.org/document/11209893
+  authors: Xiaotian Zou, Yongkang Chen, Qianqian Han, Ke Li*.
+  venue: 2025 IEEE International Conference on Multimedia and Expo (ICME), 1–6, 2025.
+  tags: [CCF-B]
+
+- year: 2025
+  title: "Refusal-Aware Red Teaming: Exposing Inconsistency in Safety Evaluations."
+  url: https://aclanthology.org/2025.emnlp-main.49/
+  authors: Yongkang Chen, Xiaohu Du, Xiaotian Zou, Chongyang Zhao, Huan Deng, Hu Li, Xiaohui Kuang*.
+  venue: Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, 2025.
+  tags: [CCF-B]
+
+- year: 2025
+  title: Reward-Guided Many-Shot Jailbreaking.
+  url: https://dl.acm.org/doi/10.1007/978-981-95-3343-5_32
+  authors: Yongkang Chen, Xiaotian Zou, Tong Wang, Jianwen Tian, Hu Li, Xiaohui Kuang*.
+  venue: "Natural Language Processing and Chinese Computing: 14th National CCF Conference, NLPCC 2025, Urumqi, China, August 7–9, 2025, Proceedings, Part I."
+  tags: [CCF-C, Best Paper]
+
+- year: 2024
+  title: Dynamic Loss Yielding More Transferable Targeted Adversarial Examples.
+  url: https://www.sciencedirect.com/science/article/abs/pii/S0925231224005253
+  authors: Ming Zhang, Yongkang Chen, Hu Li, Cheng Qian, Xiaohui Kuang.
+  venue: Neurocomputing, 590, 127754, 2024.
+  tags: [CCF-C]
+
+- year: 2024
+  title: Enhancing Adversarial Robustness through Self-Supervised Confidence-Based Denoising.
+  url: https://ieeexplore.ieee.org/document/10944963
+  authors: Yongkang Chen, Tong Wang, Wei Kong, Taotao Gu, Guiling Cao, Xiaohui Kuang*.
+  venue: 2024 IEEE 23rd International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom), 2024.
+  tags: [CCF-C]
+
+- year: 2024
+  lang: zh-CN
+  title: AI辅助的智能系统安全性测试技术研究
+  url: http://znaq.ijournals.cn/znaq/article/abstract/20240701001
+  authors: Yongkang Chen, Hu Li, Chongyang Zhao, Xiaohui Kuang*.
+  venue: 智能安全, 3 (4), 72, 2024.
+  tags: [Best Paper]
+
+- year: 2023
+  title: "Fooling Examples: Another Intriguing Property of Neural Networks."
+  url: https://www.mdpi.com/1424-8220/23/14/6378
+  authors: Ming Zhang, Yongkang Chen, Cheng Qian*.
+  venue: Sensors, 23 (14), 6378, 2023.
+
+- year: 2022
+  title: Dynamic and Diverse Transformations for Defending Against Adversarial Examples.
+  url: https://ieeexplore.ieee.org/document/10063418
+  authors: Yongkang Chen, Ming Zhang*, Jin Li, Xiaohui Kuang, Xuhong Zhang, Han Zhang.
+  venue: 2022 IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom), 2022.
+  tags: [CCF-C]
+
+- year: 2022
+  title: "Adversarial Attacks and Defenses in Image Classification: A Practical Perspective."
+  url: https://ieeexplore.ieee.org/document/9886997
+  authors: Yongkang Chen, Ming Zhang, Jin Li, Xiaohui Kuang.
+  venue: 2022 7th International Conference on Image, Vision and Computing (ICIVC), 2022.

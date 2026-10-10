@@ -50,10 +50,10 @@
         <li><a href="https://orcid.org/0000-0002-8070-9858">ORCID</a></li>
       </ul>
     </div>
-    <div class="profile-picture" aria-label="Portrait of Yongkang Chen">
-      <img class="profile-photo profile-photo-light" src="{{ '/assets/images/profile-w.jpg' | relative_url }}" alt="Portrait of Yongkang Chen" width="295" height="413" fetchpriority="high" />
-      <img class="profile-photo profile-photo-dark" src="{{ '/assets/images/profile-b.jpg' | relative_url }}" alt="" width="295" height="413" aria-hidden="true" />
-    </div>
+    <picture class="profile-picture">
+      <source id="profile-dark-source" srcset="{{ '/assets/images/profile-b.jpg' | relative_url }}" media="(prefers-color-scheme: dark)" />
+      <img class="profile-photo" src="{{ '/assets/images/profile-w.jpg' | relative_url }}" alt="Portrait of Yongkang Chen" width="295" height="413" fetchpriority="high" />
+    </picture>
   </div>
 </section>
 
@@ -80,91 +80,17 @@
   <h2 class="section-title label" id="publications">Selected publications</h2>
   <p class="section-note"><sup>*</sup> Corresponding author · CCF-A/B/C: China Computer Federation venue ranking · Full list on <a href="https://scholar.google.com/citations?user=JLikgYwAAAAJ">Google Scholar</a></p>
   <ol class="by-year" reversed>
+    {%- assign pub_years = site.data.publications | group_by: "year" %}
+    {%- for group in pub_years %}
     <li class="year-group">
-      <h3 class="year">2026</h3>
+      <h3 class="year">{{ group.name }}</h3>
       <ul class="year-items">
-        <li class="pub">
-          <p class="pub-title">As Seasons Change: Temporal Feature Powers Malware Classification. <span class="tag tag-a">CCF-A</span></p>
-          <p class="pub-authors">Jianwen Tian, Debin Gao, <b>Yongkang Chen</b>, Wei Kong, David Lo, Haoyu Ma, Zhi Wang.</p>
-          <p class="pub-venue">Proceedings of the 2026 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2026.</p>
-        </li>
-        <li class="pub">
-          <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457326001147" target="_blank" rel="noopener noreferrer">DataFactory: Collaborative Multi-Agent Framework for Advanced Table Question Answering.</a> <span class="tag tag-b">CCF-B</span></p>
-          <p class="pub-authors">Tong Wang, Chi Jin, <b>Yongkang Chen</b>, Huan Deng, Xiaohui Kuang, Gang Zhao<sup>*</sup>.</p>
-          <p class="pub-venue">Information Processing &amp; Management, 63 (6), 104723, 2026.</p>
-        </li>
+        {%- for pub in group.items %}
+        {% include publication.html pub=pub %}
+        {%- endfor %}
       </ul>
     </li>
-    <li class="year-group">
-      <h3 class="year">2025</h3>
-      <ul class="year-items">
-        <li class="pub">
-          <p class="pub-title"><a href="https://aclanthology.org/2025.findings-acl.257/" target="_blank" rel="noopener noreferrer">Better Red Teaming via Searching with Large Language Model.</a> <span class="tag tag-a">CCF-A</span></p>
-          <p class="pub-authors"><b>Yongkang Chen</b>, Chongyang Zhao, Jianwen Tian, Guiling Cao, Hu Li, Xiaohui Kuang<sup>*</sup>.</p>
-          <p class="pub-venue">Findings of the Association for Computational Linguistics: ACL 2025, 4968–4984, 2025.</p>
-        </li>
-        <li class="pub">
-          <p class="pub-title"><a href="https://ieeexplore.ieee.org/document/11209893" target="_blank" rel="noopener noreferrer">FlowJD: Your Imagination Can Help You Jailbreak in Visual Language Models.</a> <span class="tag tag-b">CCF-B</span></p>
-          <p class="pub-authors">Xiaotian Zou, <b>Yongkang Chen</b>, Qianqian Han, Ke Li<sup>*</sup>.</p>
-          <p class="pub-venue">2025 IEEE International Conference on Multimedia and Expo (ICME), 1–6, 2025.</p>
-        </li>
-        <li class="pub">
-          <p class="pub-title"><a href="https://aclanthology.org/2025.emnlp-main.49/" target="_blank" rel="noopener noreferrer">Refusal-Aware Red Teaming: Exposing Inconsistency in Safety Evaluations.</a> <span class="tag tag-b">CCF-B</span></p>
-          <p class="pub-authors"><b>Yongkang Chen</b>, Xiaohu Du, Xiaotian Zou, Chongyang Zhao, Huan Deng, Hu Li, Xiaohui Kuang<sup>*</sup>.</p>
-          <p class="pub-venue">Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, 2025.</p>
-        </li>
-        <li class="pub">
-          <p class="pub-title"><a href="https://dl.acm.org/doi/10.1007/978-981-95-3343-5_32" target="_blank" rel="noopener noreferrer">Reward-Guided Many-Shot Jailbreaking.</a> <span class="tag tag-c">CCF-C</span> <span class="tag tag-award">Best Paper</span></p>
-          <p class="pub-authors"><b>Yongkang Chen</b>, Xiaotian Zou, Tong Wang, Jianwen Tian, Hu Li, Xiaohui Kuang<sup>*</sup>.</p>
-          <p class="pub-venue">Natural Language Processing and Chinese Computing: 14th National CCF Conference, NLPCC 2025, Urumqi, China, August 7–9, 2025, Proceedings, Part I.</p>
-        </li>
-      </ul>
-    </li>
-    <li class="year-group">
-      <h3 class="year">2024</h3>
-      <ul class="year-items">
-        <li class="pub">
-          <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0925231224005253" target="_blank" rel="noopener noreferrer">Dynamic Loss Yielding More Transferable Targeted Adversarial Examples.</a> <span class="tag tag-c">CCF-C</span></p>
-          <p class="pub-authors">Ming Zhang, <b>Yongkang Chen</b>, Hu Li, Cheng Qian, Xiaohui Kuang.</p>
-          <p class="pub-venue">Neurocomputing, 590, 127754, 2024.</p>
-        </li>
-        <li class="pub">
-          <p class="pub-title"><a href="https://ieeexplore.ieee.org/document/10944963" target="_blank" rel="noopener noreferrer">Enhancing Adversarial Robustness through Self-Supervised Confidence-Based Denoising.</a> <span class="tag tag-c">CCF-C</span></p>
-          <p class="pub-authors"><b>Yongkang Chen</b>, Tong Wang, Wei Kong, Taotao Gu, Guiling Cao, Xiaohui Kuang<sup>*</sup>.</p>
-          <p class="pub-venue">2024 IEEE 23rd International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom), 2024.</p>
-        </li>
-        <li class="pub" lang="zh-CN">
-          <p class="pub-title"><a href="http://znaq.ijournals.cn/znaq/article/abstract/20240701001" target="_blank" rel="noopener noreferrer">AI辅助的智能系统安全性测试技术研究</a> <span class="tag tag-award" lang="en">Best Paper</span></p>
-          <p class="pub-authors"><b>Yongkang Chen</b>, Hu Li, Chongyang Zhao, Xiaohui Kuang<sup>*</sup>.</p>
-          <p class="pub-venue">智能安全, 3 (4), 72, 2024.</p>
-        </li>
-      </ul>
-    </li>
-    <li class="year-group">
-      <h3 class="year">2023</h3>
-      <ul class="year-items">
-        <li class="pub">
-          <p class="pub-title"><a href="https://www.mdpi.com/1424-8220/23/14/6378" target="_blank" rel="noopener noreferrer">Fooling Examples: Another Intriguing Property of Neural Networks.</a></p>
-          <p class="pub-authors">Ming Zhang, <b>Yongkang Chen</b>, Cheng Qian<sup>*</sup>.</p>
-          <p class="pub-venue">Sensors, 23 (14), 6378, 2023.</p>
-        </li>
-      </ul>
-    </li>
-    <li class="year-group">
-      <h3 class="year">2022</h3>
-      <ul class="year-items">
-        <li class="pub">
-          <p class="pub-title"><a href="https://ieeexplore.ieee.org/document/10063418" target="_blank" rel="noopener noreferrer">Dynamic and Diverse Transformations for Defending Against Adversarial Examples.</a> <span class="tag tag-c">CCF-C</span></p>
-          <p class="pub-authors"><b>Yongkang Chen</b>, Ming Zhang<sup>*</sup>, Jin Li, Xiaohui Kuang, Xuhong Zhang, Han Zhang.</p>
-          <p class="pub-venue">2022 IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom), 2022.</p>
-        </li>
-        <li class="pub">
-          <p class="pub-title"><a href="https://ieeexplore.ieee.org/document/9886997" target="_blank" rel="noopener noreferrer">Adversarial Attacks and Defenses in Image Classification: A Practical Perspective.</a></p>
-          <p class="pub-authors"><b>Yongkang Chen</b>, Ming Zhang, Jin Li, Xiaohui Kuang.</p>
-          <p class="pub-venue">2022 7th International Conference on Image, Vision and Computing (ICIVC), 2022.</p>
-        </li>
-      </ul>
-    </li>
+    {%- endfor %}
   </ol>
 </section>
 

@@ -15,7 +15,12 @@
     const media = matchMedia('(prefers-color-scheme: dark)');
     // Without a stored choice the page follows the system theme.
     const current = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
-    const sync = () => toggle?.setAttribute('aria-pressed', String(current() === 'dark'));
+    // The portrait's dark <source> follows the system theme; a stored choice overrides it.
+    const darkPhoto = document.querySelector('#profile-dark-source');
+    const sync = () => {
+      toggle?.setAttribute('aria-pressed', String(current() === 'dark'));
+      if (darkPhoto) darkPhoto.media = root.dataset.theme ? (root.dataset.theme === 'dark' ? 'all' : 'not all') : '(prefers-color-scheme: dark)';
+    };
     sync();
     media.addEventListener('change', sync);
     toggle?.addEventListener('click', () => {

@@ -3,13 +3,20 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="{{ page.summary | default: page.title | escape }}" />
+{%- assign description = page.summary | default: page.title | escape %}
+{%- assign share_image = '/assets/images/profile-w.jpg' | absolute_url %}
+<meta name="description" content="{{ description }}" />
 <link rel="canonical" href="{{ page.url | absolute_url }}" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{ page.title | escape }}" />
-<meta property="og:description" content="{{ page.summary | default: page.title | escape }}" />
+<meta property="og:description" content="{{ description }}" />
 <meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="og:image" content="{{ share_image }}" />
 <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+<meta name="twitter:card" content="summary" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":{{ page.title | jsonify }},"description":{{ page.summary | default: page.title | jsonify }},"datePublished":"{{ page.date | date_to_xmlschema }}","inLanguage":"{{ page.lang | default: 'zh-CN' }}","url":"{{ page.url | absolute_url }}","image":"{{ share_image }}","author":{"@type":"Person","name":"Yongkang Chen","url":"{{ '/' | absolute_url }}"}}
+</script>
 <title>{{ page.title }} — Yongkang Chen</title>
 {% include head-assets.html %}
 </head>
@@ -25,37 +32,44 @@
       <p class="post-meta"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
     </header>
 
+    {%- comment -%}
+      Table of contents, built at render time from the ids kramdown gives
+      each ## heading.
+    {%- endcomment -%}
+    {%- assign sections = content | split: '<h2 id="' %}
+    {%- if sections.size > 1 %}
     <nav class="post-toc" aria-label="Table of contents">
       <details>
         <summary>Table of Contents</summary>
-        <ol id="post-toc-list"></ol>
+        <ol>
+          {%- for section in sections offset: 1 %}
+          {%- assign heading_id = section | split: '"' | first %}
+          {%- assign heading_text = section | split: '</h2>' | first | remove_first: heading_id | remove_first: '">' | strip_html | strip %}
+          <li><a href="#{{ heading_id }}">{{ heading_text }}</a></li>
+          {%- endfor %}
+        </ol>
       </details>
     </nav>
+    {%- endif %}
 
-    <div class="post-body" id="post-body">
+    <div class="post-body">
       {{ content }}
     </div>
+
+    {%- if page.previous or page.next %}
+    <nav class="post-nav" aria-label="More writing">
+      {%- if page.previous %}
+      <a class="post-nav-link post-nav-prev" href="{{ page.previous.url | relative_url }}"><span class="post-nav-label" lang="en">← Older</span><span class="post-nav-title" lang="{{ page.previous.lang | default: 'zh-CN' }}">{{ page.previous.title }}</span></a>
+      {%- endif %}
+      {%- if page.next %}
+      <a class="post-nav-link post-nav-next" href="{{ page.next.url | relative_url }}"><span class="post-nav-label" lang="en">Newer →</span><span class="post-nav-title" lang="{{ page.next.lang | default: 'zh-CN' }}">{{ page.next.title }}</span></a>
+      {%- endif %}
+    </nav>
+    {%- endif %}
+    <p class="post-back" lang="en"><a href="{{ '/writing/' | relative_url }}">← All writing</a></p>
   </article>
 </main>
 
 {% include footer.html %}
-
-<script>
-  // Build the table of contents from the article's headings.
-  (() => {
-    const toc = document.querySelector('#post-toc-list');
-    const headings = [...document.querySelectorAll('#post-body h2, #post-body h3')];
-    headings.forEach((heading, index) => {
-      if (!heading.id) heading.id = `section-${index + 1}`;
-      const item = document.createElement('li');
-      const link = document.createElement('a');
-      link.href = `#${heading.id}`;
-      link.textContent = heading.textContent;
-      item.append(link);
-      toc?.append(item);
-    });
-    if (!headings.length) document.querySelector('.post-toc')?.remove();
-  })();
-</script>
 </body>
 </html>

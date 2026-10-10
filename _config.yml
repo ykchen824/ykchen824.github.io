@@ -1,10 +1,22 @@
 title: Yongkang Chen
 description: Short essays and notes by Yongkang Chen.
+author: Yongkang Chen
 url: https://ykchen824.github.io
 baseurl: ""
 
 markdown: kramdown
 highlighter: rouge
+
+# Both plugins are on the GitHub Pages allow-list.
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Atom feed for essays at /writing/feed.xml.
+feed:
+  collections:
+    writing:
+      path: "/writing/feed.xml"
 
 collections:
   writing:
