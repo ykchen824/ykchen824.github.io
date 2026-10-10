@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,11 +24,25 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+{%- assign news = site.data.news | sort: "date" | reverse -%}
+{%- assign latest = news | first -%}
+{%- if latest %}
+<aside class="news-banner" aria-label="Latest news">
+  <div class="bar">
+    <span class="news-label">News</span>
+    <time class="news-date" datetime="{{ latest.date | date: '%Y-%m-%d' }}">{{ latest.date | date: "%b. %Y" | replace: "May.", "May" }}</time>
+    <p class="news-text">{{ latest.text }}</p>
+    <a class="news-all" href="#news-section">All news <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</aside>
+{%- endif %}
+
 <header class="site-header">
   <div class="bar">
     <a class="brand" href="index.html">Yongkang Chen</a>
     <nav aria-label="Primary navigation">
       <a href="index.html" aria-current="page">About</a>
+      <a href="#news-section">News</a>
       <a href="#research">Publications</a>
       <span class="nav-sep" aria-hidden="true"></span>
       <a href="writing/">Writing</a>
@@ -55,6 +71,25 @@
       <img class="profile-photo profile-photo-dark" src="profile-b.jpg" alt="" width="295" height="413" aria-hidden="true" />
     </div>
   </div>
+</section>
+
+<section class="section block" id="news-section" aria-labelledby="news">
+  <h2 class="section-title label" id="news">News</h2>
+  <ol class="news-list news-list-main">
+    {%- for item in news limit: 5 %}
+    <li class="news-item"><time class="news-item-date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b. %Y" | replace: "May.", "May" }}</time><p class="news-item-text">{{ item.text }}</p></li>
+    {%- endfor %}
+  </ol>
+  {%- if news.size > 5 %}
+  <details class="news-more">
+    <summary>Earlier news</summary>
+    <ol class="news-list">
+      {%- for item in news offset: 5 %}
+      <li class="news-item"><time class="news-item-date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b. %Y" | replace: "May.", "May" }}</time><p class="news-item-text">{{ item.text }}</p></li>
+      {%- endfor %}
+    </ol>
+  </details>
+  {%- endif %}
 </section>
 
 <section class="section block" aria-labelledby="experience">
