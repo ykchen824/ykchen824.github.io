@@ -19,5 +19,5 @@
 - date: 2026-05-01
   text: "Our paper <a href=\"https://www.sciencedirect.com/science/article/abs/pii/S0306457326001147\">DataFactory: Collaborative Multi-Agent Framework for Advanced Table Question Answering</a> was accepted to <em>Information Processing &amp; Management</em>."
 
-- date: 2026-03-01
-  text: "Preprint of DataFactory released on <a href=\"https://arxiv.org/abs/2603.09152\">arXiv</a>."
+- date: 2025-08-20
+  text: "Our paper <a href=\"https://aclanthology.org/2025.emnlp-main.49/\">Refusal-Aware Red Teaming: Exposing Inconsistency in Safety Evaluations</a> was accepted to the EMNLP 2025 Main Conference."

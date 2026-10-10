@@ -82,7 +82,7 @@
   </ol>
   {%- if news.size > 5 %}
   <details class="news-more">
-    <summary>Earlier news</summary>
+    <summary aria-label="Show earlier news" title="Show earlier news"><span aria-hidden="true">⌄</span></summary>
     <ol class="news-list">
       {%- for item in news offset: 5 %}
       <li class="news-item"><time class="news-item-date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b. %Y" | replace: "May.", "May" }}</time><p class="news-item-text">{{ item.text }}</p></li>
