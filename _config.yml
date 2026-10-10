@@ -17,3 +17,7 @@ defaults:
       type: writing
     values:
       layout: post
+
+# Not published. (_templates/ is skipped automatically because of the underscore.)
+exclude:
+  - README.md

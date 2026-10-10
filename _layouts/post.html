@@ -11,27 +11,12 @@
 <meta property="og:url" content="{{ page.url | absolute_url }}" />
 <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
 <title>{{ page.title }} — Yongkang Chen</title>
-<link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
-<link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
-<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+{% include head-assets.html %}
 </head>
 <body class="post-page">
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="bar">
-    <a class="brand" href="{{ '/' | relative_url }}">Yongkang Chen</a>
-    <nav aria-label="Primary navigation">
-      <a href="{{ '/' | relative_url }}">About</a>
-      <a href="{{ '/#research' | relative_url }}">Publications</a>
-      <span class="nav-sep" aria-hidden="true"></span>
-      <a href="{{ '/writing/' | relative_url }}" aria-current="page">Writing</a>
-    </nav>
-    <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
-      <span aria-hidden="true">◐</span>
-    </button>
-  </div>
-</header>
+{% include header.html active="writing" %}
 
 <main id="main" class="post-main">
   <article class="post-layout">
@@ -53,30 +38,11 @@
   </article>
 </main>
 
-<footer class="site-footer">
-  <div class="bar">
-    <span>© 2026 Yongkang Chen</span>
-    <div class="foot-links"><a href="mailto:ykchen824@foxmail.com">Email</a><a href="#main">Back to top ↑</a></div>
-  </div>
-</footer>
+{% include footer.html %}
 
 <script>
+  // Build the table of contents from the article's headings.
   (() => {
-    const root = document.documentElement;
-    const toggle = document.querySelector('.theme-toggle');
-    const media = matchMedia('(prefers-color-scheme: dark)');
-    // Without a stored choice the page follows the system theme.
-    const current = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
-    const sync = () => toggle?.setAttribute('aria-pressed', String(current() === 'dark'));
-    sync();
-    media.addEventListener('change', sync);
-    toggle?.addEventListener('click', () => {
-      const next = current() === 'dark' ? 'light' : 'dark';
-      root.dataset.theme = next;
-      try { localStorage.setItem('theme', next); } catch {}
-      sync();
-    });
-
     const toc = document.querySelector('#post-toc-list');
     const headings = [...document.querySelectorAll('#post-body h2, #post-body h3')];
     headings.forEach((heading, index) => {

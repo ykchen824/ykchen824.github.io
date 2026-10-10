@@ -1,8 +1,8 @@
-# Homepage news. Order does not matter: entries are sorted newest first.
+# Homepage news. Add an entry anywhere: entries are sorted newest first.
 # The newest entry appears in the top banner; the newest 3 are listed in the
-# News section and the rest are folded under "Earlier news".
+# News section and the rest are folded under the arrow.
 # Only the month and year are displayed, so the day only affects ordering.
-# `text` may contain inline HTML, e.g. <a href="...">paper</a>.
+# Copy-ready examples (including links) are in _templates/news.yml.
 
 - date: 2026-08-01
   text: "Our paper <em>As Seasons Change: Temporal Feature Powers Malware Classification</em> was accepted to ACM CCS 2026."

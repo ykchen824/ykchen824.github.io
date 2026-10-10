@@ -1,0 +1,10 @@
+# Copy one of these entries into _data/news.yml (anywhere; it is sorted by date).
+
+# Plain text
+- date: 2026-01-01
+  text: Joined Example Lab as a Research Scientist.
+
+# With a link or italics: wrap the whole text in double quotes and escape
+# inner double quotes as \". Write & as &amp;.
+- date: 2026-01-01
+  text: "Our paper <a href=\"https://example.com/paper\">Paper Title</a> was accepted to <em>Venue 2026</em>."

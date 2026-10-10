@@ -1,0 +1,19 @@
+{%- comment -%}
+  Site header shared by every page.
+  Usage: {% include header.html active="about" %}  (about | writing)
+{%- endcomment -%}
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="{{ '/' | relative_url }}">Yongkang Chen</a>
+    <nav aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}"{% if include.active == "about" %} aria-current="page"{% endif %}>About</a>
+      <a href="{{ '/#news-section' | relative_url }}">News</a>
+      <a href="{{ '/#research' | relative_url }}">Publications</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="{{ '/writing/' | relative_url }}"{% if include.active == "writing" %} aria-current="page"{% endif %}>Writing</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </div>
+</header>

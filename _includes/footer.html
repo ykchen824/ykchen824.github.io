@@ -1,0 +1,28 @@
+{%- comment -%}
+  Site footer and theme toggle script shared by every page.
+{%- endcomment -%}
+<footer class="site-footer">
+  <div class="bar">
+    <span>© {{ site.time | date: "%Y" }} Yongkang Chen</span>
+    <div class="foot-links"><a href="mailto:ykchen824@foxmail.com">Email</a><a href="#main">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    const root = document.documentElement;
+    const toggle = document.querySelector('.theme-toggle');
+    const media = matchMedia('(prefers-color-scheme: dark)');
+    // Without a stored choice the page follows the system theme.
+    const current = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
+    const sync = () => toggle?.setAttribute('aria-pressed', String(current() === 'dark'));
+    sync();
+    media.addEventListener('change', sync);
+    toggle?.addEventListener('click', () => {
+      const next = current() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch {}
+      sync();
+    });
+  })();
+</script>

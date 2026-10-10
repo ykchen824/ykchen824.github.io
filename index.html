@@ -11,15 +11,13 @@
 <meta property="og:title" content="Yongkang Chen" />
 <meta property="og:description" content="Research on LLM safety and reliability: post-training, evaluation, red teaming, and safety monitoring." />
 <meta property="og:url" content="https://ykchen824.github.io/" />
-<meta property="og:image" content="https://ykchen824.github.io/profile-w.jpg" />
+<meta property="og:image" content="https://ykchen824.github.io/assets/images/profile-w.jpg" />
 <meta name="twitter:card" content="summary" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Yongkang Chen","url":"https://ykchen824.github.io/","image":"https://ykchen824.github.io/profile-w.jpg","email":"mailto:ykchen824@foxmail.com","jobTitle":"Research Assistant","worksFor":{"@type":"Organization","name":"National Institute of Metrology, China"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Academy of Military Sciences"},{"@type":"CollegeOrUniversity","name":"Nanjing University of Aeronautics and Astronautics"}],"knowsAbout":["Large language models","AI safety","Red teaming","LLM evaluation","Adversarial machine learning"],"sameAs":["https://scholar.google.com/citations?user=JLikgYwAAAAJ","https://github.com/ykchen824","https://orcid.org/0000-0002-8070-9858"]}
+{"@context":"https://schema.org","@type":"Person","name":"Yongkang Chen","url":"https://ykchen824.github.io/","image":"https://ykchen824.github.io/assets/images/profile-w.jpg","email":"mailto:ykchen824@foxmail.com","jobTitle":"Research Assistant","worksFor":{"@type":"Organization","name":"National Institute of Metrology, China"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Academy of Military Sciences"},{"@type":"CollegeOrUniversity","name":"Nanjing University of Aeronautics and Astronautics"}],"knowsAbout":["Large language models","AI safety","Red teaming","LLM evaluation","Adversarial machine learning"],"sameAs":["https://scholar.google.com/citations?user=JLikgYwAAAAJ","https://github.com/ykchen824","https://orcid.org/0000-0002-8070-9858"]}
 </script>
 <title>Yongkang Chen</title>
-<link rel="icon" type="image/x-icon" href="favicon.ico" />
-<link rel="stylesheet" href="style.css" />
-<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+{% include head-assets.html %}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -37,21 +35,7 @@
 </aside>
 {%- endif %}
 
-<header class="site-header">
-  <div class="bar">
-    <a class="brand" href="index.html">Yongkang Chen</a>
-    <nav aria-label="Primary navigation">
-      <a href="index.html" aria-current="page">About</a>
-      <a href="#news-section">News</a>
-      <a href="#research">Publications</a>
-      <span class="nav-sep" aria-hidden="true"></span>
-      <a href="writing/">Writing</a>
-    </nav>
-    <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
-      <span aria-hidden="true">◐</span>
-    </button>
-  </div>
-</header>
+{% include header.html active="about" %}
 
 <main id="main">
 <section class="intro" id="about" aria-label="About Yongkang Chen">
@@ -67,8 +51,8 @@
       </ul>
     </div>
     <div class="profile-picture" aria-label="Portrait of Yongkang Chen">
-      <img class="profile-photo profile-photo-light" src="profile-w.jpg" alt="Portrait of Yongkang Chen" width="295" height="413" fetchpriority="high" />
-      <img class="profile-photo profile-photo-dark" src="profile-b.jpg" alt="" width="295" height="413" aria-hidden="true" />
+      <img class="profile-photo profile-photo-light" src="{{ '/assets/images/profile-w.jpg' | relative_url }}" alt="Portrait of Yongkang Chen" width="295" height="413" fetchpriority="high" />
+      <img class="profile-photo profile-photo-dark" src="{{ '/assets/images/profile-b.jpg' | relative_url }}" alt="" width="295" height="413" aria-hidden="true" />
     </div>
   </div>
 </section>
@@ -77,7 +61,7 @@
   <h2 class="section-title label" id="news">News</h2>
   <ol class="news-list news-list-main">
     {%- for item in news limit: 3 %}
-    <li class="news-item"><time class="news-item-date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b. %Y" | replace: "May.", "May" }}</time><p class="news-item-text">{{ item.text }}</p></li>
+    {% include news-item.html item=item %}
     {%- endfor %}
   </ol>
   {%- if news.size > 3 %}
@@ -85,7 +69,7 @@
     <summary aria-label="Show earlier news" title="Show earlier news"><svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
     <ol class="news-list">
       {%- for item in news offset: 3 %}
-      <li class="news-item"><time class="news-item-date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b. %Y" | replace: "May.", "May" }}</time><p class="news-item-text">{{ item.text }}</p></li>
+      {% include news-item.html item=item %}
       {%- endfor %}
     </ol>
   </details>
@@ -279,29 +263,6 @@
 
 </main>
 
-<footer class="site-footer">
-  <div class="bar">
-    <span>© 2026 Yongkang Chen</span>
-    <div class="foot-links"><a href="mailto:ykchen824@foxmail.com">Email</a><a href="#main">Back to top ↑</a></div>
-  </div>
-</footer>
-<script>
-  (() => {
-    const root = document.documentElement;
-    const toggle = document.querySelector('.theme-toggle');
-    const media = matchMedia('(prefers-color-scheme: dark)');
-    // Without a stored choice the page follows the system theme.
-    const current = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
-    const sync = () => toggle?.setAttribute('aria-pressed', String(current() === 'dark'));
-    sync();
-    media.addEventListener('change', sync);
-    toggle?.addEventListener('click', () => {
-      const next = current() === 'dark' ? 'light' : 'dark';
-      root.dataset.theme = next;
-      try { localStorage.setItem('theme', next); } catch {}
-      sync();
-    });
-  })();
-</script>
+{% include footer.html %}
 </body>
 </html>

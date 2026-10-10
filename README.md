@@ -1,58 +1,52 @@
-# My website source files
+# ykchen824.github.io
 
-A personal webpage powered by GitHub Pages and Jekyll.
+Personal homepage, built by GitHub Pages with Jekyll. Push to `main` and the
+site rebuilds itself; no local build is needed.
 
-## Writing
+## Add news
 
-No local build script is needed. Add one Markdown file to `_writing/`, commit
-it, and push it to the repository. GitHub Pages will generate the Writing index
-at `/writing/` and the article page automatically.
+Add an entry to `_data/news.yml`:
 
-Use this front matter at the top of each file:
-
-```markdown
----
-title: A short essay title
-date: 2026-10-07
-summary: A one-sentence summary of the essay.
----
-
-Write the essay here in Markdown.
+```yaml
+- date: 2026-01-01
+  text: Joined Example Lab as a Research Scientist.
 ```
 
-Only `title` and `date` are required. Add `summary` for the one-sentence
-description shown below the date in the Writing list. The `date` field
-automatically supplies the year, month, grouping, and newest-first sorting.
+Entries are sorted by date, so order in the file does not matter. The newest
+appears in the top banner, the newest 3 in the News section, and older ones
+are folded under the arrow. For links or italics see `_templates/news.yml`.
 
-For references at the end of an essay, use a normal Markdown section and
-ordered list:
+## Add writing
 
-```markdown
----
+Copy `_templates/writing.md` to `_writing/<slug>.md` and edit it. The file name
+becomes the URL (`_writing/my-essay.md` → `/writing/my-essay/`). Only `title`
+and `date` are required; `summary` is shown in the Writing list.
 
-## References
+Citations: link a keyword to `#ref-<id>` and give the matching reference
+`id="ref-<id>"` in a `<ol class="references">` list at the end. The keyword is
+highlighted and jumps to the reference. The template shows the pattern.
 
-1. Author. [Paper title](https://example.com/paper). *Journal*, 2026.
-2. Author. [Another paper](https://example.com/another-paper).
+## Layout
+
+```
+index.html            Homepage content (intro, publications, experience, …)
+_data/news.yml        News entries
+_writing/             Essays, one Markdown file each
+_templates/           Copy-ready examples for news and writing (not published)
+writing/index.html    Generates the /writing/ list page
+_layouts/             Page templates for the writing list and essays
+_includes/            Header, footer and other shared pieces
+assets/style.css      All styles
+assets/images/        Portraits
+_config.yml           Jekyll settings
 ```
 
-For a highlighted keyword citation, link the keyword to a reference ID at the
-end of the article:
+## Preview locally (optional)
 
-```markdown
-这是一句带有[引用关键词](#ref-paper)的文字。
+Requires Ruby. Pages that use templates do not render when opened directly.
 
----
-
-## References
-
-<ol class="references">
-  <li id="ref-paper">作者。<a href="https://example.com/paper">论文标题</a>。*Journal*，2026。</li>
-</ol>
+```bash
+gem install jekyll && jekyll serve
 ```
 
-点击正文中的关键词会跳转到文末对应文献，引用关键词会以浅色背景突出显示。
-
-In the repository settings, set GitHub Pages to deploy from the branch and
-folder containing this site (usually `main` / `/ (root)`). Jekyll reads
-`_config.yml`, `_layouts/`, and `_writing/` during the Pages deployment.
+Then open http://localhost:4000.
