@@ -82,7 +82,7 @@
   </ol>
   {%- if news.size > 5 %}
   <details class="news-more">
-    <summary aria-label="Show earlier news" title="Show earlier news"><span aria-hidden="true">⌄</span></summary>
+    <summary aria-label="Show earlier news" title="Show earlier news"><svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
     <ol class="news-list">
       {%- for item in news offset: 5 %}
       <li class="news-item"><time class="news-item-date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b. %Y" | replace: "May.", "May" }}</time><p class="news-item-text">{{ item.text }}</p></li>
