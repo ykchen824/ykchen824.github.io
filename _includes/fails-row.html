@@ -1,7 +1,7 @@
 {%- assign report = include.incident -%}
 {%- assign report_verification = report.verification | default: '待核验' -%}
 {%- assign report_date = report.date | date: '%Y-%m-%d' -%}
-<li class="incident-row" data-archive-entry data-archive-date="{{ report_date }}" data-category="{{ report.category | escape }}" data-setting="{{ report.setting | escape }}" data-verification="{{ report_verification | escape }}" data-archive-keywords="{{ report.model | escape }} {{ report.category | escape }} {{ report.setting | escape }} {{ report_verification | escape }}">
+<li class="incident-row" data-archive-entry data-archive-date="{{ report_date }}" data-archive-keywords="{{ report.model | escape }} {{ report.category | escape }} {{ report.setting | escape }} {{ report_verification | escape }}">
   <article class="writing-entry">
     <a class="writing-entry-title" href="{{ report.url | relative_url }}">{{ report.title | escape }}</a>
     {% if report.summary %}<p class="writing-summary">{{ report.summary | escape }}</p>{% endif %}

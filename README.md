@@ -17,8 +17,6 @@ site rebuilds itself; no local build is needed.
 - `setting`：`线上部署`、`受控评估` 或 `模拟环境`。
 - `verification`：`已独立复现`、`有公开原始记录`、`有一手报告` 或 `待核验`。
 
-列表页的筛选项由各报告的 `category`、`setting`、`verification` 自动生成。
-
 正文用 `##` 分小节，写法见模板：任务背景、预期行为、实际行为、影响、证据与核验、
 可选的作者分析（标题保持 `## 作者分析 {#analysis}`），最后是参考文章。
 前面几节只写来源能支持的内容，作者的判断都放在作者分析里。

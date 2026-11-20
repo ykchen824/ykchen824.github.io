@@ -161,7 +161,7 @@ a:hover { text-decoration-color:currentColor; }
 .archive-form { display:grid; align-items:end; gap:.75rem; }
 .writing-search { grid-template-columns:minmax(0,1fr) auto; max-width:38rem; margin-inline-start:auto; }
 .archive-form label { position:relative; display:grid; gap:.35rem; min-width:0; }
-.archive-form :is(input,select,button) { width:100%; min-height:2.75rem; padding:.45rem .65rem; border:1px solid var(--rule-strong); border-radius:4px; background:var(--bg); color:var(--fg); }
+.archive-form :is(input,button) { width:100%; min-height:2.75rem; padding:.45rem .65rem; border:1px solid var(--rule-strong); border-radius:4px; background:var(--bg); color:var(--fg); }
 .archive-form input::placeholder { color:var(--muted); }
 .archive-form button { width:auto; white-space:nowrap; cursor:pointer; }
 .archive-form button:hover:enabled { background:var(--soft); }
@@ -172,11 +172,6 @@ a:hover { text-decoration-color:currentColor; }
 .incident-facts { display:grid; grid-template-columns:repeat(auto-fill,minmax(12rem,1fr)); gap:1rem 1.25rem; margin:0; padding:1.25rem 0; border-block:1px solid var(--rule); }
 .incident-facts dt { color:var(--muted); line-height:1.5; }
 .incident-facts dd { margin:.2rem 0 0; line-height:1.45; overflow-wrap:anywhere; }
-.archive-intro { margin:0 0 .35rem; color:var(--fg-2); line-height:1.6; text-wrap:pretty; }
-.archive-stats { margin:0 0 1.5rem; color:var(--muted); line-height:1.5; font-variant-numeric:tabular-nums; }
-.incident-search { grid-template-columns:repeat(3,minmax(0,1fr)) auto; width:100%; }
-.incident-search-field { grid-column:1 / -1; }
-.archive-form .filter-label { color:var(--muted); line-height:1.4; }
 .incident-meta { display:flex; flex-wrap:wrap; align-items:baseline; gap:.2rem .9rem; margin:.45rem 0 0; color:var(--muted); font-size:.85em; line-height:1.5; }
 .incident-meta time { font-variant-numeric:tabular-nums; }
 .incident-unverified { color:var(--faint); font-style:italic; }
@@ -248,7 +243,7 @@ a:hover { text-decoration-color:currentColor; }
   .year-group { grid-template-columns:1fr; gap:.3rem; }
   .writing-year:not([hidden]) { grid-template-columns:minmax(0,1fr); row-gap:.75rem; }
   .writing-year-heading { margin-top:0; }
-  .writing-search,.incident-search { grid-template-columns:minmax(0,1fr); }
+  .writing-search { grid-template-columns:minmax(0,1fr); }
   .incident-related-meta { display:block; margin-left:0; }
   .post-layout { margin-top:2.5rem; }
   .post-body { line-height:1.7; }

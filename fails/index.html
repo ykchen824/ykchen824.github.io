@@ -23,28 +23,14 @@ description: 记录大语言模型在实际部署、受控评估和模拟环境�
     <h1 class="visually-hidden" id="incident-archive-title" lang="en">{{ page.title }}</h1>
     {% assign incidents = site.fails | sort: "date" | reverse %}
     {% if incidents.size > 0 %}
-      <p class="archive-intro">{{ page.description | escape }}</p>
-      <p class="archive-stats">{{ incidents.size }} 条报告 · 最新一条 {{ incidents.first.date | date: "%Y-%m-%d" }}</p>
       <details class="archive-tools" id="incident-tools" data-archive-tools hidden>
-        <summary>搜索与筛选</summary>
-        <form class="archive-form incident-search" id="incident-search" role="search" aria-label="搜索和筛选异常行为报告">
-          <label class="incident-search-field">
+        <summary>搜索</summary>
+        <form class="archive-form writing-search" id="incident-search" role="search" aria-label="搜索异常行为报告">
+          <label>
             <span class="visually-hidden">搜索报告</span>
             <input type="search" name="query" placeholder="标题、模型或关键词" />
           </label>
-          <label>
-            <span class="filter-label">行为类型</span>
-            <select name="category"><option value="">全部</option></select>
-          </label>
-          <label>
-            <span class="filter-label">场景</span>
-            <select name="setting"><option value="">全部</option></select>
-          </label>
-          <label>
-            <span class="filter-label">核验状态</span>
-            <select name="verification"><option value="">全部</option></select>
-          </label>
-          <button type="reset" disabled>清除条件</button>
+          <button type="reset" disabled>清除搜索</button>
         </form>
       </details>
       <p class="archive-results" id="incident-results" data-archive-status data-empty-message="没有符合条件的报告。" data-count-message="显示 {matches} 条报告，共 {total} 条" role="status" aria-atomic="true"></p>
