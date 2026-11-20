@@ -1,0 +1,75 @@
+---
+permalink: /fails/
+redirect_from: /llm-incidents/
+title: How AI Fails
+description: 记录大语言模型在实际部署、受控评估和模拟环境中的异常行为。
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="{{ page.description | escape }}" />
+<title lang="en">{{ page.title }} — {{ site.title }}</title>
+<link rel="canonical" href="{{ page.url | absolute_url }}" />
+{% include head-assets.html %}
+</head>
+<body>
+<a class="skip" href="#main" lang="en">Skip to content</a>
+{% include header.html active="fails" %}
+
+<main id="main">
+  <section class="section block" aria-labelledby="incident-archive-title">
+    <h1 class="visually-hidden" id="incident-archive-title" lang="en">{{ page.title }}</h1>
+    {% assign incidents = site.fails | sort: "date" | reverse %}
+    {% if incidents.size > 0 %}
+      <p class="archive-intro">{{ page.description | escape }}</p>
+      <p class="archive-stats">{{ incidents.size }} 条报告 · 最新一条 {{ incidents.first.date | date: "%Y-%m-%d" }}</p>
+      <details class="archive-tools" id="incident-tools" data-archive-tools hidden>
+        <summary>搜索与筛选</summary>
+        <form class="archive-form incident-search" id="incident-search" role="search" aria-label="搜索和筛选异常行为报告">
+          <label class="incident-search-field">
+            <span class="visually-hidden">搜索报告</span>
+            <input type="search" name="query" placeholder="标题、模型或关键词" />
+          </label>
+          <label>
+            <span class="filter-label">行为类型</span>
+            <select name="category"><option value="">全部</option></select>
+          </label>
+          <label>
+            <span class="filter-label">场景</span>
+            <select name="setting"><option value="">全部</option></select>
+          </label>
+          <label>
+            <span class="filter-label">核验状态</span>
+            <select name="verification"><option value="">全部</option></select>
+          </label>
+          <button type="reset" disabled>清除条件</button>
+        </form>
+      </details>
+      <p class="archive-results" id="incident-results" data-archive-status data-empty-message="没有符合条件的报告。" data-count-message="显示 {matches} 条报告，共 {total} 条" role="status" aria-atomic="true"></p>
+      <div class="writing-list" id="incident-list" data-archive-list role="group" aria-label="报告列表">
+        {% assign years = incidents | group_by_exp: "incident", "incident.date | date: '%Y'" %}
+        {% for year in years %}
+          <section class="writing-year" aria-labelledby="incident-year-{{ year.name }}">
+            <h2 class="writing-year-heading" id="incident-year-{{ year.name }}">{{ year.name }}</h2>
+            <ul class="writing-year-entries incident-year-entries" role="list">
+              {% for incident in year.items %}
+                {% include fails-row.html incident=incident %}
+              {% endfor %}
+            </ul>
+          </section>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="empty">暂无报告。</p>
+    {% endif %}
+  </section>
+</main>
+
+{% if incidents.size > 0 %}
+<script src="{{ '/assets/archive-search.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{% endif %}
+{% include footer.html %}
+</body>
+</html>

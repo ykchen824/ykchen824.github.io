@@ -1,0 +1,8 @@
+{%- comment -%}
+  Favicon, stylesheet, font, feed link and early theme restore, shared by every page.
+{%- endcomment -%}
+<link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
+<link rel="preload" href="{{ '/assets/fonts/lora-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin />
+<link rel="alternate" type="application/atom+xml" title="Writing — Yongkang Chen" href="{{ '/writing/feed.xml' | relative_url }}" />
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>

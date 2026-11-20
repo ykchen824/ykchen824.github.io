@@ -1,0 +1,22 @@
+{%- assign report = include.incident -%}
+{%- assign report_verification = report.verification | default: '待核验' -%}
+{%- assign report_date = report.date | date: '%Y-%m-%d' -%}
+<li class="incident-row" data-archive-entry data-archive-date="{{ report_date }}" data-category="{{ report.category | escape }}" data-setting="{{ report.setting | escape }}" data-verification="{{ report_verification | escape }}" data-archive-keywords="{{ report.model | escape }} {{ report.category | escape }} {{ report.setting | escape }} {{ report_verification | escape }}">
+  <article class="writing-entry">
+    <a class="writing-entry-title" href="{{ report.url | relative_url }}">{{ report.title | escape }}</a>
+    {% if report.summary %}<p class="writing-summary">{{ report.summary | escape }}</p>{% endif %}
+    <p class="incident-meta">
+      <time datetime="{{ report_date }}">{{ report_date }}</time>
+      {%- if report.model %}
+      <span>{{ report.model | escape }}</span>
+      {%- endif %}
+      {%- if report.setting %}
+      <span>{{ report.setting | escape }}</span>
+      {%- endif %}
+      {%- if report.category %}
+      <span>{{ report.category | escape }}</span>
+      {%- endif %}
+      <span{% if report_verification == '待核验' %} class="incident-unverified"{% endif %}>{{ report_verification | escape }}</span>
+    </p>
+  </article>
+</li>

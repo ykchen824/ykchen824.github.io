@@ -1,0 +1,23 @@
+# Homepage news. Add an entry anywhere: entries are sorted newest first.
+# The newest entry appears in the top banner; the newest 3 are listed in the
+# News section and the rest are folded under the arrow.
+# Only the month and year are displayed, so the day only affects ordering.
+# Copy-ready examples (including links) are in _templates/news.yml.
+
+- date: 2026-10-30
+  text: "Our paper <a href=\"https://dl.acm.org/doi/10.1145/3830454.3846658\">As Seasons Change: Temporal Feature Powers Malware Classification</a> was accepted to ACM CCS 2026."
+
+- date: 2026-07-01
+  text: Joined the National Institute of Metrology, China as a Research Assistant in AI Metrology.
+
+- date: 2026-06-30
+  text: Received my Ph.D. in Computer Science from the Academy of Military Sciences and was named an Excellent Graduate.
+
+- date: 2026-06-01
+  text: Started a research internship on agent safety at the China Academy of Industrial Internet.
+
+- date: 2026-05-01
+  text: "Our paper <a href=\"https://www.sciencedirect.com/science/article/abs/pii/S0306457326001147\">DataFactory: Collaborative Multi-Agent Framework for Advanced Table Question Answering</a> was accepted to <em>Information Processing &amp; Management</em>."
+
+- date: 2025-08-20
+  text: "Our paper <a href=\"https://aclanthology.org/2025.emnlp-main.49/\">Refusal-Aware Red Teaming: Exposing Inconsistency in Safety Evaluations</a> was accepted to the EMNLP 2025 Main Conference."

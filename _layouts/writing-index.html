@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Short essays and notes by Yongkang Chen." />
+<title>Writing — Yongkang Chen</title>
+<link rel="canonical" href="{{ page.url | absolute_url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Writing — Yongkang Chen" />
+<meta property="og:description" content="Short essays and notes by Yongkang Chen." />
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="og:image" content="{{ '/assets/images/profile-w.jpg' | absolute_url }}" />
+<meta name="twitter:card" content="summary" />
+{% include head-assets.html %}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+{% include header.html active="writing" %}
+
+<main id="main" class="writing-main">
+  <section class="section block writing" aria-labelledby="writing-title">
+    <h1 class="visually-hidden" id="writing-title">Writing</h1>
+    {% assign posts = site.writing | sort: "date" | reverse %}
+    {% if posts.size > 0 %}
+      <details class="archive-tools" data-archive-tools lang="zh-CN" hidden>
+        <summary>搜索</summary>
+        <form class="archive-form writing-search" role="search" aria-label="搜索文章">
+          <label>
+            <span class="visually-hidden">搜索文章</span>
+            <input type="search" name="query" placeholder="输入标题、摘要或关键词" />
+          </label>
+          <button type="reset" disabled>清除搜索</button>
+        </form>
+      </details>
+      <p class="archive-results" data-archive-status data-empty-message="没有符合条件的文章。" data-count-message="显示 {matches} 篇文章，共 {total} 篇" lang="zh-CN" role="status" aria-atomic="true"></p>
+    {% endif %}
+    <div class="writing-list" data-archive-list>
+      {% if posts.size == 0 %}
+      <p class="writing-empty">Short essays and notes will appear here.</p>
+      {% else %}
+        {% assign current_year = "" %}
+        {% for post in posts %}
+          {% assign post_year = post.date | date: "%Y" %}
+          {% if post_year != current_year %}
+            {% unless forloop.first %}
+              </div>
+            </section>
+            {% endunless %}
+            <section class="writing-year" aria-labelledby="writing-year-{{ post_year }}">
+              <h2 class="writing-year-heading" id="writing-year-{{ post_year }}">{{ post_year }}</h2>
+              <div class="writing-year-entries">
+            {% assign current_year = post_year %}
+          {% endif %}
+            <article class="writing-entry" lang="{{ post.lang | default: 'zh-CN' }}" data-archive-entry data-archive-date="{{ post.date | date: '%Y-%m-%d' }}" data-archive-keywords="{{ post.keywords | join: ' ' | escape }}">
+              <a class="writing-entry-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              {% if post.summary %}<p class="writing-summary">{{ post.summary }}</p>{% endif %}
+            </article>
+        {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+    </div>
+  </section>
+</main>
+
+{% if posts.size > 0 %}
+<script src="{{ '/assets/archive-search.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{% endif %}
+{% include footer.html %}
+</body>
+</html>
