@@ -118,6 +118,7 @@ a:hover { text-decoration-color:currentColor; }
 .writing-summary { margin:.2rem 0 0; color:var(--fg-2); line-height:1.5; }
 
 /* Article and report detail pages */
+.reading-progress { position:fixed; inset:0 0 auto; z-index:9; height:4px; background:#1a5fbd; pointer-events:none; transform:scaleX(0); transform-origin:left center; }
 .post-main > .post-layout { width:100%; max-width:calc(var(--measure) + var(--pad) + var(--pad)); margin-inline:auto; padding-inline:var(--pad); }
 .post-layout { margin-top:4.5rem; }
 .post-head { margin-bottom:2rem; }
@@ -255,7 +256,7 @@ a:hover { text-decoration-color:currentColor; }
 }
 @media print {
   :root,:root[data-theme="dark"] { --bg:#fff; --fg:#000; --fg-2:#222; --muted:#555; --rule:#ccc; --soft:#f4f4f4; --accent:#000; --on-accent:#fff; }
-  .site-header nav,.theme-toggle,.site-footer,.skip,.post-nav,.archive-tools { display:none; }
+  .site-header nav,.theme-toggle,.site-footer,.skip,.reading-progress,.post-nav,.archive-tools { display:none; }
   .site-header .bar { padding-top:0; padding-bottom:2rem; }
   a { color:#000; text-decoration:none; }
 }

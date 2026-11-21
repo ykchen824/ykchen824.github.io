@@ -36,8 +36,10 @@
 </script>
 <title>{{ page.title | escape }}{% if archive == 'fails' %} — How AI Fails{% endif %} — {{ site.title | escape }}</title>
 {% include head-assets.html %}
+<script src="{{ '/assets/reading-progress.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </head>
 <body>
+<div class="reading-progress" aria-hidden="true"></div>
 <a class="skip" href="#main" lang="en">Skip to content</a>
 
 {% include header.html active=archive %}
