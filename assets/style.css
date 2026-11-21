@@ -23,20 +23,20 @@
   --rule: #e6e6e6;
   --rule-strong: #bdbdbd;
   --soft: #f4f4f4;
-  --accent: #a3162f;
-  --accent-soft: #dfa3ad;
+  --accent: #234a70;
+  --accent-soft: #7f95ab;
   --on-accent: #fff;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg:#000; --fg:#fff; --fg-2:#d9d9d9; --muted:#a3a3a3; --faint:#8f8f8f;
-    --rule:#262626; --rule-strong:#4d4d4d; --soft:#141414; --accent:#ff8a98; --accent-soft:#a8505e; --on-accent:#000;
+    --rule:#262626; --rule-strong:#4d4d4d; --soft:#141414; --accent:#9dbfdf; --accent-soft:#55718d; --on-accent:#000;
   }
 }
 :root[data-theme="dark"] {
   --bg:#000; --fg:#fff; --fg-2:#d9d9d9; --muted:#a3a3a3; --faint:#8f8f8f;
-  --rule:#262626; --rule-strong:#4d4d4d; --soft:#141414; --accent:#ff8a98; --accent-soft:#a8505e; --on-accent:#000;
+  --rule:#262626; --rule-strong:#4d4d4d; --soft:#141414; --accent:#9dbfdf; --accent-soft:#55718d; --on-accent:#000;
 }
 :root[data-theme="light"] { color-scheme: light; }
 *,*::before,*::after { box-sizing:border-box; }
@@ -73,7 +73,7 @@ a:hover { text-decoration-color:currentColor; }
 .site-header nav { display:flex; flex-wrap:wrap; gap:.35rem 1.25rem; }
 .site-header nav a { padding-block:.25rem; color:var(--muted); line-height:1; text-decoration:none; white-space:nowrap; border-bottom:1px solid transparent; }
 .site-header nav a:hover,.site-header nav a[aria-current] { color:var(--fg); border-bottom-color:var(--accent); }
-.site-header nav .nav-feature { padding-inline:.55rem; border:1px solid var(--accent); border-radius:4px; background:var(--soft); color:var(--accent); font-weight:600; }
+.site-header nav .nav-feature { padding-inline:.55rem; border:1px solid var(--accent); border-radius:4px; background:color-mix(in srgb,var(--accent) 10%,var(--bg)); color:var(--accent); font-weight:600; }
 .site-header nav .nav-feature:hover,.site-header nav .nav-feature[aria-current] { border-color:var(--accent); background:var(--accent); color:var(--on-accent); }
 .theme-toggle { display:grid; place-items:center; width:1.75rem; height:1.75rem; margin:-.25rem -.375rem -.25rem 0; padding:0; border:0; border-radius:50%; background:transparent; color:var(--muted); cursor:pointer; }
 .theme-toggle:hover { color:var(--fg); background:var(--soft); }
