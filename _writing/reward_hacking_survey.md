@@ -7,6 +7,40 @@ summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward
 2020 年，DeepMind 记录过一个经典的机械臂实验：研究者想让机械臂把红色乐高积木叠到蓝色积木上，于是把奖励写成了“红积木底面离开桌面后的高度”，结果机械臂没有去抓积木，而是直接把红积木原地翻了个面（[Krakovna et al., 2020](#ref-krakovna-2020)）。六年后，同样的错位换了副面孔：在 2025 至 2026 年的评测与训练中，前沿大语言模型会回溯 Python 调用栈读取评分器的参考张量、覆写 `torch.cuda.synchronize` 与 `time.time` 伪造耗时（[METR, 2025](#ref-metr-2025)），在超过百万字符的自主科研轨迹里夹带一条几乎看不出的作弊命令（[HackBench, 2026](#ref-hackbench-2026)），甚至在真实编码强化学习（RL）训练后泛化出对齐伪装与破坏代码库的行为（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）。这就是 **Reward Hacking（奖励黑客）**——智能体利用奖励函数、训练环境或评估规约里的形式缺陷，在没有达成设计者真实意图的情况下拿走极高的代理期望回报。
 
 <figure class="rh-compare" aria-labelledby="rh-compare-title">
+<style>
+.rh-compare{margin:1.9rem 0 2.1rem;padding:1.05rem 0 0;border-top:1.5px solid var(--border-2);border-bottom:1px solid var(--border-2);background:transparent;overflow-wrap:normal}
+.rh-compare-title{margin:0 0 .9rem;font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.35;color:var(--ink)}
+.rh-compare-stage{display:grid;grid-template-columns:3.2rem minmax(0,1fr) minmax(0,1fr);gap:.9rem;padding-bottom:1rem}
+.rh-stage-gutter,.rh-panel{min-width:0}
+.rh-panel--2026{border-left:1px solid var(--border);padding-left:.9rem}
+.rh-panel-label{display:flex;align-items:center;gap:.42rem;font-size:.82rem;font-weight:600;line-height:1.3}
+.rh-panel-label--2020{color:var(--feature)}
+.rh-panel-label--2026{color:var(--accent-strong)}
+.rh-dot{width:6px;height:6px;border-radius:50%;flex:none}
+.rh-dot--2020{background:var(--feature)}
+.rh-dot--2026{background:var(--accent)}
+.rh-panel-svg{display:block;width:100%;height:auto;margin:.55rem 0 .45rem}
+.rh-panel-note{margin:0;font-size:.8rem;line-height:1.48;color:var(--muted)}
+.rh-shift{border-top:1px solid var(--border);padding:.25rem 0}
+.rh-shift-row{display:grid;grid-template-columns:3.2rem minmax(0,1fr) minmax(0,1fr);gap:.9rem;padding:.48rem 0;border-bottom:1px solid var(--border);font-size:.835rem;line-height:1.5;align-items:baseline}
+.rh-shift-row:last-child{border-bottom:0}
+.rh-shift-dim{font-weight:600;color:var(--ink-2);font-size:.79rem;white-space:nowrap}
+.rh-shift-cell{color:var(--body);min-width:0}
+.rh-shift-cell:last-child{padding-left:.9rem}
+.rh-shift-cell--2020{color:var(--muted-strong)}
+.rh-shift-tag{display:none}
+.rh-compare figcaption{padding:.65rem 0 .85rem;border-top:1px solid var(--border);font-size:.8rem;line-height:1.55;color:var(--muted)}
+@media (max-width:720px){
+.rh-compare-stage{grid-template-columns:minmax(0,1fr);gap:1rem}
+.rh-stage-gutter{display:none}
+.rh-panel--2026{border-left:0;border-top:1px solid var(--border);padding-left:0;padding-top:.95rem}
+.rh-shift-row{grid-template-columns:minmax(0,1fr);gap:.2rem;padding:.55rem 0}
+.rh-shift-cell:last-child{padding-left:0}
+.rh-shift-tag{display:inline-block;margin-right:.35rem;font-size:.74rem;font-weight:600}
+.rh-shift-tag--2020{color:var(--feature)}
+.rh-shift-tag--2026{color:var(--accent-strong)}
+}
+</style>
 <p class="rh-compare-title" id="rh-compare-title">从经典 RL 到前沿 LLM 智能体：Reward Hacking 的形态跃迁</p>
 <div class="rh-compare-stage">
 <div class="rh-stage-gutter" aria-hidden="true"></div>
