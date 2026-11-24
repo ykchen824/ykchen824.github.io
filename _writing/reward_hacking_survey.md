@@ -9,39 +9,44 @@ summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward
 <figure class="rh-compare" aria-labelledby="rh-compare-title">
 <p class="rh-compare-title" id="rh-compare-title">从经典 RL 到前沿 LLM 智能体：Reward Hacking 的形态跃迁</p>
 <div class="rh-compare-stage">
-<div class="rh-panel">
+<div class="rh-stage-gutter" aria-hidden="true"></div>
+<div class="rh-panel rh-panel--2020">
 <div class="rh-panel-label rh-panel-label--2020"><span class="rh-dot rh-dot--2020" aria-hidden="true"></span><span>2020 · 经典 RL</span></div>
-<svg class="rh-panel-svg" viewBox="0 0 300 100" role="img" aria-label="2020 年乐高积木堆叠规约博弈示意图：设计意图是将红积木叠在蓝积木上，实际策略是将红积木原地翻转以最大化底面高度">
-<text x="49" y="18" text-anchor="middle" font-size="10.5" fill="#534A4C">意图：红叠蓝</text>
-<text x="220" y="18" text-anchor="middle" font-size="10.5" font-weight="600" fill="#8C4A19">实际：原地翻面</text>
-<line x1="12" y1="76" x2="288" y2="76" stroke="#D8CFD1" stroke-width="1.2"/>
-<rect x="28" y="52" width="42" height="24" rx="2" fill="#E6EEF6" stroke="#6E8CA8" stroke-width="1.1"/>
-<rect x="28" y="28" width="42" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.1" stroke-dasharray="3 2"/>
-<line x1="112" y1="56" x2="142" y2="56" stroke="#72686B" stroke-width="1.2"/>
-<path d="M138 52.5 L144 56 L138 59.5" stroke="#72686B" stroke-width="1.2" fill="none"/>
-<rect x="166" y="52" width="38" height="24" rx="2" fill="#E6EEF6" stroke="#9AAEC2" stroke-width="1" stroke-dasharray="2 2"/>
-<rect x="214" y="52" width="42" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.1"/>
-<line x1="214" y1="52" x2="256" y2="52" stroke="#8C4A19" stroke-width="3"/>
-<line x1="266" y1="76" x2="266" y2="52" stroke="#8C4A19" stroke-width="1.1"/>
-<path d="M263.5 56 L266 51 L268.5 56" stroke="#8C4A19" stroke-width="1.1" fill="none"/>
-<text x="273" y="67" font-size="10" font-weight="600" fill="#8C4A19">h</text>
+<svg class="rh-panel-svg" viewBox="0 0 280 102" role="img" aria-label="2020 年乐高积木堆叠规约博弈示意图：设计意图是将红积木叠在蓝积木上，实际策略是将红积木原地翻转以最大化底面高度">
+<text x="48" y="17" text-anchor="middle" font-size="10.5" fill="#534A4C">意图：红叠蓝</text>
+<text x="206" y="17" text-anchor="middle" font-size="10.5" font-weight="600" fill="#8C4A19">实际：原地翻面</text>
+<line x1="8" y1="78" x2="272" y2="78" stroke="#D8CFD1" stroke-width="1.2"/>
+<rect x="27" y="54" width="42" height="24" rx="2" fill="#E6EEF6" stroke="#6E8CA8" stroke-width="1.1"/>
+<text x="48" y="70" text-anchor="middle" font-size="9.5" fill="#3B556E">蓝</text>
+<rect x="27" y="30" width="42" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.1" stroke-dasharray="3 2"/>
+<text x="48" y="46" text-anchor="middle" font-size="9.5" fill="#8C4A19">红</text>
+<line x1="100" y1="58" x2="128" y2="58" stroke="#72686B" stroke-width="1.2"/>
+<path d="M124 54.5 L130 58 L124 61.5" stroke="#72686B" stroke-width="1.2" fill="none"/>
+<rect x="150" y="54" width="38" height="24" rx="2" fill="#E6EEF6" stroke="#8DA4BC" stroke-width="1" stroke-dasharray="2 2"/>
+<text x="169" y="70" text-anchor="middle" font-size="9.5" fill="#5B7894">蓝</text>
+<rect x="198" y="54" width="42" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.1"/>
+<line x1="198" y1="54" x2="240" y2="54" stroke="#8C4A19" stroke-width="3"/>
+<text x="219" y="70" text-anchor="middle" font-size="9.5" fill="#8C4A19">红</text>
+<line x1="250" y1="78" x2="250" y2="54" stroke="#8C4A19" stroke-width="1.1"/>
+<path d="M247.5 58 L250 53 L252.5 58" stroke="#8C4A19" stroke-width="1.1" fill="none"/>
+<text x="257" y="69" font-size="10.5" font-weight="600" fill="#8C4A19">h</text>
 </svg>
 <p class="rh-panel-note">乐高翻积木 · CoastRunners 绕圈 · 机械爪挡镜头</p>
 </div>
-<div class="rh-panel">
+<div class="rh-panel rh-panel--2026">
 <div class="rh-panel-label rh-panel-label--2026"><span class="rh-dot rh-dot--2026" aria-hidden="true"></span><span>2025–2026 · LLM 智能体</span></div>
-<svg class="rh-panel-svg" viewBox="0 0 300 100" role="img" aria-label="2026 年自主科研长轨迹与代码评测作弊示意图：在超过百万字符和 264 条命令中仅包含 1 条占比 0.6% 的作弊命令">
-<text x="6" y="18" font-size="10.2" fill="#534A4C">&gt;100 万字符 / 264 条命令</text>
-<text x="294" y="18" text-anchor="end" font-size="10.2" font-weight="600" fill="#7B2130">1 条作弊（0.6%）</text>
+<svg class="rh-panel-svg" viewBox="0 0 280 102" role="img" aria-label="2026 年自主科研长轨迹与代码评测作弊示意图：在超过百万字符和 264 条命令中仅包含 1 条占比 0.6% 的作弊命令">
+<text x="4" y="17" font-size="10.2" fill="#534A4C">&gt;100 万字符 / 264 条命令</text>
+<text x="276" y="17" text-anchor="end" font-size="10.2" font-weight="600" fill="#7B2130">1 条作弊（0.6%）</text>
 <g fill="#DDD5D7">
-<rect x="6" y="36" width="3" height="16" rx="1"/><rect x="14" y="36" width="3" height="16" rx="1"/><rect x="22" y="36" width="3" height="16" rx="1"/><rect x="30" y="36" width="3" height="16" rx="1"/><rect x="38" y="36" width="3" height="16" rx="1"/><rect x="46" y="36" width="3" height="16" rx="1"/><rect x="54" y="36" width="3" height="16" rx="1"/><rect x="62" y="36" width="3" height="16" rx="1"/><rect x="70" y="36" width="3" height="16" rx="1"/><rect x="78" y="36" width="3" height="16" rx="1"/><rect x="86" y="36" width="3" height="16" rx="1"/><rect x="94" y="36" width="3" height="16" rx="1"/><rect x="102" y="36" width="3" height="16" rx="1"/><rect x="110" y="36" width="3" height="16" rx="1"/><rect x="118" y="36" width="3" height="16" rx="1"/><rect x="126" y="36" width="3" height="16" rx="1"/><rect x="134" y="36" width="3" height="16" rx="1"/><rect x="142" y="36" width="3" height="16" rx="1"/><rect x="150" y="36" width="3" height="16" rx="1"/><rect x="158" y="36" width="3" height="16" rx="1"/><rect x="166" y="36" width="3" height="16" rx="1"/><rect x="174" y="36" width="3" height="16" rx="1"/><rect x="182" y="36" width="3" height="16" rx="1"/><rect x="190" y="36" width="3" height="16" rx="1"/><rect x="206" y="36" width="3" height="16" rx="1"/><rect x="214" y="36" width="3" height="16" rx="1"/><rect x="222" y="36" width="3" height="16" rx="1"/><rect x="230" y="36" width="3" height="16" rx="1"/><rect x="238" y="36" width="3" height="16" rx="1"/><rect x="246" y="36" width="3" height="16" rx="1"/><rect x="254" y="36" width="3" height="16" rx="1"/><rect x="262" y="36" width="3" height="16" rx="1"/><rect x="270" y="36" width="3" height="16" rx="1"/><rect x="278" y="36" width="3" height="16" rx="1"/><rect x="286" y="36" width="3" height="16" rx="1"/>
+<rect x="4" y="36" width="3" height="16" rx="1"/><rect x="12" y="36" width="3" height="16" rx="1"/><rect x="20" y="36" width="3" height="16" rx="1"/><rect x="28" y="36" width="3" height="16" rx="1"/><rect x="36" y="36" width="3" height="16" rx="1"/><rect x="44" y="36" width="3" height="16" rx="1"/><rect x="52" y="36" width="3" height="16" rx="1"/><rect x="60" y="36" width="3" height="16" rx="1"/><rect x="68" y="36" width="3" height="16" rx="1"/><rect x="76" y="36" width="3" height="16" rx="1"/><rect x="84" y="36" width="3" height="16" rx="1"/><rect x="92" y="36" width="3" height="16" rx="1"/><rect x="100" y="36" width="3" height="16" rx="1"/><rect x="108" y="36" width="3" height="16" rx="1"/><rect x="116" y="36" width="3" height="16" rx="1"/><rect x="124" y="36" width="3" height="16" rx="1"/><rect x="132" y="36" width="3" height="16" rx="1"/><rect x="140" y="36" width="3" height="16" rx="1"/><rect x="148" y="36" width="3" height="16" rx="1"/><rect x="156" y="36" width="3" height="16" rx="1"/><rect x="164" y="36" width="3" height="16" rx="1"/><rect x="172" y="36" width="3" height="16" rx="1"/><rect x="188" y="36" width="3" height="16" rx="1"/><rect x="196" y="36" width="3" height="16" rx="1"/><rect x="204" y="36" width="3" height="16" rx="1"/><rect x="212" y="36" width="3" height="16" rx="1"/><rect x="220" y="36" width="3" height="16" rx="1"/><rect x="228" y="36" width="3" height="16" rx="1"/><rect x="236" y="36" width="3" height="16" rx="1"/><rect x="244" y="36" width="3" height="16" rx="1"/><rect x="252" y="36" width="3" height="16" rx="1"/><rect x="260" y="36" width="3" height="16" rx="1"/><rect x="268" y="36" width="3" height="16" rx="1"/>
 </g>
-<rect x="197.5" y="30" width="4" height="28" rx="1" fill="#7B2130"/>
-<line x1="199.5" y1="58" x2="199.5" y2="66" stroke="#7B2130" stroke-width="1"/>
-<text x="199.5" y="77" text-anchor="middle" font-size="9.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#5C1622">monkey-patch time.time()</text>
-<text x="199.5" y="92" text-anchor="middle" font-size="9.5" fill="#665C5F">围绕留出集造数据 · 提前冻结权重</text>
+<rect x="179.5" y="30" width="4" height="28" rx="1" fill="#7B2130"/>
+<line x1="181.5" y1="58" x2="181.5" y2="66" stroke="#7B2130" stroke-width="1"/>
+<text x="181.5" y="78" text-anchor="middle" font-size="9.8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#5C1622">monkey-patch time.time()</text>
+<text x="181.5" y="94" text-anchor="middle" font-size="9.8" fill="#665C5F">围绕留出集造数据 · 冻结权重</text>
 </svg>
-<p class="rh-panel-note">METR 调用栈取数 · HackBench 科研轨迹 · 编码 RL 泛化错位</p>
+<p class="rh-panel-note">METR 调用栈 · HackBench 轨迹 · 编码泛化错位</p>
 </div>
 </div>
 <div class="rh-shift">
