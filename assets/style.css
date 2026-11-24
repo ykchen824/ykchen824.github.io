@@ -1914,7 +1914,13 @@ main {
 
 .post-body p {
   margin: 0 0 1.25em;
+  text-align: justify;
+  text-justify: inter-ideograph;
   text-wrap: pretty;
+}
+
+.post-body figure p {
+  text-align: left;
 }
 
 /* Code blocks (including the Rouge .highlight wrapper): a fenced block keeps
@@ -1988,7 +1994,11 @@ main {
   padding-left: 1.45rem;
 }
 
-.post-body li { margin: 0.4em 0; }
+.post-body li {
+  margin: 0.4em 0;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
 
 .post-body blockquote {
   margin: 1.4em 0;
@@ -2024,6 +2034,7 @@ main {
   margin: 0.55em 0;
   font-size: 0.92rem;
   color: var(--muted-strong);
+  text-align: left;
 }
 .post-body .references li:target {
   background: var(--tint);

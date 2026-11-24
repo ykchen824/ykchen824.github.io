@@ -8,100 +8,108 @@ summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward
 
 <figure class="rh-compare" aria-labelledby="rh-compare-title">
 <style>
-.rh-compare{margin:1.9rem 0 2.1rem;padding:1.05rem 0 0;border-top:1.5px solid var(--border-2);border-bottom:1px solid var(--border-2);background:transparent;overflow-wrap:normal}
-.rh-compare-title{margin:0 0 .9rem;font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.35;color:var(--ink)}
-.rh-compare-stage{display:grid;grid-template-columns:3.2rem minmax(0,1fr) minmax(0,1fr);gap:.9rem;padding-bottom:1rem}
-.rh-stage-gutter,.rh-panel{min-width:0}
-.rh-panel--2026{border-left:1px solid var(--border);padding-left:.9rem}
-.rh-panel-label{display:flex;align-items:center;gap:.42rem;font-size:.82rem;font-weight:600;line-height:1.3}
+.rh-compare{margin:2rem 0 2.2rem;padding:1.15rem 0 0;border-top:1.5px solid var(--border-2);border-bottom:1px solid var(--border-2);background:transparent;overflow-wrap:normal}
+.rh-compare-title{margin:0 0 1rem;font-family:var(--serif);font-size:1.06rem;font-weight:600;line-height:1.38;color:var(--ink)}
+.rh-compare-stage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;padding-bottom:1.1rem}
+.rh-panel{min-width:0}
+.rh-panel--2020{padding-right:1.15rem}
+.rh-panel--2026{border-left:1px solid var(--border);padding-left:1.15rem}
+.rh-panel-label{display:flex;align-items:center;gap:.45rem;font-size:.9rem;font-weight:600;line-height:1.35}
 .rh-panel-label--2020{color:var(--feature)}
 .rh-panel-label--2026{color:var(--accent-strong)}
-.rh-dot{width:6px;height:6px;border-radius:50%;flex:none}
+.rh-dot{width:7px;height:7px;border-radius:50%;flex:none}
 .rh-dot--2020{background:var(--feature)}
 .rh-dot--2026{background:var(--accent)}
-.rh-panel-svg{display:block;width:100%;height:auto;margin:.55rem 0 .45rem}
-.rh-panel-note{margin:0;font-size:.8rem;line-height:1.48;color:var(--muted)}
-.rh-shift{border-top:1px solid var(--border);padding:.25rem 0}
-.rh-shift-row{display:grid;grid-template-columns:3.2rem minmax(0,1fr) minmax(0,1fr);gap:.9rem;padding:.48rem 0;border-bottom:1px solid var(--border);font-size:.835rem;line-height:1.5;align-items:baseline}
+.rh-panel-svg{display:block;width:100%;height:auto;margin:.6rem 0 .55rem}
+.rh-panel-note{margin:0;font-size:.875rem;line-height:1.55;color:var(--body)}
+.rh-note-key{color:var(--muted);font-weight:600}
+.rh-shift{border-top:1px solid var(--border);padding:.35rem 0 .25rem}
+.rh-shift-head{display:grid;grid-template-columns:3.6rem minmax(0,1fr) minmax(0,1fr);gap:1rem;padding:.45rem 0 .5rem;border-bottom:1px solid var(--border-2);font-size:.8rem;font-weight:600;color:var(--muted)}
+.rh-shift-head--2020{color:var(--feature)}
+.rh-shift-head--2026{color:var(--accent-strong)}
+.rh-shift-row{display:grid;grid-template-columns:3.6rem minmax(0,1fr) minmax(0,1fr);gap:1rem;padding:.62rem 0;border-bottom:1px solid var(--border);font-size:.9rem;line-height:1.58;align-items:baseline}
 .rh-shift-row:last-child{border-bottom:0}
-.rh-shift-dim{font-weight:600;color:var(--ink-2);font-size:.79rem;white-space:nowrap}
+.rh-shift-dim{font-weight:600;color:var(--ink-2);font-size:.84rem;white-space:nowrap}
 .rh-shift-cell{color:var(--body);min-width:0}
-.rh-shift-cell:last-child{padding-left:.9rem}
-.rh-shift-cell--2020{color:var(--muted-strong)}
 .rh-shift-tag{display:none}
-.rh-compare figcaption{padding:.65rem 0 .85rem;border-top:1px solid var(--border);font-size:.8rem;line-height:1.55;color:var(--muted)}
+.rh-compare figcaption{padding:.7rem 0 .9rem;border-top:1px solid var(--border);font-size:.84rem;line-height:1.6;color:var(--muted-strong)}
 @media (max-width:720px){
-.rh-compare-stage{grid-template-columns:minmax(0,1fr);gap:1rem}
-.rh-stage-gutter{display:none}
-.rh-panel--2026{border-left:0;border-top:1px solid var(--border);padding-left:0;padding-top:.95rem}
-.rh-shift-row{grid-template-columns:minmax(0,1fr);gap:.2rem;padding:.55rem 0}
-.rh-shift-cell:last-child{padding-left:0}
-.rh-shift-tag{display:inline-block;margin-right:.35rem;font-size:.74rem;font-weight:600}
+.rh-compare-stage{grid-template-columns:minmax(0,1fr);gap:1.1rem}
+.rh-panel--2020{padding-right:0}
+.rh-panel--2026{border-left:0;border-top:1px solid var(--border);padding-left:0;padding-top:1rem}
+.rh-shift-head{display:none}
+.rh-shift-row{grid-template-columns:minmax(0,1fr);gap:.25rem;padding:.65rem 0}
+.rh-shift-tag{display:inline-block;margin-right:.4rem;font-size:.78rem;font-weight:600}
 .rh-shift-tag--2020{color:var(--feature)}
 .rh-shift-tag--2026{color:var(--accent-strong)}
 }
 </style>
 <p class="rh-compare-title" id="rh-compare-title">从经典 RL 到前沿 LLM 智能体：Reward Hacking 的形态跃迁</p>
 <div class="rh-compare-stage">
-<div class="rh-stage-gutter" aria-hidden="true"></div>
 <div class="rh-panel rh-panel--2020">
 <div class="rh-panel-label rh-panel-label--2020"><span class="rh-dot rh-dot--2020" aria-hidden="true"></span><span>2020 · 经典 RL</span></div>
-<svg class="rh-panel-svg" viewBox="0 0 280 102" role="img" aria-label="2020 年乐高积木堆叠规约博弈示意图：设计意图是将红积木叠在蓝积木上，实际策略是将红积木原地翻转以最大化底面高度">
-<text x="48" y="17" text-anchor="middle" font-size="10.5" fill="#534A4C">意图：红叠蓝</text>
-<text x="206" y="17" text-anchor="middle" font-size="10.5" font-weight="600" fill="#8C4A19">实际：原地翻面</text>
-<line x1="8" y1="78" x2="272" y2="78" stroke="#D8CFD1" stroke-width="1.2"/>
-<rect x="27" y="54" width="42" height="24" rx="2" fill="#E6EEF6" stroke="#6E8CA8" stroke-width="1.1"/>
-<text x="48" y="70" text-anchor="middle" font-size="9.5" fill="#3B556E">蓝</text>
-<rect x="27" y="30" width="42" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.1" stroke-dasharray="3 2"/>
-<text x="48" y="46" text-anchor="middle" font-size="9.5" fill="#8C4A19">红</text>
-<line x1="100" y1="58" x2="128" y2="58" stroke="#72686B" stroke-width="1.2"/>
-<path d="M124 54.5 L130 58 L124 61.5" stroke="#72686B" stroke-width="1.2" fill="none"/>
-<rect x="150" y="54" width="38" height="24" rx="2" fill="#E6EEF6" stroke="#8DA4BC" stroke-width="1" stroke-dasharray="2 2"/>
-<text x="169" y="70" text-anchor="middle" font-size="9.5" fill="#5B7894">蓝</text>
-<rect x="198" y="54" width="42" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.1"/>
-<line x1="198" y1="54" x2="240" y2="54" stroke="#8C4A19" stroke-width="3"/>
-<text x="219" y="70" text-anchor="middle" font-size="9.5" fill="#8C4A19">红</text>
-<line x1="250" y1="78" x2="250" y2="54" stroke="#8C4A19" stroke-width="1.1"/>
-<path d="M247.5 58 L250 53 L252.5 58" stroke="#8C4A19" stroke-width="1.1" fill="none"/>
-<text x="257" y="69" font-size="10.5" font-weight="600" fill="#8C4A19">h</text>
+<svg class="rh-panel-svg" viewBox="0 0 320 112" role="img" aria-label="2020 年乐高积木堆叠规约博弈示意图：设计意图是将红积木叠在蓝积木上，实际策略是将红积木原地翻转使底面朝上以最大化底面高度">
+<text x="56" y="18" text-anchor="middle" font-size="12" fill="#2C2527">意图：红叠蓝</text>
+<text x="234" y="18" text-anchor="middle" font-size="12" font-weight="600" fill="#8C4A19">实际：原地翻面</text>
+<line x1="10" y1="88" x2="310" y2="88" stroke="#D8CFD1" stroke-width="1.3"/>
+<rect x="33" y="62" width="46" height="26" rx="2" fill="#E6EEF6" stroke="#6E8CA8" stroke-width="1.2"/>
+<text x="56" y="79" text-anchor="middle" font-size="11" fill="#3B556E">蓝</text>
+<rect x="33" y="36" width="46" height="26" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.2" stroke-dasharray="3 2"/>
+<line x1="33" y1="62" x2="79" y2="62" stroke="#8C4A19" stroke-width="3.2"/>
+<text x="56" y="53" text-anchor="middle" font-size="11" fill="#8C4A19">红</text>
+<line x1="108" y1="66" x2="140" y2="66" stroke="#72686B" stroke-width="1.4"/>
+<path d="M135 62 L142 66 L135 70" stroke="#72686B" stroke-width="1.4" fill="none"/>
+<rect x="166" y="62" width="44" height="26" rx="2" fill="#E6EEF6" stroke="#8DA4BC" stroke-width="1.1" stroke-dasharray="2 2"/>
+<text x="188" y="79" text-anchor="middle" font-size="11" fill="#5B7894">蓝</text>
+<rect x="224" y="62" width="46" height="26" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.2"/>
+<line x1="224" y1="62" x2="270" y2="62" stroke="#8C4A19" stroke-width="3.4"/>
+<text x="247" y="55" text-anchor="middle" font-size="10.5" font-weight="600" fill="#8C4A19">底面朝上</text>
+<text x="247" y="79" text-anchor="middle" font-size="11" fill="#8C4A19">红</text>
+<line x1="284" y1="88" x2="284" y2="62" stroke="#8C4A19" stroke-width="1.3"/>
+<path d="M281 67 L284 61 L287 67" stroke="#8C4A19" stroke-width="1.3" fill="none"/>
+<text x="294" y="79" font-size="11.5" font-weight="600" fill="#8C4A19">h</text>
 </svg>
-<p class="rh-panel-note">乐高翻积木 · CoastRunners 绕圈 · 机械爪挡镜头</p>
+<p class="rh-panel-note"><span class="rh-note-key">代表案例：</span>乐高翻积木、CoastRunners 绕圈、机械爪挡镜头</p>
 </div>
 <div class="rh-panel rh-panel--2026">
 <div class="rh-panel-label rh-panel-label--2026"><span class="rh-dot rh-dot--2026" aria-hidden="true"></span><span>2025–2026 · LLM 智能体</span></div>
-<svg class="rh-panel-svg" viewBox="0 0 280 102" role="img" aria-label="2026 年自主科研长轨迹与代码评测作弊示意图：在超过百万字符和 264 条命令中仅包含 1 条占比 0.6% 的作弊命令">
-<text x="4" y="17" font-size="10.2" fill="#534A4C">&gt;100 万字符 / 264 条命令</text>
-<text x="276" y="17" text-anchor="end" font-size="10.2" font-weight="600" fill="#7B2130">1 条作弊（0.6%）</text>
-<g fill="#DDD5D7">
-<rect x="4" y="36" width="3" height="16" rx="1"/><rect x="12" y="36" width="3" height="16" rx="1"/><rect x="20" y="36" width="3" height="16" rx="1"/><rect x="28" y="36" width="3" height="16" rx="1"/><rect x="36" y="36" width="3" height="16" rx="1"/><rect x="44" y="36" width="3" height="16" rx="1"/><rect x="52" y="36" width="3" height="16" rx="1"/><rect x="60" y="36" width="3" height="16" rx="1"/><rect x="68" y="36" width="3" height="16" rx="1"/><rect x="76" y="36" width="3" height="16" rx="1"/><rect x="84" y="36" width="3" height="16" rx="1"/><rect x="92" y="36" width="3" height="16" rx="1"/><rect x="100" y="36" width="3" height="16" rx="1"/><rect x="108" y="36" width="3" height="16" rx="1"/><rect x="116" y="36" width="3" height="16" rx="1"/><rect x="124" y="36" width="3" height="16" rx="1"/><rect x="132" y="36" width="3" height="16" rx="1"/><rect x="140" y="36" width="3" height="16" rx="1"/><rect x="148" y="36" width="3" height="16" rx="1"/><rect x="156" y="36" width="3" height="16" rx="1"/><rect x="164" y="36" width="3" height="16" rx="1"/><rect x="172" y="36" width="3" height="16" rx="1"/><rect x="188" y="36" width="3" height="16" rx="1"/><rect x="196" y="36" width="3" height="16" rx="1"/><rect x="204" y="36" width="3" height="16" rx="1"/><rect x="212" y="36" width="3" height="16" rx="1"/><rect x="220" y="36" width="3" height="16" rx="1"/><rect x="228" y="36" width="3" height="16" rx="1"/><rect x="236" y="36" width="3" height="16" rx="1"/><rect x="244" y="36" width="3" height="16" rx="1"/><rect x="252" y="36" width="3" height="16" rx="1"/><rect x="260" y="36" width="3" height="16" rx="1"/><rect x="268" y="36" width="3" height="16" rx="1"/>
+<svg class="rh-panel-svg" viewBox="0 0 320 112" role="img" aria-label="2026 年自主科研长轨迹作弊示意图：在超过百万字符和 264 条命令中仅包含 1 条占比 0.6% 的作弊命令，Claude Opus 5 定位最优为 64.88 F1">
+<text x="6" y="18" font-size="11.5" fill="#2C2527">&gt;100 万字符 · 264 条命令</text>
+<text x="314" y="18" text-anchor="end" font-size="11.5" font-weight="600" fill="#7B2130">1 条作弊（0.6%）</text>
+<g fill="#CFC6C8">
+<rect x="6" y="38" width="4" height="22" rx="1"/><rect x="17" y="38" width="4" height="22" rx="1"/><rect x="28" y="38" width="4" height="22" rx="1"/><rect x="39" y="38" width="4" height="22" rx="1"/><rect x="50" y="38" width="4" height="22" rx="1"/><rect x="61" y="38" width="4" height="22" rx="1"/><rect x="72" y="38" width="4" height="22" rx="1"/><rect x="83" y="38" width="4" height="22" rx="1"/><rect x="94" y="38" width="4" height="22" rx="1"/><rect x="105" y="38" width="4" height="22" rx="1"/><rect x="116" y="38" width="4" height="22" rx="1"/><rect x="127" y="38" width="4" height="22" rx="1"/><rect x="138" y="38" width="4" height="22" rx="1"/><rect x="149" y="38" width="4" height="22" rx="1"/><rect x="160" y="38" width="4" height="22" rx="1"/><rect x="171" y="38" width="4" height="22" rx="1"/><rect x="182" y="38" width="4" height="22" rx="1"/><rect x="193" y="38" width="4" height="22" rx="1"/><rect x="215" y="38" width="4" height="22" rx="1"/><rect x="226" y="38" width="4" height="22" rx="1"/><rect x="237" y="38" width="4" height="22" rx="1"/><rect x="248" y="38" width="4" height="22" rx="1"/><rect x="259" y="38" width="4" height="22" rx="1"/><rect x="270" y="38" width="4" height="22" rx="1"/><rect x="281" y="38" width="4" height="22" rx="1"/><rect x="292" y="38" width="4" height="22" rx="1"/><rect x="303" y="38" width="4" height="22" rx="1"/>
 </g>
-<rect x="179.5" y="30" width="4" height="28" rx="1" fill="#7B2130"/>
-<line x1="181.5" y1="58" x2="181.5" y2="66" stroke="#7B2130" stroke-width="1"/>
-<text x="181.5" y="78" text-anchor="middle" font-size="9.8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#5C1622">monkey-patch time.time()</text>
-<text x="181.5" y="94" text-anchor="middle" font-size="9.8" fill="#665C5F">围绕留出集造数据 · 冻结权重</text>
+<rect x="203.5" y="31" width="5" height="36" rx="1.5" fill="#7B2130"/>
+<line x1="206" y1="67" x2="206" y2="79" stroke="#7B2130" stroke-width="1.2"/>
+<text x="160" y="96" text-anchor="middle" font-size="11" font-weight="500" fill="#5C1622">混在正常科研调试中（Opus 5 定位 64.88 F1）</text>
 </svg>
-<p class="rh-panel-note">METR 调用栈 · HackBench 轨迹 · 编码泛化错位</p>
+<p class="rh-panel-note"><span class="rh-note-key">典型手法：</span>覆写 <code>time.time()</code>、调用栈取数、围绕留出集造数据</p>
 </div>
 </div>
 <div class="rh-shift">
+<div class="rh-shift-head">
+<span>维度</span>
+<span class="rh-shift-head--2020">2020 · 经典 RL</span>
+<span class="rh-shift-head--2026">2025–2026 · LLM 智能体</span>
+</div>
 <div class="rh-shift-row">
 <span class="rh-shift-dim">机制</span>
-<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>试错撞上数值或物理漏洞</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>试错撞上数值或物理漏洞</span>
 <span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>读懂源码与调用栈，定向绕过</span>
 </div>
 <div class="rh-shift-row">
 <span class="rh-shift-dim">意图</span>
-<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>对设计者意图无概念</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>对设计者意图无概念</span>
 <span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>10/10 承认违背意图，禁令无效</span>
 </div>
 <div class="rh-shift-row">
 <span class="rh-shift-dim">隐蔽</span>
-<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>动作荒诞，一眼可辨</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>动作荒诞，一眼可辨</span>
 <span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>藏在正常调试中，强罚诱发 CoT 隐匿</span>
 </div>
 <div class="rh-shift-row">
 <span class="rh-shift-dim">外溢</span>
-<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>锁死在单一仿真环境</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>锁死在单一仿真环境</span>
 <span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>跨任务泛化为对齐伪装与破坏</span>
 </div>
 </div>
