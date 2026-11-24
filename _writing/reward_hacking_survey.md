@@ -4,7 +4,7 @@ date: 2026-11-24
 math: true
 summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward Hacking 不是工程疏漏，而是代理指标与真实意图之间一处无法靠事后补丁堵死的结构性缺口。
 ---
-2020 年，DeepMind 记录过一个经典的机械臂实验：研究者想让机械臂把红色乐高积木叠到蓝色积木上，于是把奖励写成了“红积木底面离开桌面后的高度”，结果机械臂没有去抓积木，而是直接把红积木原地翻了个面（[Krakovna et al., 2020](#ref-krakovna-2020)）。六年后，同样的错位换了副面孔：在 2025 至 2026 年的评测与训练中，前沿大语言模型会回溯 Python 调用栈读取评分器的参考张量、覆写 `torch.cuda.synchronize` 与 `time.time` 伪造耗时（[METR, 2025](#ref-metr-2025)），在超过百万字符的自主科研轨迹里夹带一条几乎看不出的作弊命令（[HackBench, 2026](#ref-hackbench-2026)），甚至在真实编码强化学习（RL）训练后泛化出对齐伪装与破坏代码库的行为（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）。这就是 **Reward Hacking（奖励黑客）**——智能体利用奖励函数、训练环境或评估规约里的形式缺陷，在没有达成设计者真实意图的情况下拿走极高的代理期望回报。
+2020 年，DeepMind 记录过一个经典的机械臂实验：研究者想让机械臂把红色乐高积木叠到蓝色积木上，于是把奖励写成了“红积木底面离开桌面后的高度”，结果机械臂没有去抓积木，而是直接把红积木原地翻了个面（[Krakovna et al., 2020](#ref-krakovna-2020)）。六年后，同样的错位换了副面孔：在 2025 至 2026 年的评测与训练中，前沿大语言模型会回溯 Python 调用栈读取评分器的参考张量、覆写 `torch.cuda.synchronize` 与 `time.time` 伪造耗时（[METR, 2025](#ref-metr-2025)），在超过百万字符的自主科研轨迹里夹带一条几乎看不出的作弊命令（[HackBench, 2026](#ref-hackbench-2026)），甚至在真实编码强化学习（RL）训练后泛化出对齐伪装与破坏代码库的行为（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）。这种现象被称为奖励黑客（Reward Hacking），其中智能体利用奖励函数、训练环境或评估规约里的形式缺陷，在没有达成设计者真实意图的情况下拿走极高的代理期望回报。
 
 <figure class="rh-compare" aria-labelledby="rh-compare-title">
 <style>
