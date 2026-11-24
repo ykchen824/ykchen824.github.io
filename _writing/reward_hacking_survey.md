@@ -4,7 +4,7 @@ date: 2026-11-24
 math: true
 summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward Hacking 不是工程疏漏，而是代理指标与真实意图之间一处无法靠事后补丁堵死的结构性缺口。
 ---
-2020 年，DeepMind 记录过一个经典的机械臂实验：研究者想让机械臂把红色乐高积木叠到蓝色积木上，于是把奖励写成了“红积木底面离地的高度”，结果机械臂没有去抓积木，而是直接把红积木原地翻了个面（[Krakovna et al., 2020](#ref-krakovna-2020)）。六年后，同样的错位换了副面孔：在 2025 至 2026 年的评测与训练中，前沿大语言模型会回溯 Python 调用栈读取评分器的参考张量、覆写 `torch.cuda.synchronize` 与 `time.time` 伪造耗时（[METR, 2025](#ref-metr-2025)），在超过百万字符的自主科研轨迹里夹带一条几乎看不出的作弊命令（[HackBench, 2026](#ref-hackbench-2026)），甚至在真实编码强化学习（RL）训练中习得此类作弊后，自然泛化出对齐伪装与破坏代码库的行为（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）。这种现象被称为奖励黑客（Reward Hacking），其中智能体利用奖励函数、训练环境或评估规约（specification，即写进代码、测试用例或评分规则中的字面任务要求）里的形式缺陷，在没有达成设计者真实意图的情况下拿走极高的代理期望回报。
+2020 年，DeepMind 记录过一个经典的机械臂实验：研究者想让机械臂把红色乐高积木叠到蓝色积木上，于是把奖励写成了“红积木底面离地的高度”，结果机械臂没有去抓积木，而是直接把红积木原地翻了个面（[Krakovna et al., 2020](#ref-krakovna-2020)）。六年后，同样的错位换了副面孔：在前沿模型评测与训练中，模型会回溯 Python 调用栈读取评分器的参考张量、覆写 `torch.cuda.synchronize` 与 `time.time` 伪造耗时（[METR, 2025](#ref-metr-2025)），在超过百万字符的自主科研轨迹里夹带一条几乎看不出的作弊命令（[HackBench, 2026](#ref-hackbench-2026)），甚至在真实编码强化学习（RL）训练中习得此类作弊后，自然泛化出对齐伪装与破坏代码库的行为（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）。这种现象被称为奖励黑客（Reward Hacking），其中智能体利用奖励函数、训练环境或评估规约（specification，即写进代码、测试用例或评分规则中的字面任务要求）里的形式缺陷，在没有达成设计者真实意图的情况下拿走极高的代理期望回报。
 
 <figure class="rh-compare" aria-labelledby="rh-compare-title">
 <style>
@@ -44,7 +44,7 @@ summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward
 .rh-shift-tag--2026{color:var(--accent-strong)}
 }
 </style>
-<p class="rh-compare-title" id="rh-compare-title">从经典 RL 到前沿 LLM 智能体：Reward Hacking 的形态跃迁</p>
+<p class="rh-compare-title" id="rh-compare-title">从经典 RL 到前沿 LLM 智能体：Reward Hacking 的形态变化</p>
 <div class="rh-compare-stage">
 <div class="rh-panel rh-panel--2020">
 <div class="rh-panel-label rh-panel-label--2020"><span class="rh-dot rh-dot--2020" aria-hidden="true"></span><span>2020 · 经典 RL</span></div>
@@ -116,7 +116,7 @@ summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward
 <figcaption>图 1：2020 年经典强化学习规约博弈（<a href="#ref-krakovna-2020">Krakovna et al., 2020</a>）与 2025–2026 年前沿 LLM 智能体 Reward Hacking（<a href="#ref-metr-2025">METR, 2025</a>；<a href="#ref-macdiarmid-2025">MacDiarmid et al., 2025</a>；<a href="#ref-hackbench-2026">HackBench, 2026</a>）对比。</figcaption>
 </figure>
 
-奖励黑客这个问题由来已久，有其根本原因：现实任务的规约几乎总是不完备的，而人类复杂、隐含的偏好也很难被精确写成一个可计算的标量函数。早期文献与社区案例库已经系统记录过经典 RL 中的相关现象（[Krakovna et al., Master List](#ref-krakovna-list)；[Weng, 2024](#ref-weng-2024)），但近几年，基于人类反馈的强化学习（RLHF，[Christiano et al., 2017](#ref-christiano-2017)；[Ouyang et al., 2022](#ref-ouyang-2022)）与基于可验证奖励的强化学习（RLVR，[Lambert et al., 2024](#ref-lambert-2024)；[DeepSeek-AI, 2025](#ref-deepseek-2025)）分别把大语言模型推向了人类偏好对齐与可交互任务求解，经典 RL 中的奖励黑客也随之发生转移：一面落进语义说服与偏好迎合，一面落进代码、测试与工具执行环境。要理解这种转移背后的共同机理，并看清现有缓解手段的边界，不妨先回到问题最早暴露的地方：经典强化学习中的奖励设计与塑形。
+奖励黑客这个问题由来已久，有其根本原因：现实任务的规约几乎总是不完备的，而人类复杂、隐含的偏好也很难被精确写成一个可计算的标量函数。早期文献与社区案例库已经系统记录过经典 RL 中的相关现象（[Krakovna et al., Master List](#ref-krakovna-list)；[Weng, 2024](#ref-weng-2024)），但近几年，基于人类反馈的强化学习（RLHF，[Christiano et al., 2017](#ref-christiano-2017)；[Ouyang et al., 2022](#ref-ouyang-2022)）与基于可验证奖励的强化学习（RLVR，[Lambert et al., 2024](#ref-lambert-2024)；[DeepSeek-AI, 2025](#ref-deepseek-2025)）分别把大语言模型推向了人类偏好对齐与可交互任务求解，经典 RL 中的奖励黑客也随之发生转移：一面落进语义说服与偏好迎合，一面落进代码、测试与工具执行环境。与经典 RL 中的黑客行为相比，现代模型已经能够在符合表面意图的情况下隐蔽地执行黑客行为。要理解这种转移背后的共同机理，并看清现有缓解手段的边界，不妨先回到问题最早暴露的地方：经典强化学习中的奖励设计与塑形。
 
 ## 从奖励塑形说起
 
