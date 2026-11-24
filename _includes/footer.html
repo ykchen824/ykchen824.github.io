@@ -1,0 +1,16 @@
+{%- comment -%}
+  Site footer, toast container, and shared UI script.
+{%- endcomment -%}
+<footer class="site-footer" lang="en">
+  <div class="footer-inner">
+    <span>Yongkang Chen &ndash; Last updated {{ site.time | date: "%d %B %Y" }}</span>
+    <div class="footer-links">
+      <a href="{{ '/feed.xml' | relative_url }}" type="application/atom+xml">RSS</a>
+      <a href="#main">Back to top &uarr;</a>
+    </div>
+  </div>
+</footer>
+
+<div id="site-toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="{{ '/assets/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

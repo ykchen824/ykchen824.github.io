@@ -1,0 +1,22 @@
+{%- comment -%}
+  Sticky translucent navigation bar and ambient canvas shared by every page.
+  Usage: {% include header.html active="about" %}  (about | publications | writing | fails)
+{%- endcomment -%}
+<canvas class="cs-bg" aria-hidden="true"></canvas>
+<div class="nav-backdrop" aria-hidden="true"></div>
+<header class="site-nav" lang="en">
+  <div class="nav-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">Yongkang Chen</a>
+    <button class="nav-burger" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav-links">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-links" id="site-nav-links" aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}"{% if include.active == "about" %} aria-current="page"{% endif %}>About</a>
+      <a href="{{ '/publications/' | relative_url }}"{% if include.active == "publications" %} aria-current="page"{% endif %}>Publications</a>
+      <a href="{{ '/writing/' | relative_url }}"{% if include.active == "writing" %} aria-current="page"{% endif %}>Writing</a>
+      <a class="nav-feature" href="{{ '/fails/' | relative_url }}"{% if include.active == "fails" %} aria-current="page"{% endif %}>How AI Fails</a>
+    </nav>
+  </div>
+</header>

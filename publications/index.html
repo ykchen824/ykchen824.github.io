@@ -1,0 +1,132 @@
+---
+permalink: /publications/
+title: Publications
+description: Selected publications by Yongkang Chen on LLM safety and alignment, LLM evaluation, and adversarial robustness.
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{ page.description | escape }}" />
+  <title>{{ page.title }} — {{ site.title }}</title>
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ page.title }} — {{ site.title }}" />
+  <meta property="og:description" content="{{ page.description | escape }}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <meta property="og:image" content="{{ '/assets/images/og-card.png' | absolute_url }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yongkang Chen — LLM Safety and Reliability" />
+  <meta name="twitter:card" content="summary_large_image" />
+  {% include head-assets.html %}
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  {% include header.html active="publications" %}
+
+  <main id="main">
+    <div class="main-container">
+      {%- assign pubs = site.data.publications -%}
+      {%- assign safety_count = pubs | where: "topic", "llm-safety" | size -%}
+      {%- assign eval_count = pubs | where: "topic", "llm-evaluation" | size -%}
+      {%- assign adv_count = pubs | where: "topic", "adversarial" | size -%}
+      {%- assign first_author_count = 0 -%}
+      {%- assign ccfa_count = 0 -%}
+      {%- assign ccs_count = 0 -%}
+      {%- assign acl_count = 0 -%}
+      {%- assign emnlp_count = 0 -%}
+      {%- assign icme_count = 0 -%}
+      {%- assign ipm_count = 0 -%}
+      {%- assign trustcom_count = 0 -%}
+      {%- assign award_count = 0 -%}
+      {%- for p in pubs -%}
+        {%- assign first_a = p.authors | split: ", " | first -%}
+        {%- if first_a contains "Yongkang Chen" -%}{%- assign first_author_count = first_author_count | plus: 1 -%}{%- endif -%}
+        {%- if p.tags contains "CCF-A" -%}{%- assign ccfa_count = ccfa_count | plus: 1 -%}{%- endif -%}
+        {%- if p.venue_short contains "CCS" -%}{%- assign ccs_count = ccs_count | plus: 1 -%}{%- endif -%}
+        {%- if p.venue_short contains "ACL" -%}{%- assign acl_count = acl_count | plus: 1 -%}{%- endif -%}
+        {%- if p.venue_short contains "EMNLP" -%}{%- assign emnlp_count = emnlp_count | plus: 1 -%}{%- endif -%}
+        {%- if p.venue_short contains "ICME" -%}{%- assign icme_count = icme_count | plus: 1 -%}{%- endif -%}
+        {%- if p.venue_short contains "IP&M" -%}{%- assign ipm_count = ipm_count | plus: 1 -%}{%- endif -%}
+        {%- if p.venue_short contains "TrustCom" -%}{%- assign trustcom_count = trustcom_count | plus: 1 -%}{%- endif -%}
+        {%- if p.award and p.award != "" -%}{%- assign award_count = award_count | plus: 1 -%}{%- endif -%}
+      {%- endfor -%}
+
+      <header class="page-header page-header--pubs">
+        <div class="page-header-top">
+          <h1>Publications</h1>
+          <a class="inline-link-btn" href="https://scholar.google.com/citations?user=JLikgYwAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar &nearr;</a>
+        </div>
+        <p class="page-header-desc">Research on LLM safety &amp; alignment, LLM evaluation, and adversarial robustness.</p>
+        <div class="venue-strip" aria-label="Venue highlights">
+          {%- if ccs_count > 0 %}<span class="venue-chip">CCS &times;{{ ccs_count }}</span>{% endif -%}
+          {%- if acl_count > 0 %}<span class="venue-chip">ACL &times;{{ acl_count }}</span>{% endif -%}
+          {%- if emnlp_count > 0 %}<span class="venue-chip venue-chip--muted">EMNLP &times;{{ emnlp_count }}</span>{% endif -%}
+          {%- if icme_count > 0 %}<span class="venue-chip venue-chip--muted">ICME &times;{{ icme_count }}</span>{% endif -%}
+          {%- if ipm_count > 0 %}<span class="venue-chip venue-chip--muted">IP&amp;M &times;{{ ipm_count }}</span>{% endif -%}
+          {%- if trustcom_count > 0 %}<span class="venue-chip venue-chip--muted">TrustCom &times;{{ trustcom_count }}</span>{% endif -%}
+          {%- if award_count > 0 %}<span class="venue-chip venue-chip--award">Best Paper &times;{{ award_count }}</span>{% endif -%}
+        </div>
+      </header>
+
+      <section class="pubs-section" aria-label="Publication list">
+        <div class="pub-controls">
+          <div class="filter-bar" data-pub-filters role="group" aria-label="Filter publications by topic or distinction">
+            <button class="filter-pill is-active" type="button" data-filter="all" aria-pressed="true">All <span class="filter-count">{{ pubs.size }}</span></button>
+            <button class="filter-pill" type="button" data-filter="llm-safety" aria-pressed="false">LLM Safety &amp; Alignment <span class="filter-count">{{ safety_count }}</span></button>
+            <button class="filter-pill" type="button" data-filter="llm-evaluation" aria-pressed="false">LLM Evaluation <span class="filter-count">{{ eval_count }}</span></button>
+            <button class="filter-pill" type="button" data-filter="adversarial" aria-pressed="false">Adversarial Robustness <span class="filter-count">{{ adv_count }}</span></button>
+            <button class="filter-pill" type="button" data-filter="first-author" aria-pressed="false">First Author <span class="filter-count">{{ first_author_count }}</span></button>
+            <button class="filter-pill" type="button" data-filter="ccf-a" aria-pressed="false">CCF-A <span class="filter-count">{{ ccfa_count }}</span></button>
+            <button class="filter-pill" type="button" data-filter="award" aria-pressed="false">Best Paper <span class="filter-count">{{ award_count }}</span></button>
+          </div>
+
+          <div class="pub-search-row">
+            <label class="pub-search-field">
+              <svg class="pub-search-icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="7" cy="7" r="4.8" />
+                <path d="m10.7 10.7 3.1 3.1" stroke-linecap="round" />
+              </svg>
+              <span class="visually-hidden">Search publications</span>
+              <input type="search" class="pub-search-input" data-pub-search placeholder="Search title, author, venue, or year..." autocomplete="off" />
+            </label>
+            <div class="pub-meta-info">
+              <span class="pub-count-label" data-pub-count aria-live="polite">{{ pubs.size }} papers</span>
+              <button class="inline-link-btn pub-reset-btn" type="button" data-pub-reset hidden>Reset</button>
+              <span class="pub-meta-sep" aria-hidden="true">&middot;</span>
+              <span class="pub-legend"><sup>*</sup> corresponding author &middot; CCF-A/B/C ranking</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="pub-empty" data-pub-empty hidden>
+          No publications match the current filter.
+          <button class="inline-link-btn" type="button" data-pub-reset>Reset filters</button>
+        </p>
+
+        <ol class="pub-list" reversed>
+          {%- assign pub_years = pubs | group_by: "year" %}
+          {%- for group in pub_years %}
+          <li class="pub-year-group">
+            <h2 class="pub-year">{{ group.name }}</h2>
+            <ul class="pub-year-items">
+              {%- for pub in group.items %}
+              {% include publication.html pub=pub %}
+              {%- endfor %}
+            </ul>
+          </li>
+          {%- endfor %}
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  {% include footer.html %}
+</body>
+
+</html>

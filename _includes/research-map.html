@@ -1,0 +1,113 @@
+{%- comment -%}
+  Interactive subway-style Research Map rendered dynamically from _data/publications.yml.
+  Usage: {% include research-map.html show_all_link=true %}
+{%- endcomment -%}
+{%- assign pubs = site.data.publications -%}
+{%- assign safety_pubs = pubs | where: "topic", "llm-safety" -%}
+{%- assign eval_pubs = pubs | where: "topic", "llm-evaluation" -%}
+{%- assign adv_pubs = pubs | where: "topic", "adversarial" -%}
+{%- assign pub_years_sorted = pubs | map: "year" | sort -%}
+{%- assign min_year = pub_years_sorted | first -%}
+{%- assign max_year = pub_years_sorted | last -%}
+<section class="page-section" id="research-map" aria-labelledby="research-map-heading">
+  <div class="main-container">
+    <div class="rmap-head">
+      <div class="rmap-head-title">
+        <h2 id="research-map-heading">Research map</h2>
+        <span class="rmap-count">{{ pubs.size }} papers in 3 topics, {{ min_year }} to {{ max_year }}</span>
+      </div>
+      {%- if include.show_all_link %}
+      <a class="inline-link-btn" href="{{ '/publications/' | relative_url }}">All publications &rarr;</a>
+      {%- endif %}
+    </div>
+
+    <div class="rmap-shell">
+      <div class="rmap-columns">
+        <div aria-hidden="true"></div>
+        <div class="rmap-col-head">
+          <h3 class="rmap-col-title">LLM Safety &amp; Alignment <span class="rmap-col-num">{{ safety_pubs.size }}</span></h3>
+          <p class="rmap-col-desc">Automated red teaming, jailbreaks, and reward-guided safety alignment.</p>
+        </div>
+        <div class="rmap-col-head">
+          <h3 class="rmap-col-title">LLM Evaluation <span class="rmap-col-num">{{ eval_pubs.size }}</span></h3>
+          <p class="rmap-col-desc">Safety evaluation consistency, AI-assisted testing, and multi-agent QA.</p>
+        </div>
+        <div class="rmap-col-head">
+          <h3 class="rmap-col-title">Adversarial Robustness <span class="rmap-col-num">{{ adv_pubs.size }}</span></h3>
+          <p class="rmap-col-desc">Adversarial attacks, input-space defenses, and temporal drift robustness.</p>
+        </div>
+      </div>
+
+      <div class="rmap-canvas" id="rmap-canvas"{% if include.show_all_link %} data-pubs-base="{{ '/publications/' | relative_url }}"{% endif %}></div>
+
+      <div class="rmap-footer-box">
+        <div class="rmap-key" id="rmap-key" aria-label="Research map legend">
+          <span class="rmap-key-item"><span class="rmap-key-dot"></span><span>One paper, in its topic and year</span></span>
+          <span class="rmap-key-item"><span class="rmap-key-rail"></span><span>Papers in one line of work</span></span>
+          <span class="rmap-key-item"><span class="rmap-key-ring"></span><span>CCF-A or Best Paper award</span></span>
+          <span class="rmap-key-item"><span class="rmap-key-dash"></span><span>Related work elsewhere, shown on hover</span></span>
+        </div>
+        <div class="rmap-card" id="rmap-card" aria-live="polite">
+          <div class="rmap-card-head">
+            <h3 class="rmap-card-title" id="rmap-card-title"></h3>
+            <span class="venue-chip" id="rmap-card-venue"></span>
+          </div>
+          <p class="rmap-card-meta" id="rmap-card-meta"></p>
+        </div>
+      </div>
+    </div>
+
+    {%- assign fallback_base = "" -%}
+    {%- if include.show_all_link -%}{%- assign fallback_base = '/publications/' | relative_url -%}{%- endif -%}
+    <div class="rmap-mobile" aria-label="Research map by topic">
+      <div class="rmap-mobile-group">
+        <h3>LLM Safety &amp; Alignment ({{ safety_pubs.size }})</h3>
+        <p>Automated red teaming, jailbreaks, and reward-guided safety alignment.</p>
+        <ul class="rmap-mobile-list">
+          {%- for p in safety_pubs %}
+          <li><span class="rmap-mobile-year">{{ p.year }}</span>{% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener noreferrer">{{ p.short | default: p.title }}</a>{% else %}<a href="{{ fallback_base }}#pub-{{ p.id }}">{{ p.short | default: p.title }}</a>{% endif %}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="rmap-mobile-group">
+        <h3>LLM Evaluation ({{ eval_pubs.size }})</h3>
+        <p>Safety evaluation consistency, AI-assisted testing, and multi-agent QA.</p>
+        <ul class="rmap-mobile-list">
+          {%- for p in eval_pubs %}
+          <li><span class="rmap-mobile-year">{{ p.year }}</span>{% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener noreferrer">{{ p.short | default: p.title }}</a>{% else %}<a href="{{ fallback_base }}#pub-{{ p.id }}">{{ p.short | default: p.title }}</a>{% endif %}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="rmap-mobile-group">
+        <h3>Adversarial Robustness ({{ adv_pubs.size }})</h3>
+        <p>Adversarial attacks, input-space defenses, and temporal drift robustness.</p>
+        <ul class="rmap-mobile-list">
+          {%- for p in adv_pubs %}
+          <li><span class="rmap-mobile-year">{{ p.year }}</span>{% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener noreferrer">{{ p.short | default: p.title }}</a>{% else %}<a href="{{ fallback_base }}#pub-{{ p.id }}">{{ p.short | default: p.title }}</a>{% endif %}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="research-map-data">[
+{%- for p in pubs %}
+  {
+    "id": {{ p.id | jsonify }},
+    "year": {{ p.year | jsonify }},
+    "title": {{ p.title | jsonify }},
+    "short": {{ p.short | default: p.title | jsonify }},
+    "sub": {{ p.sub | default: "" | jsonify }},
+    "url": {{ p.url | default: "" | jsonify }},
+    "authors": {{ p.authors | jsonify }},
+    "venue": {{ p.venue | jsonify }},
+    "venue_short": {{ p.venue_short | default: "" | jsonify }},
+    "topic": {{ p.topic | default: "adversarial" | jsonify }},
+    "highlight": {% if p.highlight %}true{% else %}false{% endif %},
+    "award": {{ p.award | default: "" | jsonify }},
+    "related": {% if p.related %}{{ p.related | jsonify }}{% else %}[]{% endif %}
+  }{% unless forloop.last %},{% endunless %}
+{%- endfor %}
+]</script>
+<script src="{{ '/assets/research-map.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

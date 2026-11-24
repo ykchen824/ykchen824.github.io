@@ -1,0 +1,30 @@
+# Homepage news. Add an entry anywhere: entries are sorted newest first.
+# The newest 4 entries are shown by default, with "(see all)" expanding the rest.
+# Optional fields: `badge` (inline chip) and `badge_kind` (venue | award).
+# Copy-ready examples are in _templates/news.yml.
+
+- date: 2026-10-30
+  badge: CCS'26
+  badge_kind: venue
+  text: "Our paper <a href=\"https://dl.acm.org/doi/10.1145/3830454.3846658\" target=\"_blank\" rel=\"noopener noreferrer\"><em>As Seasons Change: Temporal Feature Powers Malware Classification</em></a> was accepted to ACM CCS 2026."
+
+- date: 2026-07-06
+  text: "Joined the <strong>National Institute of Metrology, China</strong> as a Research Assistant in AI Metrology."
+
+- date: 2026-06-30
+  badge: Excellent Graduate
+  badge_kind: award
+  text: "Received my Ph.D. in Computer Science from the Academy of Military Sciences and was named an Excellent Graduate."
+
+- date: 2026-06-08
+  text: "Started a research internship on agent safety at the China Academy of Industrial Internet."
+
+- date: 2026-05-14
+  badge: IP&amp;M'26
+  badge_kind: venue
+  text: "Our paper <a href=\"https://www.sciencedirect.com/science/article/abs/pii/S0306457326001147\" target=\"_blank\" rel=\"noopener noreferrer\"><em>DataFactory: Collaborative Multi-Agent Framework for Advanced Table Question Answering</em></a> was accepted to <em>Information Processing &amp; Management</em>."
+
+- date: 2025-08-20
+  badge: EMNLP'25
+  badge_kind: venue
+  text: "Our paper <a href=\"https://aclanthology.org/2025.emnlp-main.49/\" target=\"_blank\" rel=\"noopener noreferrer\"><em>Refusal-Aware Red Teaming: Exposing Inconsistency in Safety Evaluations</em></a> was accepted to the EMNLP 2025 Main Conference."

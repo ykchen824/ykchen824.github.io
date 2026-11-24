@@ -1,0 +1,263 @@
+# Selected publications, newest first. Entries are grouped by `year` in file
+# order, so keep the file sorted. See _templates/publication.yml for fields.
+- id: as-seasons-change
+  year: 2026
+  title: "As Seasons Change: Temporal Feature Powers Malware Classification"
+  short: As Seasons Change
+  sub: malware drift
+  url: https://dl.acm.org/doi/10.1145/3830454.3846658
+  authors: Jianwen Tian, Debin Gao, Yongkang Chen, Wei Kong, David Lo, Haoyu Ma, Zhi Wang.
+  venue: Proceedings of the 2026 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2026.
+  venue_short: CCS'26
+  topic: adversarial
+  highlight: true
+  related: [ai-sec-testing]
+  tags: [CCF-A]
+  bib: |
+    @inproceedings{tian2026seasons,
+      title={As Seasons Change: Temporal Feature Powers Malware Classification},
+      author={Tian, Jianwen and Gao, Debin and Chen, Yongkang and Kong, Wei and Lo, David and Ma, Haoyu and Wang, Zhi},
+      booktitle={Proceedings of the 2026 ACM SIGSAC Conference on Computer and Communications Security (CCS)},
+      year={2026},
+      doi={10.1145/3830454.3846658}
+    }
+
+- id: datafactory
+  year: 2026
+  title: "DataFactory: Collaborative Multi-Agent Framework for Advanced Table Question Answering"
+  short: DataFactory
+  sub: multi-agent QA
+  url: https://www.sciencedirect.com/science/article/abs/pii/S0306457326001147
+  authors: Tong Wang, Chi Jin, Yongkang Chen, Huan Deng, Xiaohui Kuang, Gang Zhao*.
+  venue: Information Processing & Management, 63 (6), 104723, 2026.
+  venue_short: IP&M'26
+  topic: llm-evaluation
+  related: [refusal-aware]
+  tags: [CCF-B]
+  bib: |
+    @article{wang2026datafactory,
+      title={DataFactory: Collaborative Multi-Agent Framework for Advanced Table Question Answering},
+      author={Wang, Tong and Jin, Chi and Chen, Yongkang and Deng, Huan and Kuang, Xiaohui and Zhao, Gang},
+      journal={Information Processing \& Management},
+      volume={63},
+      number={6},
+      pages={104723},
+      year={2026}
+    }
+
+- id: better-red-teaming
+  year: 2025
+  title: Better Red Teaming via Searching with Large Language Model
+  short: Search Red Teaming
+  sub: LLM search
+  url: https://aclanthology.org/2025.findings-acl.257/
+  authors: Yongkang Chen, Chongyang Zhao, Jianwen Tian, Guiling Cao, Hu Li, Xiaohui Kuang*.
+  venue: "Findings of the Association for Computational Linguistics: ACL 2025, 4968–4984, 2025."
+  venue_short: ACL'25
+  topic: llm-safety
+  highlight: true
+  related: [refusal-aware, many-shot-jb]
+  tags: [CCF-A]
+  bib: |
+    @inproceedings{chen2025better,
+      title={Better Red Teaming via Searching with Large Language Model},
+      author={Chen, Yongkang and Zhao, Chongyang and Tian, Jianwen and Cao, Guiling and Li, Hu and Kuang, Xiaohui},
+      booktitle={Findings of the Association for Computational Linguistics: ACL 2025},
+      pages={4968--4984},
+      year={2025},
+      url={https://aclanthology.org/2025.findings-acl.257/}
+    }
+
+- id: refusal-aware
+  year: 2025
+  title: "Refusal-Aware Red Teaming: Exposing Inconsistency in Safety Evaluations"
+  short: Refusal-Aware
+  sub: safety evaluation
+  url: https://aclanthology.org/2025.emnlp-main.49/
+  authors: Yongkang Chen, Xiaohu Du, Xiaotian Zou, Chongyang Zhao, Huan Deng, Hu Li, Xiaohui Kuang*.
+  venue: Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, 2025.
+  venue_short: EMNLP'25
+  topic: llm-evaluation
+  related: [better-red-teaming, ai-sec-testing, datafactory]
+  tags: [CCF-B]
+  bib: |
+    @inproceedings{chen2025refusal,
+      title={Refusal-Aware Red Teaming: Exposing Inconsistency in Safety Evaluations},
+      author={Chen, Yongkang and Du, Xiaohu and Zou, Xiaotian and Zhao, Chongyang and Deng, Huan and Li, Hu and Kuang, Xiaohui},
+      booktitle={Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+      year={2025},
+      url={https://aclanthology.org/2025.emnlp-main.49/}
+    }
+
+- id: flowjd
+  year: 2025
+  title: "FlowJD: Your Imagination Can Help You Jailbreak in Visual Language Models"
+  short: FlowJD
+  sub: VLM jailbreak
+  url: https://ieeexplore.ieee.org/document/11209893
+  authors: Xiaotian Zou, Yongkang Chen, Qianqian Han, Ke Li*.
+  venue: 2025 IEEE International Conference on Multimedia and Expo (ICME), 1–6, 2025.
+  venue_short: ICME'25
+  topic: llm-safety
+  related: [many-shot-jb, dynamic-loss]
+  tags: [CCF-B]
+  bib: |
+    @inproceedings{zou2025flowjd,
+      title={FlowJD: Your Imagination Can Help You Jailbreak in Visual Language Models},
+      author={Zou, Xiaotian and Chen, Yongkang and Han, Qianqian and Li, Ke},
+      booktitle={2025 IEEE International Conference on Multimedia and Expo (ICME)},
+      pages={1--6},
+      year={2025}
+    }
+
+- id: many-shot-jb
+  year: 2025
+  title: Reward-Guided Many-Shot Jailbreaking
+  short: Many-Shot Jailbreak
+  sub: reward-guided
+  url: https://dl.acm.org/doi/10.1007/978-981-95-3343-5_32
+  authors: Yongkang Chen, Xiaotian Zou, Tong Wang, Jianwen Tian, Hu Li, Xiaohui Kuang*.
+  venue: "Natural Language Processing and Chinese Computing: 14th National CCF Conference, NLPCC 2025, Urumqi, China, August 7–9, 2025, Proceedings, Part I."
+  venue_short: NLPCC'25
+  topic: llm-safety
+  highlight: true
+  award: Best Paper
+  related: [better-red-teaming, flowjd]
+  tags: [CCF-C, Best Paper]
+  bib: |
+    @inproceedings{chen2025reward,
+      title={Reward-Guided Many-Shot Jailbreaking},
+      author={Chen, Yongkang and Zou, Xiaotian and Wang, Tong and Tian, Jianwen and Li, Hu and Kuang, Xiaohui},
+      booktitle={Natural Language Processing and Chinese Computing (NLPCC)},
+      year={2025},
+      doi={10.1007/978-981-95-3343-5_32}
+    }
+
+- id: dynamic-loss
+  year: 2024
+  title: Dynamic Loss Yielding More Transferable Targeted Adversarial Examples
+  short: Dynamic Loss
+  sub: transferable attack
+  url: https://www.sciencedirect.com/science/article/abs/pii/S0925231224005253
+  authors: Ming Zhang, Yongkang Chen, Hu Li, Cheng Qian, Xiaohui Kuang.
+  venue: Neurocomputing, 590, 127754, 2024.
+  venue_short: Neurocomputing'24
+  topic: adversarial
+  related: [flowjd, fooling-examples]
+  tags: [CCF-C]
+  bib: |
+    @article{zhang2024dynamic,
+      title={Dynamic Loss Yielding More Transferable Targeted Adversarial Examples},
+      author={Zhang, Ming and Chen, Yongkang and Li, Hu and Qian, Cheng and Kuang, Xiaohui},
+      journal={Neurocomputing},
+      volume={590},
+      pages={127754},
+      year={2024}
+    }
+
+- id: confidence-denoising
+  year: 2024
+  title: Enhancing Adversarial Robustness through Self-Supervised Confidence-Based Denoising
+  short: Confidence Denoising
+  sub: robust defense
+  url: https://ieeexplore.ieee.org/document/10944963
+  authors: Yongkang Chen, Tong Wang, Wei Kong, Taotao Gu, Guiling Cao, Xiaohui Kuang*.
+  venue: 2024 IEEE 23rd International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom), 2024.
+  venue_short: TrustCom'24
+  topic: adversarial
+  related: [dynamic-transforms]
+  tags: [CCF-C]
+  bib: |
+    @inproceedings{chen2024enhancing,
+      title={Enhancing Adversarial Robustness through Self-Supervised Confidence-Based Denoising},
+      author={Chen, Yongkang and Wang, Tong and Kong, Wei and Gu, Taotao and Cao, Guiling and Kuang, Xiaohui},
+      booktitle={2024 IEEE 23rd International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom)},
+      year={2024}
+    }
+
+- id: ai-sec-testing
+  year: 2024
+  lang: zh-CN
+  title: AI-Assisted Security Testing Techniques for Intelligent Systems
+  short: AI Security Testing
+  sub: Evaluation
+  url: http://znaq.ijournals.cn/znaq/article/abstract/20240701001
+  authors: Yongkang Chen, Hu Li, Chongyang Zhao, Xiaohui Kuang*.
+  venue: Artificial Intelligence Security, 3 (4), 72, 2024.
+  venue_short: Artificial Intelligence Security'24
+  topic: llm-evaluation
+  highlight: true
+  award: Best Paper
+  related: [refusal-aware, as-seasons-change]
+  tags: [Best Paper]
+  bib: |
+    @article{chen2024aisecurity,
+      title={AI-Assisted Security Testing Techniques for Intelligent Systems},
+      author={Chen, Yongkang and Li, Hu and Zhao, Chongyang and Kuang, Xiaohui},
+      journal={Artificial Intelligence Security},
+      volume={3},
+      number={4},
+      pages={72},
+      year={2024}
+    }
+
+- id: fooling-examples
+  year: 2023
+  title: "Fooling Examples: Another Intriguing Property of Neural Networks"
+  short: Fooling Examples
+  sub: neural properties
+  url: https://www.mdpi.com/1424-8220/23/14/6378
+  authors: Ming Zhang, Yongkang Chen, Cheng Qian*.
+  venue: Sensors, 23 (14), 6378, 2023.
+  venue_short: Sensors'23
+  topic: adversarial
+  related: [dynamic-loss, practical-adv]
+  bib: |
+    @article{zhang2023fooling,
+      title={Fooling Examples: Another Intriguing Property of Neural Networks},
+      author={Zhang, Ming and Chen, Yongkang and Qian, Cheng},
+      journal={Sensors},
+      volume={23},
+      number={14},
+      pages={6378},
+      year={2023}
+    }
+
+- id: dynamic-transforms
+  year: 2022
+  title: Dynamic and Diverse Transformations for Defending Against Adversarial Examples
+  short: Dynamic Transforms
+  sub: input defense
+  url: https://ieeexplore.ieee.org/document/10063418
+  authors: Yongkang Chen, Ming Zhang*, Jin Li, Xiaohui Kuang, Xuhong Zhang, Han Zhang.
+  venue: 2022 IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom), 2022.
+  venue_short: TrustCom'22
+  topic: adversarial
+  related: [confidence-denoising, practical-adv]
+  tags: [CCF-C]
+  bib: |
+    @inproceedings{chen2022dynamic,
+      title={Dynamic and Diverse Transformations for Defending Against Adversarial Examples},
+      author={Chen, Yongkang and Zhang, Ming and Li, Jin and Kuang, Xiaohui and Zhang, Xuhong and Zhang, Han},
+      booktitle={2022 IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom)},
+      year={2022}
+    }
+
+- id: practical-adv
+  year: 2022
+  title: "Adversarial Attacks and Defenses in Image Classification: A Practical Perspective"
+  short: Attacks & Defenses
+  sub: practical survey
+  url: https://ieeexplore.ieee.org/document/9886997
+  authors: Yongkang Chen, Ming Zhang, Jin Li, Xiaohui Kuang.
+  venue: 2022 7th International Conference on Image, Vision and Computing (ICIVC), 2022.
+  venue_short: ICIVC'22
+  topic: adversarial
+  related: [dynamic-transforms, fooling-examples]
+  bib: |
+    @inproceedings{chen2022adversarial,
+      title={Adversarial Attacks and Defenses in Image Classification: A Practical Perspective},
+      author={Chen, Yongkang and Zhang, Ming and Li, Jin and Kuang, Xiaohui},
+      booktitle={2022 7th International Conference on Image, Vision and Computing (ICIVC)},
+      year={2022}
+    }

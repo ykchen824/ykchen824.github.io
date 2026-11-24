@@ -1,0 +1,5 @@
+{%- assign item = include.item -%}
+<li class="news-entry"{% if include.extra %} data-news-extra hidden{% endif %}>
+  <time class="news-date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b'%y" }}</time>
+  <p class="news-text">{%- if item.badge %}<span class="venue-chip{% if item.badge_kind == 'award' %} venue-chip--award{% endif %}">{{ item.badge }}</span> {% endif %}{{ item.text }}</p>
+</li>

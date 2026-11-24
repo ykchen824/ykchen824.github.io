@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="关于人工智能测量、能力边界与安全的短文与笔记。" />
+<title lang="en">Writing — {{ site.title }}</title>
+<link rel="canonical" href="{{ page.url | absolute_url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Writing — {{ site.title }}" />
+<meta property="og:description" content="关于人工智能测量、能力边界与安全的短文与笔记。" />
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="og:image" content="{{ '/assets/images/og-card.png' | absolute_url }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Yongkang Chen — LLM Safety and Reliability" />
+<meta name="twitter:card" content="summary_large_image" />
+{% include head-assets.html %}
+</head>
+<body>
+<a class="skip" href="#main" lang="en">Skip to content</a>
+
+{% include header.html active="writing" %}
+
+<main id="main" class="writing-main">
+  <div class="main-container">
+    <header class="page-header">
+      <h1 id="writing-title" lang="en">Writing</h1>
+      <p class="page-header-desc">关于人工智能测量、能力边界与安全的短文与笔记。</p>
+    </header>
+
+    <section aria-labelledby="writing-title">
+      {% assign posts = site.writing | sort: "date" | reverse %}
+      {% if posts.size > 0 %}
+        <details class="archive-tools" data-archive-tools hidden>
+          <summary>搜索文章</summary>
+          <form class="archive-form writing-search" role="search" aria-label="搜索文章">
+            <label>
+              <span class="visually-hidden">搜索文章</span>
+              <input type="search" name="query" placeholder="输入标题、摘要或关键词" />
+            </label>
+            <button type="reset" disabled>清除搜索</button>
+          </form>
+        </details>
+        <p class="archive-results" data-archive-status data-empty-message="没有符合条件的文章。" data-count-message="显示 {matches} 篇文章，共 {total} 篇" role="status" aria-atomic="true"></p>
+      {% endif %}
+      <div class="writing-list" data-archive-list role="group" aria-label="文章列表">
+        {% if posts.size == 0 %}
+        <p class="writing-empty">暂无文章。</p>
+        {% else %}
+          {% assign years = posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+          {% for year in years %}
+            <section class="writing-year" aria-labelledby="writing-year-{{ year.name }}">
+              <h2 class="writing-year-heading" id="writing-year-{{ year.name }}">{{ year.name }}</h2>
+              <ul class="writing-year-entries" role="list">
+                {% for post in year.items %}
+                <li data-archive-entry data-archive-date="{{ post.date | date: '%Y-%m-%d' }}" data-archive-keywords="{{ post.keywords | join: ' ' | escape }}">
+                  <article class="writing-entry" lang="{{ post.lang | default: 'zh-CN' }}">
+                    <a class="writing-entry-title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                    {% if post.summary %}<p class="writing-summary">{{ post.summary | escape }}</p>{% endif %}
+                  </article>
+                </li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </section>
+  </div>
+</main>
+
+{% if posts.size > 0 %}
+<script src="{{ '/assets/archive-search.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{% endif %}
+{% include footer.html %}
+</body>
+</html>

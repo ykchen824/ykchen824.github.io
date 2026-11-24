@@ -1,0 +1,35 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="utf-8"?>
+{%- assign entries = site.writing | concat: site.fails | sort: "date" | reverse -%}
+{%- assign updated = entries.first.date | default: site.time -%}
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN" xml:base="{{ '/' | absolute_url }}">
+  <id>{{ '/' | absolute_url }}</id>
+  <title type="text">{{ site.title | xml_escape }}</title>
+  <subtitle type="text">{{ site.description | xml_escape }}</subtitle>
+  <updated>{{ updated | date_to_xmlschema }}</updated>
+  <author>
+    <name>{{ site.author | xml_escape }}</name>
+    <uri>{{ '/' | absolute_url }}</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="{{ '/feed.xml' | absolute_url }}" />
+  <link rel="alternate" type="text/html" href="{{ '/' | absolute_url }}" />
+  <generator uri="https://jekyllrb.com/">Jekyll</generator>
+{%- for entry in entries limit: 20 %}
+  <entry>
+    <id>{{ entry.url | absolute_url }}</id>
+    <title type="text">{{ entry.title | xml_escape }}</title>
+    <link rel="alternate" type="text/html" href="{{ entry.url | absolute_url }}" />
+    <published>{{ entry.date | date_to_xmlschema }}</published>
+    <updated>{{ entry.date | date_to_xmlschema }}</updated>
+    <category term="{% if entry.collection == 'fails' %}How AI Fails{% else %}Writing{% endif %}" />
+    {%- assign summary = entry.summary | default: entry.excerpt %}
+    {%- if summary and summary != "" %}
+    <summary type="text">{{ summary | strip_html | normalize_whitespace | xml_escape }}</summary>
+    {%- endif %}
+    <content type="html">{{ entry.content | xml_escape }}</content>
+  </entry>
+{%- endfor %}
+</feed>

@@ -1,0 +1,39 @@
+{%- comment -%}
+  One publication entry in editorial hairline format.
+  Usage: {% include publication.html pub=pub %}
+{%- endcomment -%}
+{%- assign pub = include.pub -%}
+{%- assign pub_slug = pub.id | default: pub.title | slugify -%}
+{%- assign author_list = pub.authors | split: ", " -%}
+{%- assign first_author = author_list | first -%}
+{%- assign is_first = false -%}
+{%- if first_author contains "Yongkang Chen" -%}{%- assign is_first = true -%}{%- endif -%}
+<li class="pub-item" id="pub-{{ pub_slug }}" data-topic="{{ pub.topic | default: '' }}" data-tags="{{ pub.tags | join: ',' | escape }}" data-year="{{ pub.year }}"{% if is_first %} data-first-author="true"{% endif %}{% if pub.lang %} lang="{{ pub.lang }}"{% endif %}>
+  <p class="pub-title-line">
+    {%- if pub.url -%}
+      <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{{ pub.title | escape }}</a>
+    {%- else -%}
+      {{ pub.title | escape }}
+    {%- endif -%}
+    <span class="pub-actions" lang="en">
+      {%- if pub.url -%}<a class="pub-action-link" href="{{ pub.url }}" target="_blank" rel="noopener noreferrer" aria-label="Open paper: {{ pub.short | default: pub.title | escape }}">[paper]</a>{%- endif -%}
+      {%- if pub.bib -%}<button class="pub-bib-btn" type="button" data-copy-bib="bib-{{ pub_slug }}" aria-label="Copy BibTeX for {{ pub.short | default: pub.title | escape }}">[bib]</button>{%- endif -%}
+    </span>
+  </p>
+  <p class="pub-authors" lang="en">{% for author in author_list %}<span class="pub-author">{{ author | escape | replace: "Yongkang Chen", "<b>Yongkang Chen</b>" | replace: "*", "<sup>*</sup>" }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+  <div class="pub-venue-row">
+    <p class="pub-venue">{{ pub.venue | escape }}</p>
+    {%- for tag in pub.tags %}
+      {%- case tag %}
+        {%- when "CCF-A" %}{% assign chip_cls = "venue-chip" %}
+        {%- when "CCF-B" %}{% assign chip_cls = "venue-chip venue-chip--muted" %}
+        {%- when "CCF-C" %}{% assign chip_cls = "venue-chip venue-chip--muted" %}
+        {%- else %}{% assign chip_cls = "venue-chip venue-chip--award" %}
+      {%- endcase %}
+      <span class="{{ chip_cls }}" lang="en">{{ tag }}</span>
+    {%- endfor %}
+  </div>
+  {%- if pub.bib %}
+  <template id="bib-{{ pub_slug }}">{{ pub.bib | strip }}</template>
+  {%- endif %}
+</li>

@@ -1,0 +1,11 @@
+# Copy one of these entries into _data/news.yml (anywhere; it is sorted by date).
+
+# Plain text
+- date: 2026-01-01
+  text: Joined Example Lab as a Research Scientist.
+
+# With a venue or award badge and link:
+- date: 2026-01-01
+  badge: Venue'26
+  badge_kind: venue # venue | award
+  text: "Our paper <a href=\"https://example.com/paper\" target=\"_blank\" rel=\"noopener noreferrer\"><em>Paper Title</em></a> was accepted to <em>Venue 2026</em>."

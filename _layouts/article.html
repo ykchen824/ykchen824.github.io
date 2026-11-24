@@ -1,0 +1,152 @@
+{%- assign article_lang = page.lang | default: 'zh-CN' -%}
+{%- assign archive = 'writing' -%}
+{%- assign article_content = content -%}
+{%- if page.collection == 'fails' -%}
+  {%- assign archive = 'fails' -%}
+{%- endif -%}
+{%- if article_lang contains 'zh' -%}
+  {%- assign toc_label = '目录' -%}
+  {%- assign navigation_label = '同栏目内容' -%}
+  {%- assign previous_label = '← 上一篇' -%}
+  {%- assign next_label = '下一篇 →' -%}
+{%- else -%}
+  {%- assign toc_label = 'Table of Contents' -%}
+  {%- assign navigation_label = 'More in this section' -%}
+  {%- assign previous_label = '← Older' -%}
+  {%- assign next_label = 'Newer →' -%}
+{%- endif -%}
+<!DOCTYPE html>
+<html lang="{{ article_lang | escape }}">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{%- assign description = page.summary | default: page.title | escape %}
+{%- assign share_image = '/assets/images/og-card.png' | absolute_url %}
+<meta name="description" content="{{ description }}" />
+<link rel="canonical" href="{{ page.url | absolute_url }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ page.title | escape }}" />
+<meta property="og:description" content="{{ description }}" />
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="og:image" content="{{ share_image }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Yongkang Chen — LLM Safety and Reliability" />
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":{{ page.title | jsonify }},"description":{{ page.summary | default: page.title | jsonify }},"datePublished":"{{ page.date | date_to_xmlschema }}","inLanguage":{{ article_lang | jsonify }},"url":"{{ page.url | absolute_url }}","image":"{{ share_image }}","author":{"@type":"Person","name":"Yongkang Chen","url":"{{ '/' | absolute_url }}"}}
+</script>
+<title>{{ page.title | escape }}{% if archive == 'fails' %} — How AI Fails{% endif %} — {{ site.title | escape }}</title>
+{% include head-assets.html %}
+{%- assign math_page = page.math -%}
+{%- if math_page == nil and article_content contains '$$' -%}
+  {%- assign math_page = true -%}
+{%- endif -%}
+{%- if math_page %}{% include mathjax.html %}{%- endif -%}
+<script src="{{ '/assets/reading-progress.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+</head>
+<body>
+<div class="reading-progress{% if archive == 'fails' %} reading-progress--fails{% endif %}" aria-hidden="true"></div>
+<a class="skip" href="#main" lang="en">Skip to content</a>
+
+{% include header.html active=archive %}
+
+<main id="main" class="post-main">
+  <article class="post-layout">
+    <header class="post-head">
+      <div class="post-kicker">
+        <a class="recent-tag {% if archive == 'fails' %}recent-tag--fails{% else %}recent-tag--writing{% endif %}"
+          href="{{ '/' | append: archive | append: '/' | relative_url }}" lang="en">{% if archive == 'fails' %}How AI Fails{% else %}Writing{% endif %}</a>
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+      </div>
+      <h1 class="post-title">{{ page.title | escape }}</h1>
+    </header>
+
+    {%- if archive == 'fails' %}
+    <dl class="incident-facts">
+      <div><dt>模型</dt><dd>{{ page.model | escape }}</dd></div>
+      {%- if page.setting %}
+      <div><dt>场景</dt><dd>{{ page.setting | escape }}</dd></div>
+      {%- endif %}
+      {%- if page.category %}
+      <div><dt>行为类型</dt><dd>{{ page.category | escape }}</dd></div>
+      {%- endif %}
+      <div><dt>核验状态</dt><dd>{{ page.verification | default: '待核验' | escape }}</dd></div>
+      <div><dt>首次报告</dt><dd><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time></dd></div>
+    </dl>
+    {%- endif %}
+
+    {%- assign sections = article_content | prepend: ' ' | split: '<h2 id="' %}
+    {%- if sections.size > 1 %}
+    <nav class="post-toc" aria-label="{{ toc_label }}">
+      <details>
+        <summary>{{ toc_label }}</summary>
+        <ol>
+          {%- for section in sections offset: 1 %}
+          {%- assign heading_id = section | split: '"' | first %}
+          {%- assign heading_prefix = section | split: '>' | first | append: '>' %}
+          {%- assign heading_text = section | split: '</h2>' | first | remove_first: heading_prefix | strip_html | strip %}
+          <li><a href="#{{ heading_id }}">{{ heading_text }}</a></li>
+          {%- endfor %}
+        </ol>
+      </details>
+    </nav>
+    {%- endif %}
+
+    <div class="post-body">
+      {{ article_content }}
+    </div>
+
+    {%- if archive == 'fails' and page.category %}
+    {%- assign related_reports = site.fails | where: "category", page.category | where_exp: "item", "item.url != page.url" | sort: "date" | reverse %}
+    {%- if related_reports.size > 0 %}
+    <section class="incident-related" aria-labelledby="related-reports">
+      <h2 id="related-reports">同类报告</h2>
+      <ul>
+        {%- for item in related_reports limit: 3 %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a><span class="incident-related-meta">{{ item.date | date: '%Y-%m-%d' }} · {{ item.model | escape }}</span></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endif %}
+    {%- endif %}
+
+    {%- assign sorted_entries = site[page.collection] | sort: "date" -%}
+    {%- assign previous_entry = nil -%}
+    {%- assign next_entry = nil -%}
+    {%- for entry in sorted_entries -%}
+      {%- if entry.url == page.url -%}
+        {%- assign prev_idx = forloop.index0 | minus: 1 -%}
+        {%- assign next_idx = forloop.index0 | plus: 1 -%}
+        {%- if prev_idx >= 0 -%}
+          {%- assign previous_entry = sorted_entries[prev_idx] -%}
+        {%- endif -%}
+        {%- if next_idx < sorted_entries.size -%}
+          {%- assign next_entry = sorted_entries[next_idx] -%}
+        {%- endif -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if previous_entry or next_entry %}
+    <nav class="post-nav" aria-label="{{ navigation_label }}">
+      {%- if previous_entry %}
+      <a class="post-nav-link post-nav-prev" href="{{ previous_entry.url | relative_url }}" rel="prev">
+        <span class="post-nav-label">{{ previous_label }}</span>
+        <span class="post-nav-title" lang="{{ previous_entry.lang | default: 'zh-CN' | escape }}">{{ previous_entry.title | escape }}</span>
+      </a>
+      {%- endif %}
+      {%- if next_entry %}
+      <a class="post-nav-link post-nav-next" href="{{ next_entry.url | relative_url }}" rel="next">
+        <span class="post-nav-label">{{ next_label }}</span>
+        <span class="post-nav-title" lang="{{ next_entry.lang | default: 'zh-CN' | escape }}">{{ next_entry.title | escape }}</span>
+      </a>
+      {%- endif %}
+    </nav>
+    {%- endif %}
+  </article>
+</main>
+
+{% include footer.html %}
+</body>
+</html>
