@@ -7,99 +7,66 @@ summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward
 2020 年，DeepMind 记录过一个经典的机械臂实验：研究者想让机械臂把红色乐高积木叠到蓝色积木上，于是把奖励写成了“红积木底面离开桌面后的高度”，结果机械臂没有去抓积木，而是直接把红积木原地翻了个面（[Krakovna et al., 2020](#ref-krakovna-2020)）。六年后，同样的错位换了副面孔：在 2025 至 2026 年的评测与训练中，前沿大语言模型会回溯 Python 调用栈读取评分器的参考张量、覆写 `torch.cuda.synchronize` 与 `time.time` 伪造耗时（[METR, 2025](#ref-metr-2025)），在超过百万字符的自主科研轨迹里夹带一条几乎看不出的作弊命令（[HackBench, 2026](#ref-hackbench-2026)），甚至在真实编码强化学习（RL）训练后泛化出对齐伪装与破坏代码库的行为（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）。这就是 **Reward Hacking（奖励黑客）**——智能体利用奖励函数、训练环境或评估规约里的形式缺陷，在没有达成设计者真实意图的情况下拿走极高的代理期望回报。
 
 <figure class="rh-compare" aria-labelledby="rh-compare-title">
-<div class="rh-compare-head">
-<p class="rh-compare-kicker">2020 vs. 2025–2026</p>
-<p class="rh-compare-title" id="rh-compare-title">从经典强化学习到前沿 LLM 智能体：Reward Hacking 的形态跃迁</p>
-</div>
-<div class="rh-compare-cards">
-<div class="rh-card rh-card--2020">
-<div class="rh-card-head">
-<span class="rh-era-badge rh-era-badge--2020">2020 · 经典 RL</span>
-<span class="rh-card-sub">孤立环境 · 盲目试错</span>
-</div>
-<svg class="rh-card-svg" viewBox="0 0 280 124" role="img" aria-label="2020 年乐高积木堆叠规约博弈示意图：设计意图是将红积木叠在蓝积木上，实际策略是将红积木原地翻转以最大化底面高度">
-<rect x="8" y="8" width="114" height="108" rx="4" fill="#FAFAF8" stroke="#E8E2E3"/>
-<text x="65" y="23" text-anchor="middle" font-size="9.5" font-weight="600" fill="#534A4C">设计意图：堆叠</text>
-<line x1="20" y1="98" x2="110" y2="98" stroke="#D8CFD1" stroke-width="1.5"/>
-<rect x="47" y="74" width="36" height="24" rx="2" fill="#E6EEF6" stroke="#6E8CA8" stroke-width="1.2"/>
-<text x="65" y="89" text-anchor="middle" font-size="8.5" fill="#3B556E">蓝</text>
-<rect x="47" y="50" width="36" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.2"/>
-<text x="65" y="65" text-anchor="middle" font-size="8.5" fill="#8C4A19">红</text>
-<line x1="47" y1="74" x2="83" y2="74" stroke="#8C4A19" stroke-width="2"/>
-<path d="M128 62 L148 62" stroke="#72686B" stroke-width="1.4" fill="none"/>
-<path d="M144 58 L150 62 L144 66" stroke="#72686B" stroke-width="1.4" fill="none"/>
-<rect x="158" y="8" width="114" height="108" rx="4" fill="#FAFAF8" stroke="#E6C8A8"/>
-<text x="215" y="23" text-anchor="middle" font-size="9.5" font-weight="600" fill="#8C4A19">实际：翻转红底</text>
-<line x1="168" y1="98" x2="262" y2="98" stroke="#D8CFD1" stroke-width="1.5"/>
-<rect x="174" y="74" width="32" height="24" rx="2" fill="#E6EEF6" stroke="#9AAEC2" stroke-width="1" stroke-dasharray="2 2"/>
-<text x="190" y="89" text-anchor="middle" font-size="8" fill="#6E8CA8">蓝</text>
-<rect x="216" y="74" width="34" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.2"/>
-<line x1="216" y1="74" x2="250" y2="74" stroke="#8C4A19" stroke-width="2.6"/>
-<text x="233" y="89" text-anchor="middle" font-size="8" fill="#8C4A19">底朝上</text>
-<line x1="256" y1="98" x2="256" y2="74" stroke="#8C4A19" stroke-width="1.2"/>
-<path d="M253 78 L256 73 L259 78" stroke="#8C4A19" stroke-width="1.2" fill="none"/>
-<text x="262" y="88" font-size="8.5" font-weight="600" fill="#8C4A19">h</text>
+<p class="rh-compare-title" id="rh-compare-title">从经典 RL 到前沿 LLM 智能体：Reward Hacking 的形态跃迁</p>
+<div class="rh-compare-stage">
+<div class="rh-panel">
+<div class="rh-panel-label rh-panel-label--2020"><span class="rh-dot rh-dot--2020" aria-hidden="true"></span><span>2020 · 经典 RL</span></div>
+<svg class="rh-panel-svg" viewBox="0 0 300 100" role="img" aria-label="2020 年乐高积木堆叠规约博弈示意图：设计意图是将红积木叠在蓝积木上，实际策略是将红积木原地翻转以最大化底面高度">
+<text x="49" y="18" text-anchor="middle" font-size="10.5" fill="#534A4C">意图：红叠蓝</text>
+<text x="220" y="18" text-anchor="middle" font-size="10.5" font-weight="600" fill="#8C4A19">实际：原地翻面</text>
+<line x1="12" y1="76" x2="288" y2="76" stroke="#D8CFD1" stroke-width="1.2"/>
+<rect x="28" y="52" width="42" height="24" rx="2" fill="#E6EEF6" stroke="#6E8CA8" stroke-width="1.1"/>
+<rect x="28" y="28" width="42" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.1" stroke-dasharray="3 2"/>
+<line x1="112" y1="56" x2="142" y2="56" stroke="#72686B" stroke-width="1.2"/>
+<path d="M138 52.5 L144 56 L138 59.5" stroke="#72686B" stroke-width="1.2" fill="none"/>
+<rect x="166" y="52" width="38" height="24" rx="2" fill="#E6EEF6" stroke="#9AAEC2" stroke-width="1" stroke-dasharray="2 2"/>
+<rect x="214" y="52" width="42" height="24" rx="2" fill="#FBF1E6" stroke="#8C4A19" stroke-width="1.1"/>
+<line x1="214" y1="52" x2="256" y2="52" stroke="#8C4A19" stroke-width="3"/>
+<line x1="266" y1="76" x2="266" y2="52" stroke="#8C4A19" stroke-width="1.1"/>
+<path d="M263.5 56 L266 51 L268.5 56" stroke="#8C4A19" stroke-width="1.1" fill="none"/>
+<text x="273" y="67" font-size="10" font-weight="600" fill="#8C4A19">h</text>
 </svg>
-<dl class="rh-card-points">
-<div class="rh-point-row"><dt>场景</dt><dd>乐高堆叠、CoastRunners 赛艇、视频机械臂抓取</dd></div>
-<div class="rh-point-row"><dt>做法</dt><dd>原地翻积木、绕圈撞加速块、悬停遮挡摄像头</dd></div>
-<div class="rh-point-row"><dt>特征</dt><dd>靠试错撞上局部极值，不理解意图，一眼荒诞</dd></div>
-</dl>
+<p class="rh-panel-note">乐高翻积木 · CoastRunners 绕圈 · 机械爪挡镜头</p>
 </div>
-<div class="rh-card rh-card--2026">
-<div class="rh-card-head">
-<span class="rh-era-badge rh-era-badge--2026">2025–2026 · LLM 智能体</span>
-<span class="rh-card-sub">语义理解 · 长程隐蔽</span>
-</div>
-<svg class="rh-card-svg" viewBox="0 0 280 124" role="img" aria-label="2026 年自主科研长轨迹与代码评测作弊示意图：在超过百万字符和 264 条命令中仅包含 1 条占比 0.6% 的作弊命令">
-<text x="12" y="21" font-size="8.8" font-weight="600" fill="#534A4C">自主科研轨迹 · 中位数 &gt;100 万字符 / 264 条命令</text>
-<rect x="12" y="29" width="256" height="22" rx="3" fill="#FAFAF8" stroke="#E8E2E3"/>
-<g fill="#D8CFD1">
-<rect x="17" y="34" width="3" height="12" rx="1"/><rect x="23" y="34" width="3" height="12" rx="1"/><rect x="29" y="34" width="3" height="12" rx="1"/><rect x="35" y="34" width="3" height="12" rx="1"/><rect x="41" y="34" width="3" height="12" rx="1"/><rect x="47" y="34" width="3" height="12" rx="1"/><rect x="53" y="34" width="3" height="12" rx="1"/><rect x="59" y="34" width="3" height="12" rx="1"/><rect x="65" y="34" width="3" height="12" rx="1"/><rect x="71" y="34" width="3" height="12" rx="1"/><rect x="77" y="34" width="3" height="12" rx="1"/><rect x="83" y="34" width="3" height="12" rx="1"/><rect x="89" y="34" width="3" height="12" rx="1"/><rect x="95" y="34" width="3" height="12" rx="1"/><rect x="101" y="34" width="3" height="12" rx="1"/><rect x="107" y="34" width="3" height="12" rx="1"/><rect x="113" y="34" width="3" height="12" rx="1"/><rect x="119" y="34" width="3" height="12" rx="1"/><rect x="125" y="34" width="3" height="12" rx="1"/><rect x="131" y="34" width="3" height="12" rx="1"/><rect x="137" y="34" width="3" height="12" rx="1"/><rect x="143" y="34" width="3" height="12" rx="1"/><rect x="149" y="34" width="3" height="12" rx="1"/><rect x="155" y="34" width="3" height="12" rx="1"/><rect x="161" y="34" width="3" height="12" rx="1"/><rect x="167" y="34" width="3" height="12" rx="1"/><rect x="173" y="34" width="3" height="12" rx="1"/><rect x="179" y="34" width="3" height="12" rx="1"/><rect x="191" y="34" width="3" height="12" rx="1"/><rect x="197" y="34" width="3" height="12" rx="1"/><rect x="203" y="34" width="3" height="12" rx="1"/><rect x="209" y="34" width="3" height="12" rx="1"/><rect x="215" y="34" width="3" height="12" rx="1"/><rect x="221" y="34" width="3" height="12" rx="1"/><rect x="227" y="34" width="3" height="12" rx="1"/><rect x="233" y="34" width="3" height="12" rx="1"/><rect x="239" y="34" width="3" height="12" rx="1"/><rect x="245" y="34" width="3" height="12" rx="1"/><rect x="251" y="34" width="3" height="12" rx="1"/><rect x="257" y="34" width="3" height="12" rx="1"/>
+<div class="rh-panel">
+<div class="rh-panel-label rh-panel-label--2026"><span class="rh-dot rh-dot--2026" aria-hidden="true"></span><span>2025–2026 · LLM 智能体</span></div>
+<svg class="rh-panel-svg" viewBox="0 0 300 100" role="img" aria-label="2026 年自主科研长轨迹与代码评测作弊示意图：在超过百万字符和 264 条命令中仅包含 1 条占比 0.6% 的作弊命令">
+<text x="6" y="18" font-size="10.2" fill="#534A4C">&gt;100 万字符 / 264 条命令</text>
+<text x="294" y="18" text-anchor="end" font-size="10.2" font-weight="600" fill="#7B2130">1 条作弊（0.6%）</text>
+<g fill="#DDD5D7">
+<rect x="6" y="36" width="3" height="16" rx="1"/><rect x="14" y="36" width="3" height="16" rx="1"/><rect x="22" y="36" width="3" height="16" rx="1"/><rect x="30" y="36" width="3" height="16" rx="1"/><rect x="38" y="36" width="3" height="16" rx="1"/><rect x="46" y="36" width="3" height="16" rx="1"/><rect x="54" y="36" width="3" height="16" rx="1"/><rect x="62" y="36" width="3" height="16" rx="1"/><rect x="70" y="36" width="3" height="16" rx="1"/><rect x="78" y="36" width="3" height="16" rx="1"/><rect x="86" y="36" width="3" height="16" rx="1"/><rect x="94" y="36" width="3" height="16" rx="1"/><rect x="102" y="36" width="3" height="16" rx="1"/><rect x="110" y="36" width="3" height="16" rx="1"/><rect x="118" y="36" width="3" height="16" rx="1"/><rect x="126" y="36" width="3" height="16" rx="1"/><rect x="134" y="36" width="3" height="16" rx="1"/><rect x="142" y="36" width="3" height="16" rx="1"/><rect x="150" y="36" width="3" height="16" rx="1"/><rect x="158" y="36" width="3" height="16" rx="1"/><rect x="166" y="36" width="3" height="16" rx="1"/><rect x="174" y="36" width="3" height="16" rx="1"/><rect x="182" y="36" width="3" height="16" rx="1"/><rect x="190" y="36" width="3" height="16" rx="1"/><rect x="206" y="36" width="3" height="16" rx="1"/><rect x="214" y="36" width="3" height="16" rx="1"/><rect x="222" y="36" width="3" height="16" rx="1"/><rect x="230" y="36" width="3" height="16" rx="1"/><rect x="238" y="36" width="3" height="16" rx="1"/><rect x="246" y="36" width="3" height="16" rx="1"/><rect x="254" y="36" width="3" height="16" rx="1"/><rect x="262" y="36" width="3" height="16" rx="1"/><rect x="270" y="36" width="3" height="16" rx="1"/><rect x="278" y="36" width="3" height="16" rx="1"/><rect x="286" y="36" width="3" height="16" rx="1"/>
 </g>
-<rect x="184.5" y="31" width="4" height="18" rx="1" fill="#7B2130"/>
-<line x1="186.5" y1="51" x2="186.5" y2="62" stroke="#7B2130" stroke-width="1.2"/>
-<text x="193" y="60" font-size="8.2" font-weight="600" fill="#7B2130">1 条作弊（0.6%）</text>
-<rect x="12" y="65" width="256" height="34" rx="4" fill="#FAFAF8" stroke="#DFBCC3"/>
-<text x="18" y="79" font-size="8.2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#5C1622">monkey-patch time.time() · FakePrefixTensor</text>
-<text x="18" y="92" font-size="8.2" fill="#2C2527">围绕留出集造数据 · 触及目标损失即冻结权重</text>
-<text x="12" y="114" font-size="8.2" fill="#665C5F">语义定位最优（Claude Opus 5）：64.88 F1</text>
+<rect x="197.5" y="30" width="4" height="28" rx="1" fill="#7B2130"/>
+<line x1="199.5" y1="58" x2="199.5" y2="66" stroke="#7B2130" stroke-width="1"/>
+<text x="199.5" y="77" text-anchor="middle" font-size="9.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#5C1622">monkey-patch time.time()</text>
+<text x="199.5" y="92" text-anchor="middle" font-size="9.5" fill="#665C5F">围绕留出集造数据 · 提前冻结权重</text>
 </svg>
-<dl class="rh-card-points">
-<div class="rh-point-row"><dt>场景</dt><dd>Triton 内核优化、代码评测、自主机器学习科研</dd></div>
-<div class="rh-point-row"><dt>做法</dt><dd>回溯调用栈、构造 4 字节伪造张量、改写评估桩函数</dd></div>
-<div class="rh-point-row"><dt>特征</dt><dd>读懂评分源码，10/10 承认违背意图仍照常作弊</dd></div>
-</dl>
+<p class="rh-panel-note">METR 调用栈取数 · HackBench 科研轨迹 · 编码 RL 泛化错位</p>
 </div>
 </div>
 <div class="rh-shift">
-<div class="rh-shift-head">
-<span>维度</span>
-<span class="rh-shift-col--2020">2020 · 经典 RL</span>
-<span class="rh-shift-col--2026">2025–2026 · LLM 智能体</span>
+<div class="rh-shift-row">
+<span class="rh-shift-dim">机制</span>
+<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>试错撞上数值或物理漏洞</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>读懂源码与调用栈，定向绕过</span>
 </div>
 <div class="rh-shift-row">
-<span class="rh-shift-dim">产生机制</span>
-<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>随机试错撞上奖励或物理引擎漏洞</span>
-<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>读懂评分脚本与执行栈，定向设计绕过方案</span>
+<span class="rh-shift-dim">意图</span>
+<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>对设计者意图无概念</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>10/10 承认违背意图，禁令无效</span>
 </div>
 <div class="rh-shift-row">
-<span class="rh-shift-dim">意图认知</span>
-<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>对设计者意图毫无概念</span>
-<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>10/10 追问承认违背意图，加禁令仍作弊 70%–95%</span>
+<span class="rh-shift-dim">隐蔽</span>
+<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>动作荒诞，一眼可辨</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>藏在正常调试中，强罚诱发 CoT 隐匿</span>
 </div>
 <div class="rh-shift-row">
-<span class="rh-shift-dim">可观测性</span>
-<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>孤立且肉眼可辨的荒诞动作</span>
-<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>稀释在百万字符正常调试中，强监控诱发 CoT 隐匿</span>
-</div>
-<div class="rh-shift-row">
-<span class="rh-shift-dim">后果外溢</span>
-<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>锁死在单个仿真器内的局部投机</span>
-<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>跨任务泛化出对齐伪装与破坏研究代码库</span>
+<span class="rh-shift-dim">外溢</span>
+<span class="rh-shift-cell rh-shift-cell--2020"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>锁死在单一仿真环境</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>跨任务泛化为对齐伪装与破坏</span>
 </div>
 </div>
-<figcaption>图 1：2020 年经典强化学习规约博弈（<a href="#ref-krakovna-2020">Krakovna et al., 2020</a>）与 2025–2026 年前沿 LLM 智能体 Reward Hacking（<a href="#ref-metr-2025">METR, 2025</a>；<a href="#ref-macdiarmid-2025">MacDiarmid et al., 2025</a>；<a href="#ref-hackbench-2026">HackBench, 2026</a>）在产生机制、意图认知、可观测性与外溢后果上的对比。</figcaption>
+<figcaption>图 1：2020 年经典强化学习规约博弈（<a href="#ref-krakovna-2020">Krakovna et al., 2020</a>）与 2025–2026 年前沿 LLM 智能体 Reward Hacking（<a href="#ref-metr-2025">METR, 2025</a>；<a href="#ref-macdiarmid-2025">MacDiarmid et al., 2025</a>；<a href="#ref-hackbench-2026">HackBench, 2026</a>）对比。</figcaption>
 </figure>
 
 这个问题长期消不掉，背后有两个底层原因：现实任务的规约几乎总是不完备的，而人类复杂、隐含的偏好也很难被精确写成一个可计算的标量函数。当语言模型从单轮对话走向具备长程推理、代码执行和自主科研能力的智能体，RLHF 与基于可验证奖励的强化学习（RLVR）成了拉高能力上限的主要手段，Reward Hacking 也随之从早期的游戏奇观变成了高隐蔽性的系统风险。早期文献已经系统记录过经典 RL 中的相关现象（[Weng, 2024](#ref-weng-2024)）；近两年随着推理模型、自主科研基准以及激活探针、梯度路由等防御手段密集出现，攻防边界已经明显重写。下文沿着数学起点、概念谱系、跨学科理论边界、实证演进与现有防御的失效机理，梳理这条从早期控制论延续至今的主线。
