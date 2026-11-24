@@ -98,19 +98,8 @@
       {{ article_content }}
     </div>
 
-    {%- if annotations_enabled %}
-    <aside class="post-annotate{% if archive == 'fails' %} post-annotate--fails{% endif %}" aria-label="{{ annotate_idle }}">
-      <p class="post-annotate-text">{{ annotate_prompt }}</p>
-      <button type="button"
-        class="post-annotate-btn{% if archive == 'fails' %} post-annotate-btn--fails{% endif %}"
-        data-annotate-trigger
-        data-label-idle="{{ annotate_cta }}"
-        data-label-loading="{{ annotate_loading }}"
-        data-label-ready="{{ annotate_ready }}"
-        data-error-msg="{{ annotate_error }}"
-        aria-pressed="false">{{ annotate_cta }}</button>
-      <p class="post-annotate-status" data-annotate-status role="status" aria-live="polite" hidden></p>
-    </aside>
+    {%- if site.comments.enabled != false and page.comments != false %}
+    {% include comments.html lang=article_lang %}
     {%- endif %}
 
     {%- if archive == 'fails' and page.category %}

@@ -6,7 +6,7 @@ date: 2026-01-01
 summary: A one-sentence summary for the Writing list.
 keywords: []    # Optional keywords for the Writing search.
 # lang: en    # Optional. Defaults to zh-CN.
-# annotations: false    # Optional. Disable Hypothes.is annotations for this page.
+# comments: false    # Optional. Disable comments for this page.
 ---
 
 Write the essay here in Markdown. Each `##` heading becomes an entry in the
