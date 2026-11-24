@@ -1832,11 +1832,48 @@ main {
 
 .post-kicker {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem 0.6rem;
   margin: 0 0 0.65rem;
   font-size: 0.82rem;
   color: var(--muted);
+}
+
+.annotate-toggle {
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.62rem;
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted-strong);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.annotate-toggle:hover,
+.annotate-toggle.is-active {
+  background: var(--tint);
+  border-color: var(--tint-border);
+  color: var(--accent-strong);
+}
+
+.annotate-toggle--fails:hover,
+.annotate-toggle--fails.is-active {
+  background: var(--feature-soft);
+  border-color: var(--feature-border);
+  color: var(--feature);
+}
+
+.annotate-toggle:disabled {
+  opacity: 0.65;
+  cursor: wait;
 }
 
 .post-title {
@@ -2045,6 +2082,81 @@ main {
 .post-body .source-type {
   color: var(--muted);
   white-space: nowrap;
+}
+
+.post-annotate {
+  margin: 2.5rem 0 0;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.post-annotate-text {
+  margin: 0;
+  flex: 1 1 20rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted-strong);
+}
+
+.post-annotate-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 0.88rem;
+  border: 1px solid var(--tint-border);
+  border-radius: 999px;
+  background: var(--tint);
+  color: var(--accent-strong);
+  font-size: 0.83rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.post-annotate-btn:hover,
+.post-annotate-btn.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.post-annotate-btn--fails {
+  background: var(--feature-soft);
+  border-color: var(--feature-border);
+  color: var(--feature);
+}
+
+.post-annotate-btn--fails:hover,
+.post-annotate-btn--fails.is-active {
+  background: var(--feature);
+  border-color: var(--feature);
+  color: #fff;
+}
+
+.post-annotate-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.post-annotate-status {
+  margin: 0;
+  flex: 1 0 100%;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--accent-strong);
+}
+
+.post-annotate-status[hidden] {
+  display: none;
 }
 
 .incident-related {
@@ -2304,7 +2416,8 @@ main {
 
 @media print {
   .cs-bg, .site-nav, .nav-backdrop, .site-footer, .skip, .reading-progress,
-  .archive-tools, .pub-controls, .filter-bar, .pub-bib-btn, .copy-mini, .inline-link-btn, .toast {
+  .archive-tools, .pub-controls, .filter-bar, .pub-bib-btn, .copy-mini, .inline-link-btn, .toast,
+  .annotate-toggle, .post-annotate {
     display: none !important;
   }
   body { background: #fff; color: #000; font-size: 11pt; }
