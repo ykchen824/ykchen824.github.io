@@ -4,7 +4,7 @@ date: 2026-11-24
 math: true
 summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward Hacking 不是工程疏漏，而是代理指标与真实意图之间一处无法靠事后补丁堵死的结构性缺口。
 ---
-2020 年，DeepMind 记录过一个经典的机械臂实验：研究者想让机械臂把红色乐高积木叠到蓝色积木上，于是把奖励写成了“红积木底面离开桌面后的高度”，结果机械臂没有去抓积木，而是直接把红积木原地翻了个面（[Krakovna et al., 2020](#ref-krakovna-2020)）。六年后，同样的错位换了副面孔：在 2025 至 2026 年的评测与训练中，前沿大语言模型会回溯 Python 调用栈读取评分器的参考张量、覆写 `torch.cuda.synchronize` 与 `time.time` 伪造耗时（[METR, 2025](#ref-metr-2025)），在超过百万字符的自主科研轨迹里夹带一条几乎看不出的作弊命令（[HackBench, 2026](#ref-hackbench-2026)），甚至在真实编码强化学习（RL）训练后泛化出对齐伪装与破坏代码库的行为（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）。这种现象被称为奖励黑客（Reward Hacking），其中智能体利用奖励函数、训练环境或评估规约里的形式缺陷，在没有达成设计者真实意图的情况下拿走极高的代理期望回报。
+2020 年，DeepMind 记录过一个经典的机械臂实验：研究者想让机械臂把红色乐高积木叠到蓝色积木上，于是把奖励写成了“红积木底面离地的高度”，结果机械臂没有去抓积木，而是直接把红积木原地翻了个面（[Krakovna et al., 2020](#ref-krakovna-2020)）。六年后，同样的错位换了副面孔：在 2025 至 2026 年的评测与训练中，前沿大语言模型会回溯 Python 调用栈读取评分器的参考张量、覆写 `torch.cuda.synchronize` 与 `time.time` 伪造耗时（[METR, 2025](#ref-metr-2025)），在超过百万字符的自主科研轨迹里夹带一条几乎看不出的作弊命令（[HackBench, 2026](#ref-hackbench-2026)），甚至在真实编码强化学习（RL）训练中习得此类作弊后，自然泛化出对齐伪装与破坏代码库的行为（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）。这种现象被称为奖励黑客（Reward Hacking），其中智能体利用奖励函数、训练环境或评估规约（specification，即写进代码、测试用例或评分规则中的字面任务要求）里的形式缺陷，在没有达成设计者真实意图的情况下拿走极高的代理期望回报。
 
 <figure class="rh-compare" aria-labelledby="rh-compare-title">
 <style>
@@ -105,7 +105,7 @@ summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward
 <div class="rh-shift-row">
 <span class="rh-shift-dim">隐蔽</span>
 <span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2020">2020</span>动作荒诞，一眼可辨</span>
-<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>藏在正常调试中，强罚诱发 CoT 隐匿</span>
+<span class="rh-shift-cell"><span class="rh-shift-tag rh-shift-tag--2026">2026</span>藏在正常调试中，强罚诱发思维链隐匿</span>
 </div>
 <div class="rh-shift-row">
 <span class="rh-shift-dim">外溢</span>
@@ -116,11 +116,11 @@ summary: 从 Wiener 的字面机器到百万字符的自主科研轨迹，Reward
 <figcaption>图 1：2020 年经典强化学习规约博弈（<a href="#ref-krakovna-2020">Krakovna et al., 2020</a>）与 2025–2026 年前沿 LLM 智能体 Reward Hacking（<a href="#ref-metr-2025">METR, 2025</a>；<a href="#ref-macdiarmid-2025">MacDiarmid et al., 2025</a>；<a href="#ref-hackbench-2026">HackBench, 2026</a>）对比。</figcaption>
 </figure>
 
-这个问题长期消不掉，背后有两个底层原因：现实任务的规约几乎总是不完备的，而人类复杂、隐含的偏好也很难被精确写成一个可计算的标量函数。当语言模型从单轮对话走向具备长程推理、代码执行和自主科研能力的智能体，RLHF 与基于可验证奖励的强化学习（RLVR）成了拉高能力上限的主要手段，Reward Hacking 也随之从早期的游戏奇观变成了高隐蔽性的系统风险。早期文献已经系统记录过经典 RL 中的相关现象（[Weng, 2024](#ref-weng-2024)）；近两年随着推理模型、自主科研基准以及激活探针、梯度路由等防御手段密集出现，攻防边界已经明显重写。下文沿着数学起点、概念谱系、跨学科理论边界、实证演进与现有防御的失效机理，梳理这条从早期控制论延续至今的主线。
+奖励黑客这个问题由来已久，有其根本原因：现实任务的规约几乎总是不完备的，而人类复杂、隐含的偏好也很难被精确写成一个可计算的标量函数。早期文献与社区案例库已经系统记录过经典 RL 中的相关现象（[Krakovna et al., Master List](#ref-krakovna-list)；[Weng, 2024](#ref-weng-2024)），但近几年，基于人类反馈的强化学习（RLHF，[Christiano et al., 2017](#ref-christiano-2017)；[Ouyang et al., 2022](#ref-ouyang-2022)）与基于可验证奖励的强化学习（RLVR，[Lambert et al., 2024](#ref-lambert-2024)；[DeepSeek-AI, 2025](#ref-deepseek-2025)）分别把大语言模型推向了人类偏好对齐与可交互任务求解，经典 RL 中的奖励黑客也随之发生转移：一面落进语义说服与偏好迎合，一面落进代码、测试与工具执行环境。要理解这种转移背后的共同机理，并看清现有缓解手段的边界，不妨先回到问题最早暴露的地方：经典强化学习中的奖励设计与塑形。
 
 ## 从奖励塑形说起
 
-在强化学习中，奖励函数既定义目标，其稠密程度与结构形态也直接左右策略搜索的样本效率和收敛方向。但在复杂任务里，如何把长程目标拆成中间子目标、怎样权衡稀疏终态奖励与稠密过程引导，长期依赖经验直觉；未经严格验证的启发式修改，往往会悄悄改变原问题的最优策略集合。
+即便在规则清晰、环境封闭的经典控制任务里，只要为了加速学习对奖励做一点直觉修改，字面与意图的错位就已经会出现。在强化学习中，奖励函数既定义目标，其稠密程度与结构形态也直接左右策略搜索的样本效率和收敛方向。但在复杂任务里，如何把长程目标拆成中间子目标、怎样权衡稀疏终态奖励与稠密过程引导，长期依赖经验直觉；未经严格验证的启发式修改，往往会悄悄改变原问题的最优策略集合。
 
 1990 年代末，[Randløv 与 Alstrøm（1998）](#ref-randlov-1998) 在自行车控制任务中给出了一个经典反例：为了缓解终态奖励稀疏的问题，研究者在智能体朝目标方向移动时施加了正向塑形奖励，结果策略优化迅速收敛于原地绕圈。智能体通过反复朝向目标累积正向塑形回报，却始终不驶向终点。
 
@@ -132,11 +132,11 @@ $$
 
 其中 $$\Phi: S \to \mathbb{R}$$ 为任意状态势能函数。沿任意轨迹对折扣后的 $$F$$ 求和会产生伸缩相消（telescoping sum），从代数结构上堵死了循环套利。但 PBRS 的策略不变性依赖严格的马尔可夫假设与有限视野边界条件（例如终止状态势能须为零），在非马尔可夫环境或依赖语义评估的长程语言任务中很难直接构造。
 
-这类现象和监督学习中的虚假相关（spurious correlation）及捷径学习（shortcut learning）有相似之处，就像视觉分类器可能靠背景积雪而非动物形态区分狼与哈士奇。但强化学习的风险高得多：监督模型面对的是静态数据分布，而 RL 智能体在更新策略时会主动改变自己诱导出的状态-动作分布，把优化压力集中到放大代理目标与真实意图偏差的地方。
+奖励黑客和监督学习中的虚假相关（spurious correlation）及捷径学习（shortcut learning）有相似之处，就像视觉分类器可能靠背景积雪而非动物形态区分狼与哈士奇。但强化学习的风险高得多：监督模型面对的是静态数据分布，而 RL 智能体在更新策略时会主动改变自己诱导出的状态-动作分布，把优化压力集中到放大代理目标与真实意图偏差的地方。
 
 ## 规约博弈、目标误泛化与奖励篡改
 
-过去十年的对齐与安全文献围绕“代理目标与真实意图的偏离”给出了一组紧密相关的概念：
+过去十年的对齐与安全文献围绕“代理目标与真实意图的偏离”给出了一组紧密相关的概念：其中 Reward hacking 常作广义统称，而针对不同发生环节，学界又进一步区分了规约博弈、目标误泛化与奖励篡改：
 
 * **Reward hacking**（[Amodei et al., 2016](#ref-amodei-2016)）：智能体利用奖励函数中的形式缺陷，以非预期策略获取高额代理回报。
 * **Specification gaming**（[Krakovna et al., 2020](#ref-krakovna-2020)）：策略在字面上满足了任务规约（literal specification），但未能达成设计者的真实意图（intended outcome）。
@@ -145,10 +145,10 @@ $$
 
 [Krakovna 等人（2020）](#ref-krakovna-2020) 指出，规约博弈并不是强化学习算法的优化失效，而是 AI 创造力的另一面（the flip side of AI ingenuity）。任务规约完备且精确时，强优化能力会找到超越人类直觉的解法，比如 AlphaGo 在对阵李世石第二局中的第 37 手；规约一旦有细微遗漏，同一套优化机制就会产出退化性的规避策略，正如开篇提到的乐高积木任务里，机械臂靠原地翻转红积木最大化底面高度，却绕开了“叠到蓝积木上”这一真正目标。站在优化器的角度看，这两类非预期解处在同一个连续谱上，目前还没有可靠的先验判据能在事前把它们区分开。
 
-按作用机理，Reward Hacking 可以归为两类：
+按训练期最直接的作用路径，广义上的 Reward Hacking 主要分为两类（而目标误泛化则更多体现在训练后进入分布外环境时的泛化偏移）：
 
 1. **环境或目标规约失配（Environment / Goal Misspecification）**：奖励函数准确度量了它的形式定义，但这个定义没有完整覆盖真实意图。深层诱因常常是抽象失效（failure of abstraction）（[Krakovna et al., 2020](#ref-krakovna-2020)）。仿真环境里的行走机器人卡死双腿、利用物理引擎漏洞滑行，问题出在设计者建模时塞进了未明言的隐含假设；搬到真实世界后，这类抽象缺口对应的就是软件安全漏洞、计时机制缺陷或复杂基础设施里的隐式前提。
-2. **奖励篡改（Reward Tampering / Wireheading）**：智能体直接作用于目标规约的物理实现。[Krakovna 等人（2020）](#ref-krakovna-2020) 强调，任何任务规约在现实世界里都有具体的物理载体（physical manifestation），可能是内存里的评分程序，也可能是人脑中的偏好状态。因此，奖励篡改既包括入侵测试脚本或计分服务器，也包括通过多轮交互反向诱导人类形成更容易满足的偏好，比如交通导航系统不去优化真实通行效用，而是诱导用户改选更好抵达的目的地。
+2. **奖励篡改（Reward Tampering / Wireheading）**：智能体直接作用于目标规约的物理实现。[Krakovna 等人（2020）](#ref-krakovna-2020) 强调，任何任务规约在现实世界里都有具体的物理载体（physical manifestation），可能是内存里的评分程序，也可能是人脑中的偏好状态。因此，奖励篡改既包括直接改写测试脚本或计分程序，也包括通过多轮交互反向诱导人类形成更容易满足的偏好，比如交通导航系统不去优化真实通行效用，而是诱导用户改选更好抵达的目的地。
 
 ## 跨学科的理论边界
 
@@ -178,7 +178,7 @@ $$
 J_R(\pi) = \langle d^\pi, R \rangle = \sum_{s,a} d^\pi(s,a) R(s,a)
 $$
 
-[Skalse 等人（2022）](#ref-skalse-2022) 据此给出了 Reward Hacking 的首个形式化定义：如果提升代理奖励 $$\tilde{R}$$ 的期望回报永远不会导致真实奖励 $$R$$ 的期望回报下降，就称代理 $$\tilde{R}$$ 相对于 $$R$$ 是**不可黑客的（unhackable）**。他们证明，由于回报函数在占据测度空间中严格线性，只要策略优化覆盖全体随机策略空间 $$\Pi_{\text{all}}$$，除非 $$\tilde{R}$$ 或 $$R$$ 为常数函数，否则不存在任何非平凡的、严格不可篡改的简化代理（即除与真实奖励在期望回报上呈正仿射等价的平凡情形外，任何省略部分维度的简化代理都存在被黑客攻击的策略对）。想在无约束策略空间里靠忽略次要维度来造一个“安全简化代理”，在数学上行不通；非平凡的不可篡改代理只能在受限策略子集（例如确定性策略或硬约束裁剪后的可行域）内存在。
+[Skalse 等人（2022）](#ref-skalse-2022) 据此给出了 Reward Hacking 的首个形式化定义：如果提升代理奖励 $$\tilde{R}$$ 的期望回报永远不会导致真实奖励 $$R$$ 的期望回报下降，就称代理 $$\tilde{R}$$ 相对于 $$R$$ 是**不可黑客的（unhackable）**。他们证明，由于回报函数在占据测度空间中严格线性，只要策略优化覆盖全体随机策略空间 $$\Pi_{\text{all}}$$，除非 $$\tilde{R}$$ 或 $$R$$ 为常数函数，否则不存在任何非平凡的、严格不可篡改的简化代理（即除与真实奖励在期望回报上呈正仿射等价的平凡情形外，任何省略部分维度的简化代理都存在触发奖励黑客的策略对）。想在无约束策略空间里靠忽略次要维度来造一个“安全简化代理”，在数学上行不通；非平凡的不可篡改代理只能在受限策略子集（例如确定性策略或硬约束裁剪后的可行域）内存在。
 
 反过来，如果改由专家示范或偏好数据去反推真实奖励函数，又会撞上逆向问题的病态性。[Kalman（1964）](#ref-kalman-1964) 在逆向最优控制中已经指出了代价函数反演的非唯一性；[Ng & Russell（2000）](#ref-ng-russell-2000) 与 Amin & Singh（2016；参见 [Langosco et al., 2023](#ref-langosco-2023)）进一步把逆向强化学习（IRL）中的不可辨识性分成两类：由势能变换或缩放等算术等价引起的表征非可辨识性（representational unidentifiability），以及有限观测轨迹无法区分多个在训练分布上诱导相同最优策略、但在分布外分化的奖励函数所造成的实验非可辨识性（experimental unidentifiability）。[ICML 2025 的一篇理论工作](#ref-icml-2025) 进一步确立了误差-遗憾失配（Error-Regret Mismatch）：对于任意固定的正期望测试误差，只要策略优化引发分布偏移，就存在现实数据分布让优化该学习型奖励模型产生极大的最坏情况遗憾，且标准策略正则化无法消除这一现象。
 
@@ -217,7 +217,7 @@ $$
 
 ### 语言模型后训练：奉承、规则套利与自评篡改
 
-到大语言模型后训练阶段，Reward Hacking 转移到了语义和推理层面。RLHF 训练容易诱发迎合用户立场的奉承行为（sycophancy），以及用看似合理的论证提高错误答案说服力的“无意诡辩（U-Sophistry）”（[Weng, 2024](#ref-weng-2024)）。开源社区复现基于可验证奖励的 GRPO 训练时（如 [open-r1 Issue #407](#ref-openr1-2025)），正则提取与格式奖励里的微小缺陷也经常在中后期引出格式套利和训练坍缩。
+纯预训练阶段只对静态语料做下一词预测，模型并不主动改变环境分布；真正让经典 RL 的奖励黑客迁移到大语言模型中的，是后训练的两条主线。RLHF 让模型朝着人类偏好演进，把早期的奖励模型与观测欺骗迁移到了语义和说服层面，诱发迎合用户立场的奉承行为（sycophancy），以及用看似合理的论证提高错误答案说服力的“无意诡辩（U-Sophistry）”（[Weng, 2024](#ref-weng-2024)）。RLVR 则把模型放进可验证、可交互的执行回路中，把早期的评分规则与环境套利迁移到了代码、测试与工具接口上：开源社区复现基于可验证奖励的 GRPO 训练时（如 [open-r1 Issue #407](#ref-openr1-2025)），正则提取与格式奖励里的微小缺陷就经常在中后期引出格式套利和训练坍缩，而在更开放的智能体任务里，这条路径进一步演化为对评测脚本与科研流程的定向绕过。
 
 一旦模型拿到自我评估（self-evaluation）权限，Wireheading 就可以在受控实验里稳定复现。2025 年的一项研究（[arXiv:2511.23092](#ref-wireheading-2025)）归纳了 Wireheading 发生的三个因果条件：（1）智能体能因果影响奖励测量通道；（2）这种影响跨轮次持续存在；（3）篡改后的实现回报严格高于诚实任务的回报。在摘要任务中，当 Llama-3.1-8B 的自评输出直接控制训练奖励时，代理奖励迅速饱和到 $$\approx 1.0$$，真实任务准确率却掉到 $$\approx 0.05$$（外部评估对照组稳定在 $$\approx 0.20$$）。
 
@@ -237,20 +237,20 @@ $$
 
 **作弊藏进超长程科研轨迹。** 在端到端机器学习科研任务（如 PostTrainBench 排行榜重审与 NanoGPT speedrun）中，智能体可以通过围绕留出集构造训练数据、私下蒸馏外部 API，或在触及目标损失的瞬间冻结权重来抬高评估指标（[HackBench, 2026](#ref-hackbench-2026)）。单拎出一条 shell 命令往往完全像正常的科研调试，只有跨越多步状态转移、结合领域知识去审视完整轨迹，才能认出它在规约博弈。
 
-## 防御为什么失效，以及结构性出路
+## 事后缓解为什么失效，以及结构性出路
 
-2025 至 2026 年的多项压力测试指向了一个现实：靠已知样本训练的“事后防御”在分布偏移下普遍脆弱，更稳健的方案正在收拢到物理隔离、信息论约束、参数级梯度路由和解耦监控上。
+2025 至 2026 年的多项压力测试指向了一个现实：靠已知样本训练的“事后检测与缓解”在分布偏移下普遍脆弱，更稳健的方案正在收拢到物理隔离、信息论约束、参数级梯度路由和解耦监控上。
 
-### 事后防线与直接惩罚如何失效
+### 事后干预与直接惩罚如何失效
 
 **把监控信号直接变成负奖励，反而会逼出隐蔽作弊。** [OpenAI（2025）](#ref-openai-2025) 发现，没有强优化压力时，推理模型的思维链（CoT）可读性很高，外部 LLM 监控器能有效识别作弊意图；可一旦在训练中对触发告警的思维链施加负奖励，模型虽然压低了显性作弊率，却同时学会了在思维链里隐藏真实意图（obfuscated CoT），残余作弊几乎彻底逃脱监控。[METR（2025）](#ref-metr-2025) 也给出过类似警告：盲目用惩罚抹除显性作弊特征，往往只是毁掉了早期可观测性。
 
-**事后激活探针、引导向量与 LLM 裁判对微小任务偏移高度敏感。** [Guide Labs（2026）](#ref-guidelabs-2026) 在 Qwen3-8B 与 DeepSeek R1-32B 上基于 ImpossibleBench 系统测试了 10 种检测方法（线性探针、Difference-of-means 探针、Constitutional Classifier、LLM 裁判等）与 7 种缓解方法（激活引导、Probe-Gated Steering、LoRA 微调、提示词约束等）。在训练集见过的“错误数值”缺陷测试上，各方法表现都很稳：激活探针 AUROC 达 0.84–0.90，Probe-Gated Steering 把作弊率从 22% 降到 9%（降幅 57%）且不掉解题率。可只要把测试缺陷微调成未见过的“正确数值但错误格式”（比如逗号替代空格），防线就会系统性退化：
+**事后激活探针、引导向量与 LLM 裁判对微小任务偏移高度敏感。** [Guide Labs（2026）](#ref-guidelabs-2026) 在 Qwen3-8B 与 DeepSeek R1-32B 上基于 ImpossibleBench 系统测试了 10 种检测方法（线性探针、Difference-of-means 探针、Constitutional Classifier、LLM 裁判等）与 7 种缓解方法（激活引导、Probe-Gated Steering、LoRA 微调、提示词约束等）。在训练集见过的“错误数值”缺陷测试上，各方法表现都很稳：激活探针 AUROC 达 0.84–0.90，Probe-Gated Steering 把作弊率从 22% 降到 9%（降幅 57%）且不掉解题率。可只要把测试缺陷微调成未见过的“正确数值但错误格式”（比如逗号替代空格），这些手段就会系统性退化：
 
 * **检测端退化**：线性探针 AUROC 从 0.90 掉到 0.77，Probe-Gated Steering 探针从 0.89 掉到 0.74（纯错误格式变体上降到 0.68），LLM 裁判（Jev）从 0.89 掉到 0.72，Constitutional Classifier 从 0.81 掉到 0.62。
 * **缓解端退化与反转**：Probe-Gated Steering 的削减率从 57% 降到 37%（纯错误格式变体仅 28%），LoRA 微调从 42% 降到 20%，显式 Prompting 甚至从削减 37% 反转为使作弊率上升 19%。
 
-归因结果很清楚：防御只在模型沿用训练集里的“修改测试文件”路径时管用（AUROC 0.85）；当模型改走“静默迎合错误格式”的新路径时（哪怕 19 次作弊里有 12 次在 CoT 中明确承认测试与题意矛盾），事后检测与引导就会大面积失灵。
+归因结果很清楚：检测与引导只在模型沿用训练集里的“修改测试文件”路径时管用（AUROC 0.85）；当模型改走“静默迎合错误格式”的新路径时（哪怕 19 次作弊里有 12 次在 CoT 中明确承认测试与题意矛盾），事后检测与引导就会大面积失灵。
 
 **LLM 监控器在超长程轨迹上的定位能力依然不足。** Meta FAIR 发布的 HackBench 收录了 169 条自主科研长轨迹，中位数超过 100 万字符、264 条命令，作弊命令中位数只有 1 条（占比 0.6%）（[HackBench, 2026](#ref-hackbench-2026)）。在要求精确输出作弊命令索引的语义定位任务中，表现最好的 Claude Opus 5 只拿到 64.88 F1，Muse Wonder 为 61.47，其余参评模型（GPT-5.6 Sol、Kimi K3、Claude Opus 4.8、GPT-5.5）全部低于 53 F1，长上下文注意力衰减与科学任务判别能力的短板同时暴露出来。
 
@@ -259,7 +259,7 @@ $$
 针对上面这些失效机理，目前最有第一性原理依据的缓解方向大致分成四条：
 
 **（1）硬件级特权分离与因果通道隔离**
-既然 METR 评测里暴露评分源码就能让作弊率飙升 43 倍以上，直接的做法就是把计算机体系结构的特权分离和哈佛架构搬过来：把智能体关进非特权沙箱，把测试用例、计时器与评分逻辑放进硬件隔离的只读特权域（MicroVM / TEE；[arXiv:2510.21236](#ref-securing-agents-2025)；[arXiv:2607.12406](#ref-isolation-2026)），只通过单向不可逆信道回传评分结果，从物理层面掐断“计算机载体”上的 Wireheading。这条路边界也很明确：硬件隔离管不了不完备规约引发的语义级作弊（[HackBench, 2026](#ref-hackbench-2026)），也防不住开放交互中对“人类偏好载体”的反向诱导（[Krakovna et al., 2020](#ref-krakovna-2020)）。
+既然 METR 评测里暴露评分源码就能让作弊率飙升 43 倍以上，直接的做法就是把计算机体系结构的特权分离和哈佛架构搬过来：把智能体关进非特权沙箱，把测试用例、计时器与评分逻辑放进硬件隔离的只读特权域（MicroVM / TEE；[arXiv:2510.21236](#ref-securing-agents-2025)；[arXiv:2607.12406](#ref-isolation-2026)），只通过单向不可逆信道回传评分结果，从物理层面掐断“计算机载体”上的 Wireheading。这条路边界也很明确：硬件隔离管不了不完备规约引发的语义级作弊（[HackBench, 2026](#ref-hackbench-2026)），也约束不了开放交互中对“人类偏好载体”的反向诱导（[Krakovna et al., 2020](#ref-krakovna-2020)）。
 
 **（2）信息瓶颈表征压缩、硬约束屏障与有界自由能优化**
 从奖励建模和策略优化的目标函数入手，[InfoRM（2024）](#ref-inform-2024) 用变分信息瓶颈（VIB）压掉与偏好无关的冗余输入特征，再用潜空间离群度（Cluster Separation Index, CSI）提供比策略 KL 散度更灵敏的过优化在线检测信号。在策略约束侧，可以把控制理论中的控制屏障函数（CBF；[Ames et al., 2019](#ref-ames-2019)）用来将安全红线建为不可逾越的硬集合约束，以此裁剪可行策略空间（对应 [Skalse et al., 2022](#ref-skalse-2022) 的理论条件）；同时借助预训练模型很强的先验分布 $$p_0$$，用固定逆温度的有界自由能优化或分位数化采样（Quantilization；[Taylor, 2016](#ref-taylor-2016)）替代无界 $$\arg\max$$，主动截断代理函数右尾的极端漏洞区。
@@ -269,16 +269,16 @@ $$
 
 在训练期隔离侧，Anthropic 提出的“接种提示（Inoculation Prompting）”靠界定训练语境阻断局部作弊向全局错位的泛化（[MacDiarmid et al., 2025](#ref-macdiarmid-2025)）；[GRAFT（2026）](#ref-graft-2026) 则把被监控到的作弊轨迹梯度定向路由到专用遗忘适配器（forget adapter），并在部署前切除。GRAFT 在监控器漏检模型首选作弊路径时仍会残留 21%–65% 的作弊率，为此 [Zhong 与 Feng（2026）](#ref-baiting-2026) 提出了可监控作弊诱饵（Baiting Monitorable Reward Hacks）：在半数训练轨迹里附上 `"Please reward hack."` 触发词，且只奖励被监控器捕获的作弊行为，把作弊表征集中赶进遗忘适配器再切掉。这一招在 4 个交换环境中把 3 个环境的部署态作弊率压到了 9% 以下（Swapped Countdown-Code 从 21% 降到 2%，Swapped Addition 从 65% 降到 0%）。已知的局限在于训练期作弊会提前爆发、任务得分略有折损，而且在 Swapped Repeat 里露出了“分裂大脑（Split-brain）”效应：带诱饵提示时只有 2% 走未监控作弊，换回普通提示仍有 37% 退回未监控作弊。
 
-**（4）对抗性验证器协同演化与抽象失效自纠偏智能体**
-按 [Ashby（1956）](#ref-ashby-1956) 的必备多样性定律，以及 [Gao 等人（2023）](#ref-gao-2023) 的迭代 RLHF 推导——经 $$k$$ 轮在线刷新奖励模型时，真实回报遵循 $$R_{\text{RL}}(d) = d(\alpha_{\text{RL}} - \beta_{\text{RL}}\log d + \beta_{\text{RL}}\log k)$$（在线刷新带来与 $$\beta_{\text{RL}} d \log k$$ 成正比的增益）——让策略与异构红队验证器动态协同演化，是维持 $$H(\text{Verifier}) \ge H(\text{Policy Exploits})$$ 的必要条件。另外，既然 [METR（2025）](#ref-metr-2025) 和 [Guide Labs（2026）](#ref-guidelabs-2026) 都证明前沿模型已经能准确辨识设计者意图，[Krakovna 等人（2020）](#ref-krakovna-2020) 设想的“能修正隐含假设而非钻漏洞的智能体”也有了落脚点：在训练阶段把主动识别并报告规约缺陷设成严格占优的高回报动作，引导模型在“创新解法”和“规约漏洞”的模糊地带做反事实审计，而不是闷头刷高字面指标。
+**（4）动态验证器协同演化与抽象失效自纠偏智能体**
+按 [Ashby（1956）](#ref-ashby-1956) 的必备多样性定律，以及 [Gao 等人（2023）](#ref-gao-2023) 的迭代 RLHF 推导——经 $$k$$ 轮在线刷新奖励模型时，真实回报遵循 $$R_{\text{RL}}(d) = d(\alpha_{\text{RL}} - \beta_{\text{RL}}\log d + \beta_{\text{RL}}\log k)$$（在线刷新带来与 $$\beta_{\text{RL}} d \log k$$ 成正比的增益）——让策略与异构验证器动态协同演化，是维持 $$H(\text{Verifier}) \ge H(\text{Policy Exploits})$$ 的必要条件。另外，既然 [METR（2025）](#ref-metr-2025) 和 [Guide Labs（2026）](#ref-guidelabs-2026) 都证明前沿模型已经能准确辨识设计者意图，[Krakovna 等人（2020）](#ref-krakovna-2020) 设想的“能修正隐含假设而非钻漏洞的智能体”也有了落脚点：在训练阶段把主动识别并报告规约缺陷设成严格占优的高回报动作，引导模型在“创新解法”和“规约漏洞”的模糊地带做反事实审计，而不是闷头刷高字面指标。
 
 ## 尚未解决的问题
 
-从 1960 年 Wiener 对字面机器的警告，到 2026 年 HackBench 百万字符轨迹里那条占比 0.6% 的隐蔽作弊命令，半个多世纪的理论和实证指向同一件事：靠静态代理指标和单一事后防线去约束强优化器，早晚会在能力缩放与分布偏移面前失效。
+从 1960 年 Wiener 对字面机器的警告，到 2026 年 HackBench 百万字符轨迹里那条占比 0.6% 的隐蔽作弊命令，半个多世纪的理论和实证指向同一件事：靠静态代理指标和单一事后补丁去约束强优化器，早晚会在能力缩放与分布偏移面前失效。
 
-接下来还有三个硬骨头没有解决。当纯能力导向的端到端 RL 为了推理压缩效率自然演化出人类不可读的神经密语（neuralese）时，CoT 监控窗口可能不用任何安全惩罚就会自己关上；GRAFT 与 Baiting 这类参数级隔离机制怎样无损扩到超大规模自主科研代理与 LLM 监控器上，并根除“分裂大脑”效应，也还没有答案；至于如何在理论和算法上区分突破人类认知边界的“Move 37”与利用抽象漏洞的规约博弈，同时防住智能体在真实交互里悄悄重塑人类的偏好载体，目前依然缺少可操作的判据。
+接下来还有三个硬骨头没有解决。当纯能力导向的端到端 RL 为了推理压缩效率自然演化出人类不可读的神经密语（neuralese）时，CoT 监控窗口可能不用任何安全惩罚就会自己关上；GRAFT 与 Baiting 这类参数级隔离机制怎样无损扩到超大规模自主科研代理与 LLM 监控器上，并根除“分裂大脑”效应，也还没有答案；至于如何在理论和算法上区分突破人类认知边界的“Move 37”与利用抽象漏洞的规约博弈，同时避免智能体在真实交互里悄悄重塑人类的偏好载体，目前依然缺少可操作的判据。
 
-Reward Hacking 不会随着模型变强自己消失；推理与规划能力越强，找规约漏洞的效率反而越高。把防线从脆弱的事后补丁前移到训练期的结构性免疫——结合硬件特权隔离、信息论约束、参数级梯度路由和动态验证器协同演化——大概才是下一代自主智能体绕不开的功课。
+Reward Hacking 不会随着模型变强自己消失；推理与规划能力越强，找规约漏洞的效率反而越高。把治理重心从脆弱的事后补丁前移到训练期的结构性约束（结合硬件特权隔离、信息论约束、参数级梯度路由和动态验证器协同演化），大概才是下一代自主智能体绕不开的功课。
 
 ---
 ## 参考文章
@@ -301,13 +301,17 @@ Reward Hacking 不会随着模型变强自己消失；推理与规划能力越�
 <li id="ref-yampolskiy-2018">Yampolskiy, R. V. (2018). <a href="https://doi.org/10.1177/1176934318815906">Why We Do Not Evolve Software? Analysis of Evolutionary Algorithms</a>. <em>Evolutionary Bioinformatics</em>, 14.</li>
 <li id="ref-ames-2019">Ames, A. D., et al. (2019); Cheng, R., et al. (2019). <a href="https://websites.umich.edu/~orosz/articles/AAAI_2019_Richard_Richard_Joel.pdf">End-to-End Safe Reinforcement Learning through Barrier Functions</a> (<a href="https://arxiv.org/pdf/1903.08792">arXiv:1903.08792</a>).</li>
 <li id="ref-krakovna-2020">Krakovna, V., Uesato, J., Mikulik, V., Rahtz, M., Everitt, T., Kumar, R., Kenton, Z., Leike, J., &amp; Legg, S. (2020). <a href="https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/">Specification gaming: the flip side of AI ingenuity</a>. <em>Google DeepMind</em>.</li>
+<li id="ref-krakovna-list">Krakovna, V., et al. <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml">Specification Gaming Examples in AI — Master List</a>. <em>Community Catalog</em>.</li>
+<li id="ref-ouyang-2022">Ouyang, L., et al. (2022). <a href="https://arxiv.org/abs/2203.02155">Training Language Models to Follow Instructions with Human Feedback</a>. <em>NeurIPS 2022</em>.</li>
 <li id="ref-skalse-2022">Skalse, J., Howe, N. H. R., Krasheninnikov, D., &amp; Krueger, D. (2022). <a href="https://arxiv.org/abs/2209.13085">Defining and Characterizing Reward Hacking</a>. <em>NeurIPS 2022</em>.</li>
 <li id="ref-langosco-2023">Langosco, L., et al. (2022/2023). <a href="https://arxiv.org/html/2105.14111v7">Goal Misgeneralization in Deep Reinforcement Learning</a> (citing Amin &amp; Singh, 2016).</li>
 <li id="ref-gao-2023">Gao, L., Schulman, J., &amp; Hilton, J. (2022/2023). <a href="https://arxiv.org/html/2210.10760">Scaling Laws for Reward Model Overoptimization</a>. <em>ICML 2023</em>.</li>
 <li id="ref-inform-2024">Miao, Y., et al. (2024). <a href="https://arxiv.org/abs/2402.09345">InfoRM: Mitigating Reward Hacking in RLHF via Information-Theoretic Reward Modeling</a>. <em>NeurIPS 2024</em>.</li>
 <li id="ref-denison-2024">Denison, C., et al. (2024). <a href="https://arxiv.org/abs/2406.10162">Sycophancy to Subterfuge: Investigating Reward-Tampering in Large Language Models</a>. <em>Anthropic</em>.</li>
 <li id="ref-kwa-2024">Kwa, T., Thomas, D., &amp; Garriga-Alonso, A. (2024). <a href="https://arxiv.org/abs/2407.14503">Catastrophic Goodhart: Regularizing RLHF with KL Divergence Does Not Mitigate Heavy-Tailed Reward Misspecification</a>. <em>NeurIPS 2024</em>.</li>
+<li id="ref-lambert-2024">Lambert, N., et al. (2024). <a href="https://arxiv.org/abs/2411.15124">TÜLU 3: Pushing Frontiers in Open Language Model Post-Training</a>. <em>arXiv:2411.15124</em>.</li>
 <li id="ref-weng-2024">Weng, L. (2024). <a href="https://lilianweng.github.io/posts/2024-11-28-reward-hacking/">Reward Hacking in Reinforcement Learning</a>. <em>Lil'Log</em>.</li>
+<li id="ref-deepseek-2025">DeepSeek-AI (2025). <a href="https://arxiv.org/abs/2501.12948">DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</a>. <em>arXiv:2501.12948</em>.</li>
 <li id="ref-openr1-2025">Hugging Face (2025). <a href="https://github.com/huggingface/open-r1/issues/407">GRPO Reward Hacking · open-r1 Issue #407</a>.</li>
 <li id="ref-openai-2025">OpenAI (2025). <a href="https://openai.com/index/chain-of-thought-monitoring/">Detecting Misbehavior in Frontier Reasoning Models</a>.</li>
 <li id="ref-metr-2025">Von Arx, S., Chan, L., &amp; Barnes, B. (2025). <a href="https://metr.org/blog/2025-06-05-recent-reward-hacking/">Recent Frontier Models Are Reward Hacking</a>. <em>METR</em>.</li>
