@@ -9,27 +9,11 @@
   {%- assign navigation_label = '同栏目内容' -%}
   {%- assign previous_label = '← 上一篇' -%}
   {%- assign next_label = '下一篇 →' -%}
-  {%- assign annotate_idle = '划词批注' -%}
-  {%- assign annotate_loading = '加载批注中…' -%}
-  {%- assign annotate_ready = '批注已开启' -%}
-  {%- assign annotate_prompt = '对某段内容有想法或补充？开启 Hypothes.is 划词批注，选中任意文字即可高亮讨论。' -%}
-  {%- assign annotate_cta = '开启划词批注' -%}
-  {%- assign annotate_error = '无法加载 Hypothes.is，请检查网络或浏览器拦截设置。' -%}
 {%- else -%}
   {%- assign toc_label = 'Table of Contents' -%}
   {%- assign navigation_label = 'More in this section' -%}
   {%- assign previous_label = '← Older' -%}
   {%- assign next_label = 'Newer →' -%}
-  {%- assign annotate_idle = 'Annotate' -%}
-  {%- assign annotate_loading = 'Loading…' -%}
-  {%- assign annotate_ready = 'Annotations on' -%}
-  {%- assign annotate_prompt = 'Have a note or question on a passage? Load Hypothes.is to highlight and annotate any text.' -%}
-  {%- assign annotate_cta = 'Open annotations' -%}
-  {%- assign annotate_error = 'Could not load Hypothes.is. Please check your network or content blocker.' -%}
-{%- endif -%}
-{%- assign annotations_enabled = true -%}
-{%- if page.annotations == false -%}
-  {%- assign annotations_enabled = false -%}
 {%- endif -%}
 <!DOCTYPE html>
 <html lang="{{ article_lang | escape }}">
@@ -61,9 +45,6 @@
 {%- endif -%}
 {%- if math_page %}{% include mathjax.html %}{%- endif -%}
 <script src="{{ '/assets/reading-progress.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-{%- if annotations_enabled %}
-<script src="{{ '/assets/annotations.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-{%- endif %}
 </head>
 <body>
 <div class="reading-progress{% if archive == 'fails' %} reading-progress--fails{% endif %}" aria-hidden="true"></div>
@@ -78,19 +59,6 @@
         <a class="recent-tag {% if archive == 'fails' %}recent-tag--fails{% else %}recent-tag--writing{% endif %}"
           href="{{ '/' | append: archive | append: '/' | relative_url }}" lang="en">{% if archive == 'fails' %}How AI Fails{% else %}Writing{% endif %}</a>
         <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
-        {%- if annotations_enabled %}
-        <button type="button"
-          class="annotate-toggle{% if archive == 'fails' %} annotate-toggle--fails{% endif %}"
-          data-annotate-trigger
-          data-label-idle="{{ annotate_idle }}"
-          data-label-loading="{{ annotate_loading }}"
-          data-label-ready="{{ annotate_ready }}"
-          data-error-msg="{{ annotate_error }}"
-          aria-pressed="false">
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 2.5a1.77 1.77 0 0 1 2.5 2.5L5.5 13.5 2 14.5l1-3.5 8.5-8.5Z"/></svg>
-          <span data-annotate-label>{{ annotate_idle }}</span>
-        </button>
-        {%- endif %}
       </div>
       <h1 class="post-title">{{ page.title | escape }}</h1>
     </header>

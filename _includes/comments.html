@@ -1,0 +1,24 @@
+{%- assign comment_lang = include.lang | default: 'zh-CN' -%}
+{%- if comment_lang contains 'zh' -%}
+  {%- assign comments_heading = '评论' -%}
+  {%- assign comments_hint = '使用 GitHub 账号即可发表评论，支持 Markdown。' -%}
+  {%- assign comments_noscript = '请启用 JavaScript 以加载评论区。' -%}
+{%- else -%}
+  {%- assign comments_heading = 'Comments' -%}
+  {%- assign comments_hint = 'Sign in with GitHub to comment (Markdown supported).' -%}
+  {%- assign comments_noscript = 'Enable JavaScript to load comments.' -%}
+{%- endif -%}
+<section class="post-comments" aria-labelledby="post-comments-heading">
+  <div class="post-comments-head">
+    <h2 id="post-comments-heading">{{ comments_heading }}</h2>
+    <p class="post-comments-hint">{{ comments_hint }}</p>
+  </div>
+  <script src="https://utteranc.es/client.js"
+    repo="{{ site.comments.repo | default: 'ykchen824/ykchen824.github.io' | escape }}"
+    issue-term="{{ site.comments.issue_term | default: 'pathname' | escape }}"
+    label="{{ site.comments.label | default: 'comment' | escape }}"
+    theme="{{ site.comments.theme | default: 'github-light' | escape }}"
+    crossorigin="anonymous"
+    async></script>
+  <noscript><p class="post-comments-hint">{{ comments_noscript }}</p></noscript>
+</section>

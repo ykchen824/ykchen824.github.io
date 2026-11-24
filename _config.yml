@@ -41,3 +41,12 @@ defaults:
 # Not published. (_templates/ is skipped automatically because of the underscore.)
 exclude:
   - README.md
+
+# Comments (Utterances, backed by GitHub Issues; requires installing the
+# Utterances GitHub App on ykchen824/ykchen824.github.io).
+comments:
+  enabled: true
+  repo: ykchen824/ykchen824.github.io
+  issue_term: pathname
+  label: comment
+  theme: github-light
