@@ -8,7 +8,7 @@ summary: 从经典强化学习的原地翻积木到前沿智能体的科研作�
 
 <figure class="rh-compare tex2jax_ignore" aria-labelledby="rh-compare-title">
 <style>
-.rh-compare{--rh-dur:10s;margin:2rem 0 2.2rem;padding:1.15rem 0 0;border-top:1.5px solid var(--border-2);border-bottom:1px solid var(--border-2);background:transparent;overflow-wrap:normal}
+.rh-compare{margin:2rem 0 2.2rem;padding:1.15rem 0 0;border-top:1.5px solid var(--border-2);border-bottom:1px solid var(--border-2);background:transparent;overflow-wrap:normal}
 .rh-compare-title{margin:0 0 1rem;font-family:var(--serif);font-size:1.06rem;font-weight:600;line-height:1.38;color:var(--ink)}
 .rh-compare-stage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;padding-bottom:1.1rem}
 .rh-panel{min-width:0}
@@ -33,44 +33,41 @@ summary: 从经典强化学习的原地翻积木到前沿智能体的科研作�
 .rh-shift-cell{color:var(--body);min-width:0}
 .rh-shift-tag{display:none}
 .rh-compare figcaption{padding:.7rem 0 .9rem;border-top:1px solid var(--border);font-size:.84rem;line-height:1.6;color:var(--muted-strong)}
-/* Panel 1 (2020) synchronized animation states; base CSS represents Stage 3 */
-.rh-block-flip{transform-origin:0 0;transform:translateY(0) rotate(180deg);animation:rh-flip var(--rh-dur) linear infinite}
-.rh-block-char-wrap{transform-origin:0 0;transform:rotate(-180deg);animation:rh-char-upright var(--rh-dur) linear infinite}
-.rh-arm{transform-origin:0 0;transform:translateY(-8px);opacity:0;animation:rh-arm-move var(--rh-dur) linear infinite}
-.rh-intent-arrow,.rh-intent-head{opacity:0;animation:rh-stage1-only var(--rh-dur) linear infinite}
-.rh-ghost-miss{opacity:1;animation:rh-stage3-only var(--rh-dur) linear infinite}
-.rh-s3-annot{opacity:1;animation:rh-stage3-only var(--rh-dur) linear infinite}
-.rh-meter-fill{transform-origin:0 0;transform:scaleX(1);animation:rh-meter var(--rh-dur) linear infinite}
-.rh-val-0{opacity:0;animation:rh-before-flip var(--rh-dur) linear infinite}
-.rh-val-1{opacity:1;animation:rh-after-flip var(--rh-dur) linear infinite}
-/* Panel 2 (2025-2026) synchronized animation states; base CSS represents Stage 3 */
-.rh-playhead{transform-origin:0 0;transform:translateX(288px);opacity:0;animation:rh-playhead-sweep var(--rh-dur) linear infinite}
-.rh-seg{opacity:1}
-.rh-seg-1{animation:rh-seg-1 var(--rh-dur) linear infinite}
-.rh-seg-2{animation:rh-seg-2 var(--rh-dur) linear infinite}
-.rh-seg-3{animation:rh-seg-3 var(--rh-dur) linear infinite}
-.rh-seg-4{animation:rh-seg-4 var(--rh-dur) linear infinite}
-.rh-seg-5{animation:rh-seg-5 var(--rh-dur) linear infinite}
-.rh-seg-6{animation:rh-seg-6 var(--rh-dur) linear infinite}
-.rh-seg-7{animation:rh-seg-7 var(--rh-dur) linear infinite}
-.rh-seg-8{animation:rh-seg-8 var(--rh-dur) linear infinite}
-.rh-hack-subtle{opacity:0;animation:rh-hack-stealth var(--rh-dur) linear infinite}
-.rh-hack-pop{transform-origin:0 0;transform:scaleY(2);opacity:1;animation:rh-hack-reveal var(--rh-dur) linear infinite}
-.rh-hack-ring{transform-box:fill-box;transform-origin:center;transform:scale(1.6);opacity:0;animation:rh-hack-pulse var(--rh-dur) linear infinite}
-.rh-hack-tag{opacity:1;animation:rh-audit-lock var(--rh-dur) linear infinite}
-.rh-scanner{transform-origin:0 0;transform:translateX(194.2px);opacity:0;animation:rh-scan-sweep var(--rh-dur) linear infinite}
-.rh-badge-1{opacity:0;animation:rh-badge-s1 var(--rh-dur) linear infinite}
-.rh-badge-2{opacity:0;animation:rh-badge-s2 var(--rh-dur) linear infinite}
-.rh-badge-3{opacity:1;animation:rh-audit-lock var(--rh-dur) linear infinite}
-.rh-trace-bg-alert,.rh-trace-strip-alert{opacity:1;animation:rh-audit-lock var(--rh-dur) linear infinite}
-.rh-trace-1{opacity:0;animation:rh-trace-s1 var(--rh-dur) linear infinite}
-.rh-trace-2{opacity:0;animation:rh-trace-s2a var(--rh-dur) linear infinite}
-.rh-trace-3{opacity:0;animation:rh-trace-s2b var(--rh-dur) linear infinite}
-.rh-trace-4{opacity:1;animation:rh-audit-lock var(--rh-dur) linear infinite}
-/* Shared bottom phase captions */
-.rh-cap-1{opacity:0;animation:rh-stage1-only var(--rh-dur) linear infinite}
-.rh-cap-2{opacity:0;animation:rh-stage2-only var(--rh-dur) linear infinite}
-.rh-cap-3{opacity:1;animation:rh-stage3-only var(--rh-dur) linear infinite}
+.rh-compare .rh-block-flip{transform-origin:0 0;transform:translateY(0) rotate(180deg);animation:rh-flip 10s linear infinite !important}
+.rh-compare .rh-block-char-wrap{transform-origin:0 0;transform:rotate(-180deg);animation:rh-char-upright 10s linear infinite !important}
+.rh-compare .rh-arm{transform-origin:0 0;transform:translateY(-8px);opacity:0;animation:rh-arm-move 10s linear infinite !important}
+.rh-compare .rh-intent-arrow,.rh-compare .rh-intent-head{opacity:0;animation:rh-stage1-only 10s linear infinite !important}
+.rh-compare .rh-ghost-miss{opacity:1;animation:rh-stage3-only 10s linear infinite !important}
+.rh-compare .rh-s3-annot{opacity:1;animation:rh-stage3-only 10s linear infinite !important}
+.rh-compare .rh-meter-fill{transform-origin:0 0;transform:scaleX(1);animation:rh-meter 10s linear infinite !important}
+.rh-compare .rh-val-0{opacity:0;animation:rh-before-flip 10s linear infinite !important}
+.rh-compare .rh-val-1{opacity:1;animation:rh-after-flip 10s linear infinite !important}
+.rh-compare .rh-playhead{transform-origin:0 0;transform:translateX(288px);opacity:0;animation:rh-playhead-sweep 10s linear infinite !important}
+.rh-compare .rh-seg{opacity:1}
+.rh-compare .rh-seg-1{animation:rh-seg-1 10s linear infinite !important}
+.rh-compare .rh-seg-2{animation:rh-seg-2 10s linear infinite !important}
+.rh-compare .rh-seg-3{animation:rh-seg-3 10s linear infinite !important}
+.rh-compare .rh-seg-4{animation:rh-seg-4 10s linear infinite !important}
+.rh-compare .rh-seg-5{animation:rh-seg-5 10s linear infinite !important}
+.rh-compare .rh-seg-6{animation:rh-seg-6 10s linear infinite !important}
+.rh-compare .rh-seg-7{animation:rh-seg-7 10s linear infinite !important}
+.rh-compare .rh-seg-8{animation:rh-seg-8 10s linear infinite !important}
+.rh-compare .rh-hack-subtle{opacity:0;animation:rh-hack-stealth 10s linear infinite !important}
+.rh-compare .rh-hack-pop{transform-origin:0 0;transform:scaleY(2);opacity:1;animation:rh-hack-reveal 10s linear infinite !important}
+.rh-compare .rh-hack-ring{transform-origin:0 0;transform:scale(1.6);opacity:0;animation:rh-hack-pulse 10s linear infinite !important}
+.rh-compare .rh-hack-tag{opacity:1;animation:rh-audit-lock 10s linear infinite !important}
+.rh-compare .rh-scanner{transform-origin:0 0;transform:translateX(194.2px);opacity:0;animation:rh-scan-sweep 10s linear infinite !important}
+.rh-compare .rh-badge-1{opacity:0;animation:rh-badge-s1 10s linear infinite !important}
+.rh-compare .rh-badge-2{opacity:0;animation:rh-badge-s2 10s linear infinite !important}
+.rh-compare .rh-badge-3{opacity:1;animation:rh-audit-lock 10s linear infinite !important}
+.rh-compare .rh-trace-bg-alert,.rh-compare .rh-trace-strip-alert{opacity:1;animation:rh-audit-lock 10s linear infinite !important}
+.rh-compare .rh-trace-1{opacity:0;animation:rh-trace-s1 10s linear infinite !important}
+.rh-compare .rh-trace-2{opacity:0;animation:rh-trace-s2a 10s linear infinite !important}
+.rh-compare .rh-trace-3{opacity:0;animation:rh-trace-s2b 10s linear infinite !important}
+.rh-compare .rh-trace-4{opacity:1;animation:rh-audit-lock 10s linear infinite !important}
+.rh-compare .rh-cap-1{opacity:0;animation:rh-stage1-only 10s linear infinite !important}
+.rh-compare .rh-cap-2{opacity:0;animation:rh-stage2-only 10s linear infinite !important}
+.rh-compare .rh-cap-3{opacity:1;animation:rh-stage3-only 10s linear infinite !important}
 @keyframes rh-stage1-only{0%,2%{opacity:0}5%,22%{opacity:1}25%,100%{opacity:0}}
 @keyframes rh-stage2-only{0%,23%{opacity:0}26%,50%{opacity:1}53%,100%{opacity:0}}
 @keyframes rh-stage3-only{0%,51%{opacity:0}55%,91%{opacity:1}96%,100%{opacity:0}}
@@ -109,11 +106,8 @@ summary: 从经典强化学习的原地翻积木到前沿智能体的科研作�
 .rh-shift-tag--2020{color:var(--feature)}
 .rh-shift-tag--2026{color:var(--accent-strong)}
 }
-@media (prefers-reduced-motion:reduce){
-.rh-compare *{animation:none !important;transition:none !important}
-}
 @media print{
-.rh-compare *{animation:none !important;transition:none !important}
+.rh-compare .rh-panel-svg *{animation:none !important;transition:none !important}
 }
 </style>
 <p class="rh-compare-title" id="rh-compare-title">从经典 RL 到前沿 LLM 智能体：Reward Hacking 的形态变化</p>
@@ -198,7 +192,7 @@ summary: 从经典强化学习的原地翻积木到前沿智能体的科研作�
 <rect class="rh-hack-subtle" x="-2.2" y="-18" width="4.4" height="18" rx="1" fill="#9E636D"/>
 <rect class="rh-hack-pop" x="-2.4" y="-18" width="4.8" height="18" rx="1.2" fill="#7B2130"/>
 </g>
-<circle class="rh-hack-ring" cx="206.2" cy="48" r="7" fill="none" stroke="#7B2130" stroke-width="1.2"/>
+<g transform="translate(206.2, 48)"><circle class="rh-hack-ring" cx="0" cy="0" r="7" fill="none" stroke="#7B2130" stroke-width="1.2"/></g>
 <text class="rh-hack-tag" x="199" y="34" text-anchor="end" font-size="9.5" font-weight="600" fill="#7B2130">#183 · 0.6%</text>
 <g transform="translate(16, 42)"><line class="rh-playhead" x1="0" y1="0" x2="0" y2="30" stroke="#534A4C" stroke-width="1.2"/></g>
 <g transform="translate(12, 36)"><g class="rh-scanner"><rect x="-18" y="0" width="18" height="42" fill="url(#rh-scan-grad)"/><line x1="0" y1="0" x2="0" y2="42" stroke="#7B2130" stroke-width="1.5"/></g></g>
