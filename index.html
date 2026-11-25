@@ -40,8 +40,11 @@
             <!-- Left column: Portrait, Contact, Career -->
             <aside id="profile" aria-label="Profile summary">
               <div class="profile-photo-wrap">
-                <img class="profile-photo" src="{{ '/assets/images/profile-w.jpg' | relative_url }}"
-                  alt="Portrait of Yongkang Chen" width="295" height="369" fetchpriority="high" />
+                <picture>
+                  <source srcset="{{ '/assets/images/profile-w.webp' | relative_url }}" type="image/webp" />
+                  <img class="profile-photo" src="{{ '/assets/images/profile-w.jpg' | relative_url }}"
+                    alt="Portrait of Yongkang Chen" width="295" height="369" fetchpriority="high" decoding="async" />
+                </picture>
               </div>
 
               <div class="profile-block">

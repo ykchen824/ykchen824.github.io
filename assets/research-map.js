@@ -47,11 +47,14 @@
   };
 
   const renderMap = () => {
-    canvas.innerHTML = '';
     const totalW = canvas.clientWidth;
-    if (totalW < 300) return;
+    if (totalW < 300) {
+      canvas.innerHTML = '';
+      return;
+    }
 
     const colMetrics = measureColumns(totalW);
+    canvas.innerHTML = '';
 
     // Group papers by year & topic to calculate vertical spacing dynamically
     const byYearTopic = new Map();
@@ -81,12 +84,13 @@
 
     canvas.style.height = `${cursorY}px`;
 
+    const frag = document.createDocumentFragment();
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
     svg.setAttribute('class', 'rmap-svg');
     svg.setAttribute('viewBox', `0 0 ${totalW} ${cursorY}`);
     svg.setAttribute('aria-hidden', 'true');
-    canvas.appendChild(svg);
+    frag.appendChild(svg);
 
     // Draw horizontal year dividers & labels
     yearBands.forEach((band, idx) => {
@@ -104,7 +108,7 @@
       label.className = 'rmap-year-label';
       label.textContent = String(band.year);
       label.style.top = `${band.top + yearTopPadding + rowHeightUnit * 0.5}px`;
-      canvas.appendChild(label);
+      frag.appendChild(label);
     });
 
     // Compute node coordinates
@@ -218,9 +222,11 @@
 
       a.appendChild(dotSlot);
       a.appendChild(text);
-      canvas.appendChild(a);
+      frag.appendChild(a);
       nodeEls.set(id, a);
     }
+
+    canvas.appendChild(frag);
 
     const activate = (id) => {
       const info = nodePos.get(id);

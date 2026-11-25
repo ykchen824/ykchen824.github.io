@@ -14,3 +14,6 @@
 <div id="site-toast" class="toast" role="status" aria-live="polite"></div>
 
 <script src="{{ '/assets/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script type="speculationrules">
+{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/feed.xml"}},{"not":{"href_matches":"/assets/*"}}]},"eagerness":"moderate"}]}
+</script>

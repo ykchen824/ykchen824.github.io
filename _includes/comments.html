@@ -13,12 +13,35 @@
     <h2 id="post-comments-heading">{{ comments_heading }}</h2>
     <p class="post-comments-hint">{{ comments_hint }}</p>
   </div>
-  <script src="https://utteranc.es/client.js"
-    repo="{{ site.comments.repo | default: 'ykchen824/ykchen824.github.io' | escape }}"
-    issue-term="{{ site.comments.issue_term | default: 'pathname' | escape }}"
-    label="{{ site.comments.label | default: 'comment' | escape }}"
-    theme="{{ site.comments.theme | default: 'github-light' | escape }}"
-    crossorigin="anonymous"
-    async></script>
+  <div class="post-comments-mount" data-utterances
+    data-repo="{{ site.comments.repo | default: 'ykchen824/ykchen824.github.io' | escape }}"
+    data-issue-term="{{ site.comments.issue_term | default: 'pathname' | escape }}"
+    data-label="{{ site.comments.label | default: 'comment' | escape }}"
+    data-theme="{{ site.comments.theme | default: 'github-light' | escape }}"></div>
+  <script>
+  (() => {
+    const mount = document.querySelector('[data-utterances]');
+    if (!mount) return;
+    const load = () => {
+      if (mount.dataset.loaded) return;
+      mount.dataset.loaded = '1';
+      const s = document.createElement('script');
+      s.src = 'https://utteranc.es/client.js';
+      s.setAttribute('repo', mount.dataset.repo);
+      s.setAttribute('issue-term', mount.dataset.issueTerm);
+      s.setAttribute('label', mount.dataset.label);
+      s.setAttribute('theme', mount.dataset.theme);
+      s.crossOrigin = 'anonymous';
+      s.async = true;
+      mount.appendChild(s);
+    };
+    const host = mount.closest('.post-comments') || mount;
+    if (!('IntersectionObserver' in window)) { load(); return; }
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { io.disconnect(); load(); }
+    }, { rootMargin: '400px 0px' });
+    io.observe(host);
+  })();
+  </script>
   <noscript><p class="post-comments-hint">{{ comments_noscript }}</p></noscript>
 </section>

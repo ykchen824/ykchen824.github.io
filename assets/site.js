@@ -75,6 +75,7 @@
       rafId = 0;
       ctx.clearRect(0, 0, width, height);
       const maxDist = 175;
+      const maxDist2 = maxDist * maxDist;
 
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
@@ -91,8 +92,9 @@
           const b = nodes[j];
           const dx = a.x - b.x;
           const dy = a.y - b.y;
-          const d = Math.hypot(dx, dy);
-          if (d < maxDist) {
+          const d2 = dx * dx + dy * dy;
+          if (d2 < maxDist2) {
+            const d = Math.sqrt(d2);
             const fade = (1 - d / maxDist) * 0.08 * edgeAlphaForX(a.x, b.x);
             ctx.strokeStyle = `rgba(123, 33, 48, ${fade.toFixed(4)})`;
             ctx.lineWidth = 0.85;
@@ -117,8 +119,15 @@
       }
     };
 
-    resize(true);
-    startLoop();
+    const bootBackdrop = () => {
+      resize(true);
+      startLoop();
+    };
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(bootBackdrop, { timeout: 500 });
+    } else {
+      setTimeout(bootBackdrop, 120);
+    }
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
