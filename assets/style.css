@@ -460,6 +460,23 @@ main {
   flex-direction: column;
 }
 
+/* Homepage slogan — visible headline above the bio */
+.hero-slogan {
+  margin: 0 0 1.1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.05rem + 0.55vw, 1.46rem);
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.hero-slogan span {
+  color: var(--accent);
+  font-style: italic;
+}
+
 .intro {
   margin-top: -0.22rem;
 }
