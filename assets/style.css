@@ -613,6 +613,16 @@ main {
   color: var(--muted-strong);
 }
 
+.service-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.service-list li + li {
+  margin-top: 0.22rem;
+}
+
 /* Action pill buttons */
 .btn-list {
   display: flex;
